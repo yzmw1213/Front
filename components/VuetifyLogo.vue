@@ -20,3 +20,10 @@
   }
 }
 </style>
+
+<script lang="ts">
+import { Component, Vue } from "nuxt-property-decorator"
+
+@Component({})
+export default class VuetifyLogo extends Vue {}
+</script>
