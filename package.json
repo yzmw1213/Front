@@ -1,5 +1,5 @@
 {
-  "name": "NuxtApp",
+  "name": "nuxt_grpc_app",
   "version": "1.0.0",
   "description": "My praiseworthy Nuxt.js project",
   "author": "yzmw1213",
@@ -12,9 +12,12 @@
     "start": "nuxt-ts start"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
     "@nuxt/typescript-runtime": "^0.4.0",
-    "@nuxtjs/pwa": "^3.0.0-0"
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "@types/google-protobuf": "^3.7.2",
+    "google-protobuf": "^3.12.2",
+    "grpc-web": "^1.1.0",
+    "nuxt": "^2.0.0"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.6.0",
