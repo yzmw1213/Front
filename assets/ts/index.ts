@@ -4,7 +4,6 @@ import Home from "~/components/Home.vue"
 import Header from "~/components/ui/Header.vue"
 import Footer from "~/components/ui/Footer.vue"
 import Login from "~/components/Login.vue"
-import EditUserProfile from "~/components/EditUserProfile.vue"
 import Post from "~/components/Post.vue"
 
 @Component({
@@ -13,7 +12,6 @@ import Post from "~/components/Post.vue"
     Header,
     Footer,
     Login,
-    EditUserProfile,
     Post,
   }
 })
