@@ -2,6 +2,10 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   mode: 'spa',
+  server: {
+    port: 3000,
+    host: 'localhost',
+  },
   /*
   ** Headers of the page
   */
@@ -25,11 +29,13 @@ export default {
   ** Global CSS
   */
   css: [
+    '~/assets/scss/app.scss',
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/vee-validate'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -51,7 +57,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      // dark: true,
       themes: {
         dark: {
           primary: colors.blue.darken2,

@@ -17,7 +17,10 @@
     "@types/google-protobuf": "^3.7.2",
     "google-protobuf": "^3.12.2",
     "grpc-web": "^1.1.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vee-validate": "^3.3.11",
+    "vue": "^2.6.12",
+    "vue-template-compiler": "^2.6.12"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.6.0",
@@ -28,6 +31,8 @@
     "eslint-loader": "^4.0.2",
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-vue": "^6.2.2",
-    "nuxt-property-decorator": "^2.7.2"
+    "node-sass": "^4.14.1",
+    "nuxt-property-decorator": "^2.7.2",
+    "sass-loader": "^7.1.0"
   }
 }
