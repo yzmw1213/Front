@@ -1,0 +1,61 @@
+// common variables
+// @import '_variables.scss';
+
+.v-application--wrap {
+
+  .content_wrapper {
+
+    // ヘッダー
+    .v-app-bar{
+
+      .v-toolbar__content {
+          width: 100%;
+      }
+    }
+
+    .container {
+      margin-top: 68px;
+      padding-top: 0;
+
+      .content_inner {
+        // 各ページコンポーネント上部ヘッダー
+        .page_header_area {
+          .page_header_logo_area {
+            margin: 0 auto 50px;
+            display: block;
+            text-align: center;
+          }
+
+          .page_header_title_area {
+            text-align: center;
+            display: block;
+            margin-bottom: 50px;
+
+            .header_main {
+              font-size: 36px;
+              letter-spacing: .2em;
+            }
+
+            .header_main, .header_sub {
+              display: block;
+              line-height: 1.2;
+            }
+          }
+        }
+        // 縦並びボタン間div
+        div.button_dividor {
+          display: inline-block;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+button.v-btn--block {
+  box-shadow: 0 2px #13cbd8;
+}
+
+.v-form {
+  padding: 8px;
+}
