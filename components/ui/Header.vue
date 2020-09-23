@@ -7,7 +7,6 @@
       color="#6A76AB"
       floating
       fade-img-on-scroll
-      prominent
     >
       <v-app-bar-nav-icon @click="openNav()"></v-app-bar-nav-icon>
       <v-toolbar-title>Title</v-toolbar-title>

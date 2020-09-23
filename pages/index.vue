@@ -83,8 +83,10 @@
         <v-main>
           <component 
             :is="currentPage"
+            :detail_user_id="detail_user_id"
             @authenticated="authed"
             @go-home="home"
+            @show-user="user"
           ></component>
         </v-main>
     </v-container>

@@ -1,12 +1,12 @@
-import { Component, Vue, Emit } from "nuxt-property-decorator"
-import ShowPosts from "~/components/ui/ShowPosts.vue"
+import { Component, Vue, Prop,  Emit } from "nuxt-property-decorator"
+
 @Component({
   components: {
-    ShowPosts,
   }
 })
   
-export default class Home extends Vue {
+export default class ShowPosts extends Vue {
+  // 今後、apiで取得するようにする。propで取得したuser_idを元に投稿したpostsまたはlikeしたpostsを取得
   posts: { post_id: string,user_id: string, user_name: string, content: string}[] = [
     {
       post_id: "POST00000001",
@@ -21,6 +21,12 @@ export default class Home extends Vue {
       content: "テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります",
     }
   ]
+
+  @Prop({default: "", required: false})
+  user_id: string
+  
+  @Prop({default: "", required: false})
+  target: string
   
   // 選択されたユーザーIDをEmit
   @Emit('show-user')
@@ -29,6 +35,11 @@ export default class Home extends Vue {
   }
   
   mounted() {
-    console.log(this.posts)
+    console.log("user_id", this.user_id)
+    console.log("target", this.target)
+    // 投稿を取得する。propで渡されたパラメータに応じて、以下の検索条件を付与する
+    // ユーザーによる投稿
+    // ユーザーがLIKEした投稿
+    // this.posts = ...
   }
 }
