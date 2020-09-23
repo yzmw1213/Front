@@ -17,5 +17,7 @@ module.exports = {
     "comma-dangle": ["off", {
       arrays: "always-multiline",
     }],
+    "no-console": "off",
+    "space-before-function-paren": ["error", "never"],
   }
 }

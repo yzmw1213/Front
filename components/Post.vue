@@ -11,17 +11,16 @@
     </div>
 
     <validation-observer ref="obs" v-slot="{ invalid }">
-
       <v-form>
         <validation-provider
           v-slot="{ errors, valid }"
-          name= "本文"
+          name="本文"
           rules="required|max:140"
         >
           <v-textarea
+            v-model="content"
             class="py-3"
             row-height="30"
-            v-model="content"
             autofocus
             clearable
             counter
@@ -35,39 +34,28 @@
             :success="valid"
             required
             rows="5"
-          >
-          </v-textarea>
-            
+          />
           <v-file-input
-            @change="getFileContent"
-            accept="image/png, image/jpeg, image/bmp"
-            hide-details=""
-            prepend-icon="mdi-paperclip"
-            show-size
-          >
-
-          </v-file-input>
-          <v-file-input
-            @blur="onImageUploaded($event)"
             accept="image/png, image/jpeg, image/bmp"
             prepend-icon="mdi-paperclip"
             :clearable="false"
-          >
-
-          </v-file-input>
+            @blur="onImageUploaded($event)"
+          />
         </validation-provider>
 
         <v-row class="flex-column">
           <v-col
             class="pb-1"
           >
-            <v-btn 
+            <v-btn
               color="primary"
               block
-              small 
-              @click="post"
+              small
               :disabled="invalid"
-            >投稿する</v-btn>
+              @click="post"
+            >
+              投稿する
+            </v-btn>
           </v-col>
           <v-col
             class="button_dividor"
@@ -77,12 +65,14 @@
           <v-col
             class="pb-1"
           >
-            <v-btn 
+            <v-btn
               color="secondary"
               block
               small
               @click="cancelPost"
-            >キャンセル</v-btn>
+            >
+              キャンセル
+            </v-btn>
           </v-col>
         </v-row>
       </v-form>

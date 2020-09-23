@@ -1,4 +1,4 @@
-import { Component, Vue, Prop, Emit } from "nuxt-property-decorator"
+import { Component, Vue, Prop } from "nuxt-property-decorator"
 import ShowPosts from "~/components/ui/ShowPosts.vue"
 import Profile from "~/components/ui/Profile.vue"
 
@@ -8,50 +8,50 @@ import Profile from "~/components/ui/Profile.vue"
     Profile,
   }
 })
-  
-export default class ShowUserDetail extends Vue { 
+
+export default class ShowUserDetail extends Vue {
   tab: string = "tab-1"
-  posts: { post_id: string,user_id: string, user_name: string, content: string}[] = [
+  posts: { postId: string, userId: string, userName: string, content: string}[] = [
     {
-      post_id: "POST00000001",
-      user_id: "john1234",
-      user_name: "ジョン",
+      postId: "POST00000001",
+      userId: "john1234",
+      userName: "ジョン",
       content: "テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります",
     },
     {
-      post_id: "POST00000002",
-      user_id: "ben3456",
-      user_name: "ベン",
+      postId: "POST00000002",
+      userId: "ben3456",
+      userName: "ベン",
       content: "テキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入りますテキストが入ります",
     }
   ]
-  
+
   // タブに応じて表示するコンポーネントを定義する
   items: { tab: string, component: string, target: string }[] = [
     {
-      tab: "PROFILE",  
+      tab: "PROFILE",
       component: "Profile",
       target: "",
     },
     {
-      tab: "POSTS",  
+      tab: "POSTS",
       component: "ShowPosts",
       target: "own",
     },
     {
-      tab: "LIKE",  
+      tab: "LIKE",
       component: "ShowPosts",
       target: "like",
     }
   ]
-  
-  @Prop({default: "", required: true})
-  detail_user_id: string
-  
+
+  @Prop({ default: "", required: true })
+  detailUserId: string
+
   created() {
-    console.log(this.detail_user_id)
+    console.log(this.detailUserId)
   }
-  
+
   changeTab(tab: string) {
     this.tab = "tab-" + tab
   }

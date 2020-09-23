@@ -1,4 +1,4 @@
-import { Component, Vue, Prop, Emit } from "nuxt-property-decorator"
+import { Component, Vue, Emit } from "nuxt-property-decorator"
 
 import SearchForm from "~/components/ui/SearchForm.vue"
 @Component({
@@ -7,21 +7,21 @@ import SearchForm from "~/components/ui/SearchForm.vue"
   }
 
 })
-  
+
 export default class Header extends Vue {
   searchValue: string = ""
   items: { title: string}[] = [
-    { title: 'Click Me' },
-    { title: 'Click Me' },
-    { title: 'Click Me' },
-    { title: 'Click Me 2' },
+    { title: "Click Me" },
+    { title: "Click Me" },
+    { title: "Click Me" },
+    { title: "Click Me 2" },
   ];
 
-  @Emit('open-nav')
+  @Emit("open-nav")
   openNav() {
   }
-  
-  @Emit('do-search')
+
+  @Emit("do-search")
   searchEvent(value: any) {
     return value
   }

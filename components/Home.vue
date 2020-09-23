@@ -14,18 +14,15 @@
     <!-- フォロー、いいねの通知 -->
 
     <!-- 検索エリア -->
-    <div class="search_area">
-
-    </div>
-
+    <div class="search_area" />
     <!-- コンテントエリア -->
     <div class="content_area">
       <!-- テキスト入力 -->
 
       <!-- 一覧表示 -->
       <ShowPosts
-        :posts ="this.posts"
-        target ="index"
+        :posts="posts"
+        target="index"
         @show-user="showUser"
       />
     </div>

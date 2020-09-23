@@ -2,19 +2,18 @@ import { Component, Vue } from "nuxt-property-decorator"
 
 @Component({})
 export default class Profile extends Vue {
-
   profiles: { name: string, value: string }[] = [
     {
-      name: 'Name',
-      value: 'Ben',
+      name: "Name",
+      value: "Ben",
     },
     {
-      name: 'Age',
+      name: "Age",
       value: "24",
     },
     {
-      name: 'Gender',
-      value: 'man',
+      name: "Gender",
+      value: "man",
     },
   ]
 }

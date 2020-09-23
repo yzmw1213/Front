@@ -1,5 +1,5 @@
 import { Component, Vue, Emit } from "nuxt-property-decorator"
-  
+
 @Component({})
 export default class Post extends Vue {
   // variables
@@ -8,9 +8,10 @@ export default class Post extends Vue {
     title: "",
     description: "",
     image: "",
-  } 
+  }
+
   fileContent: unknown = null
-  
+
   // methods
   post() {
     console.log("post")
@@ -20,20 +21,20 @@ export default class Post extends Vue {
     console.log(this.fileContent)
     console.log(this.submittedArticle.image)
     console.log(this.submittedArticle.title)
-    
+
     // ファイルの更新日時を取得し、古い場合はワーニングを出すなど
   }
-  
-  @Emit('go-home')
+
+  @Emit("go-home")
   cancelPost() {
   }
-  
+
   onImageUploaded(e: Event) {
-    e.preventDefault();
+    e.preventDefault()
     if (e.target instanceof HTMLInputElement) {
       // ファイルを取得できない場合は処理を終了する.
       // Object is possibly null を以下で対処できるかどうか.
-      if (e.target.files.length == 0) {
+      if (e.target.files.length === 0) {
         return
       }
       const image = e.target.files[0]

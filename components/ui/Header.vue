@@ -1,5 +1,5 @@
 <template>
-      <!-- src="https://picsum.photos/1920/1080?random" -->
+  <!-- src="https://picsum.photos/1920/1080?random" -->
 
   <v-card class="overflow-hidden">
     <v-app-bar
@@ -8,13 +8,13 @@
       floating
       fade-img-on-scroll
     >
-      <v-app-bar-nav-icon @click="openNav()"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="openNav()" />
       <v-toolbar-title>Title</v-toolbar-title>
-      <v-spacer></v-spacer>
+      <v-spacer />
 
       <!-- 画面サイズが小さい時は非表示、各コンポーネントで呼び出すなど -->
       <search-form
-        class="header_form "
+        class="header_form"
         @search="searchEvent"
       />
     </v-app-bar>

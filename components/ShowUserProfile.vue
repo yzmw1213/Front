@@ -26,7 +26,7 @@
               color="grey"
               size="164"
             >
-              <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
+              <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg" />
             </v-avatar>
           </v-col>
           <v-col class="py-0">
@@ -35,7 +35,9 @@
               dark
             >
               <v-list-item-content>
-                <v-list-item-title class="title">Marcus Obrien</v-list-item-title>
+                <v-list-item-title class="title">
+                  Marcus Obrien
+                </v-list-item-title>
                 <v-list-item-subtitle>Network Engineer</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
@@ -47,11 +49,15 @@
           <v-row
             align="center"
           >
-            <v-icon class="mr-1">mdi-heart</v-icon>
+            <v-icon class="mr-1">
+              mdi-heart
+            </v-icon>
             <span class="mr-2">Followers</span>
             <span class="subheading mr-2">256</span>
             <span class="mr-1">·</span>
-            <v-icon class="mr-1">mdi-share-variant</v-icon>
+            <v-icon class="mr-1">
+              mdi-share-variant
+            </v-icon>
             <span class="mr-2">Share</span>
             <span class="subheading">45</span>
           </v-row>
@@ -74,30 +80,27 @@
         {{ item.tab }}
       </v-tab>
     </v-tabs>
-      <!-- 選択タブに以下の表示を切り替える -->
+    <!-- 選択タブに以下の表示を切り替える -->
     <v-tabs-items
       v-model="tab"
     >
       <v-tab-item
         v-for="item in items"
         :key="item.tab"
-        :value='"tab-" + item.tab'
+        :value="&quot;tab-&quot; + item.tab"
       >
         <component
           :is="item.component"
           :target="item.target"
-          :user_id="detail_user_id"
-        >
-        </component>
+          :user-id="detailUserId"
+        />
       </v-tab-item>
     </v-tabs-items>
     <!-- ユーザーの投稿一覧 -->
     <!-- ユーザーのいいね一覧 -->
     <!-- フォローしているタグ -->
     <!-- フォローしているユーザー一覧 -->
-
   </div>
-
 </template>
 
 <script lang="ts" src="@/assets/ts/show_user_profile.ts"></script>

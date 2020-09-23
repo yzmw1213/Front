@@ -5,17 +5,17 @@ export default class SearchForm extends Vue {
   // variables
   inputValue: string = ""
   loading: boolean = false
-  
-  @Emit('search')
+
+  @Emit("search")
   search() {
     // loading-circularを表示
     this.loading = !this.loading
-    
+
     // loading-circularを非表示
-    setTimeout(this.stopLoading,3000)
+    setTimeout(this.stopLoading, 3000)
     return this.inputValue
   }
-  
+
   stopLoading() {
     this.loading = false
   }

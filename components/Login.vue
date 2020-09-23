@@ -12,11 +12,10 @@
     </div>
 
     <validation-observer ref="obs" v-slot="{ invalid }">
-
       <v-form>
         <validation-provider
           v-slot="{ errors, valid }"
-          name= "メールアドレス"
+          name="メールアドレス"
           rules="required|email"
         >
           <v-text-field
@@ -26,13 +25,12 @@
             placeholder="example@app.com"
             :success="valid"
             required
-          >
-          </v-text-field>
+          />
         </validation-provider>
         <!-- パスワードは、登録画面で alpha_num|min:6|max:32 などのルールを設ける-->
         <validation-provider
           v-slot="{ errors, valid }"
-          name= "パスワード"
+          name="パスワード"
           rules="required"
         >
           <v-text-field
@@ -43,21 +41,22 @@
             :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
             :type="showPassword ? 'text' : 'password'"
             @click:append="showPassword = !showPassword"
-          >
-          </v-text-field>
+          />
         </validation-provider>
 
         <v-row class="flex-column">
           <v-col
             class="pb-1"
           >
-            <v-btn 
+            <v-btn
               color="primary"
               block
-              small 
-              @click="login"
+              small
               :disabled="invalid"
-            >ログイン</v-btn>
+              @click="login"
+            >
+              ログイン
+            </v-btn>
           </v-col>
           <v-col
             class="button_dividor"
@@ -67,12 +66,14 @@
           <v-col
             class="pb-1"
           >
-            <v-btn 
+            <v-btn
               color="secondary"
               block
               small
               @click="demoLogin"
-            >デモユーザーでログインする</v-btn>
+            >
+              デモユーザーでログインする
+            </v-btn>
           </v-col>
         </v-row>
       </v-form>
