@@ -1,12 +1,16 @@
-import { Component, Vue, Emit } from "nuxt-property-decorator"
+import { Component, Vue, Prop, Emit } from "nuxt-property-decorator"
 import ShowPosts from "~/components/ui/ShowPosts.vue"
+import Profile from "~/components/ui/Profile.vue"
+
 @Component({
   components: {
     ShowPosts,
+    Profile,
   }
 })
   
-export default class Home extends Vue {
+export default class ShowUserDetail extends Vue { 
+  tab: string = "tab-1"
   posts: { post_id: string,user_id: string, user_name: string, content: string}[] = [
     {
       post_id: "POST00000001",
@@ -22,13 +26,33 @@ export default class Home extends Vue {
     }
   ]
   
-  // 選択されたユーザーIDをEmit
-  @Emit('show-user')
-  showUser(user_id: string): string {
-    return user_id
+  // タブに応じて表示するコンポーネントを定義する
+  items: { tab: string, component: string, target: string }[] = [
+    {
+      tab: "PROFILE",  
+      component: "Profile",
+      target: "",
+    },
+    {
+      tab: "POSTS",  
+      component: "ShowPosts",
+      target: "own",
+    },
+    {
+      tab: "LIKE",  
+      component: "ShowPosts",
+      target: "like",
+    }
+  ]
+  
+  @Prop({default: "", required: true})
+  detail_user_id: string
+  
+  created() {
+    console.log(this.detail_user_id)
   }
   
-  mounted() {
-    console.log(this.posts)
+  changeTab(tab: string) {
+    this.tab = "tab-" + tab
   }
 }

@@ -23,11 +23,11 @@
       <!-- テキスト入力 -->
 
       <!-- 一覧表示 -->
-      <!-- できれば無限スクロール -->
-      <logo />
-      <vuetify-logo />
-      <!-- Content コンポーネント  -->
-      <!-- いいね機能  -->
+      <ShowPosts
+        :posts ="this.posts"
+        target ="index"
+        @show-user="showUser"
+      />
     </div>
   </div>
 </template>

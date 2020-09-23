@@ -4,7 +4,7 @@ import Home from "~/components/Home.vue"
 import Header from "~/components/ui/Header.vue"
 import Footer from "~/components/ui/Footer.vue"
 import Login from "~/components/Login.vue"
-import Post from "~/components/Post.vue"
+import ShowUserProfile from "~/components/ShowUserProfile.vue"
 
 @Component({
   components: {
@@ -12,7 +12,7 @@ import Post from "~/components/Post.vue"
     Header,
     Footer,
     Login,
-    Post,
+    ShowUserProfile,
   }
 })
 
@@ -20,6 +20,7 @@ export default class Index extends Vue {
   drawer: boolean = false;
   auth: boolean = false;
   currentPage: string = "Home"
+  detail_user_id: string = ""
   
   // @Emit()
   setHeader() {
@@ -57,7 +58,12 @@ export default class Index extends Vue {
   search(inputVal: any) {
     console.log("search func on index")
     console.log(inputVal)
+  }
   
+  user(id: string) {
+    this.currentPage = "ShowUserProfile"
+    this.detail_user_id = id
+    console.log(id)
   }
   
 }
