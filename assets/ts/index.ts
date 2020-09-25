@@ -5,6 +5,7 @@ import Header from "~/components/ui/Header.vue"
 import Footer from "~/components/ui/Footer.vue"
 import Login from "~/components/Login.vue"
 import Post from "~/components/Post.vue"
+import SearchForm from "~/components/ui/SearchForm.vue"
 import ShowUserProfile from "~/components/ShowUserProfile.vue"
 
 @Component({
@@ -14,6 +15,7 @@ import ShowUserProfile from "~/components/ShowUserProfile.vue"
     Footer,
     Login,
     Post,
+    SearchForm,
     ShowUserProfile,
   }
 })
@@ -65,6 +67,7 @@ export default class Index extends Vue {
   }
 
   user(id: string) {
+    this.drawer = false
     this.currentPage = "ShowUserProfile"
     this.detailUserId = id
     console.log(id)

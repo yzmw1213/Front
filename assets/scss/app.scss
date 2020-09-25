@@ -5,14 +5,6 @@
 
   .content_wrapper {
 
-    // ヘッダー
-    .v-app-bar{
-
-      .v-toolbar__content {
-          width: 100%;
-      }
-    }
-
     .container {
       margin-top: 68px;
       padding-top: 0;
@@ -57,5 +49,5 @@ button.v-btn--block {
 }
 
 .v-form {
-  padding: 8px;
+  padding: 8px 16px;
 }

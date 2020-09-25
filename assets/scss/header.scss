@@ -1,0 +1,31 @@
+.v-application--wrap {
+
+  .content_wrapper {
+
+    // ヘッダー
+    .v-app-bar{
+
+      .v-toolbar__content {
+        width: 100%;
+
+        .v-toolbar__title {
+          margin-right: 36px;
+        }
+
+        .v-toolbar__items {
+          margin: 36px 36px 0 0;
+          display: inline-block;
+        }
+
+        .header_nav {
+          list-style: none;
+          display: flex;
+
+          li {
+            margin-left: 16px;
+          }
+        }
+      }
+    }
+  }
+}
