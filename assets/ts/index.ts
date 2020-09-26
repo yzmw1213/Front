@@ -4,7 +4,7 @@ import Home from "~/components/Home.vue"
 import Header from "~/components/ui/Header.vue"
 import Footer from "~/components/ui/Footer.vue"
 import Login from "~/components/Login.vue"
-import Post from "~/components/Post.vue"
+import Post from "~/components/Post/Create.vue"
 import SearchForm from "~/components/ui/SearchForm.vue"
 import ShowUserProfile from "~/components/ShowUserProfile.vue"
 
