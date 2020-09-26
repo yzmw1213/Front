@@ -1,13 +1,11 @@
 <template>
   <div class="content_inner">
-    <!-- ログイン画面では、page_header_areaの代わりにアプリのロゴを表示するなど -->
     <div class="page_header_area">
       <div class="page_header_logo_area">
         <span>some logos</span>
       </div>
       <h2 class="page_header_title_area">
-        <span class="header_main">ユーザーログイン</span>
-        <!-- <span class="header_sub">コンテンツ</span> -->
+        <span class="header_main">企業ログイン</span>
       </h2>
     </div>
 
@@ -15,14 +13,14 @@
       <v-form>
         <validation-provider
           v-slot="{ errors, valid }"
-          name="メールアドレス"
-          rules="required|email"
+          name="企業ID"
+          rules="required"
         >
           <v-text-field
             v-model="email"
-            label="メールアドレス"
+            label="企業ID"
             :error-messages="errors"
-            placeholder="example@app.com"
+            placeholder="COMPANY1234"
             :success="valid"
             required
           />
@@ -72,7 +70,7 @@
               small
               @click="demoLogin"
             >
-              デモユーザーでログインする
+              デモ企業アカウントでログインする
             </v-btn>
           </v-col>
         </v-row>
@@ -83,4 +81,4 @@
 
 <style lang="scss" scoped src="@/assets/scss/login.scss"></style>
 
-<script lang="ts" src="@/assets/ts/login.ts"></script>
+<script lang="ts" src="@/assets/ts/company_login.ts"></script>

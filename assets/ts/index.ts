@@ -4,6 +4,7 @@ import Home from "~/components/Home.vue"
 import Header from "~/components/ui/Header.vue"
 import Footer from "~/components/ui/Footer.vue"
 import Login from "~/components/Login.vue"
+import CompanyLogin from "~/components/CompanyLogin.vue"
 import Post from "~/components/Post.vue"
 import SearchForm from "~/components/ui/SearchForm.vue"
 import ShowUserProfile from "~/components/ShowUserProfile.vue"
@@ -14,6 +15,7 @@ import ShowUserProfile from "~/components/ShowUserProfile.vue"
     Header,
     Footer,
     Login,
+    CompanyLogin,
     Post,
     SearchForm,
     ShowUserProfile,
@@ -38,6 +40,11 @@ export default class Index extends Vue {
   login() {
     this.drawer = false
     this.currentPage = "Login"
+  }
+
+  companyLogin() {
+    this.drawer = false
+    this.currentPage = "CompanyLogin"
   }
 
   logout() {

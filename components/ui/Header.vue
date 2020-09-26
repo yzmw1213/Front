@@ -43,6 +43,13 @@
           <v-icon>mdi-account</v-icon>
           ログイン
         </li>
+        <li
+          v-if="!authed"
+          @click="companyLogin"
+        >
+          <v-icon>mdi-office-building</v-icon>
+          企業ログイン
+        </li>
       </ul>
     </v-app-bar>
   </v-card>

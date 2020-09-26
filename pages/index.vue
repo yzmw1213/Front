@@ -6,12 +6,18 @@
       @open-nav="openNav"
       @do-search="search"
       @do-login="login"
+      @do-company-login="companyLogin"
       @do-logout="logout"
       @show-user="user"
     />
     <v-container
       class="px-3"
     >
+      <v-tabs>
+        <V-tab>記事一覧</V-tab>
+        <V-tab>azz</V-tab>
+        <V-tab>azz</V-tab>
+      </v-tabs>
       <!-- スマートフォンサイズで表示するサイドナビゲーション -->
       <v-navigation-drawer
         v-if="$vuetify.breakpoint.sm || $vuetify.breakpoint.xs"
@@ -70,6 +76,15 @@
           >
             <v-btn block>
               ログイン
+            </v-btn>
+          </div>
+          <div
+            v-if="!auth"
+            class="pa-2"
+            @click="companyLogin"
+          >
+            <v-btn block>
+              企業ログイン
             </v-btn>
           </div>
           <div

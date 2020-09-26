@@ -34,6 +34,10 @@ export default class Header extends Vue {
   login() {
   }
 
+  @Emit("do-company-login")
+  companyLogin() {
+  }
+
   @Emit("do-logout")
   logout() {
   }
