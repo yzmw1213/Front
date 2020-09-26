@@ -10,19 +10,18 @@
         outlined
         placeholder="キーワードを入力"
         dense
-        prepend-inner-icon="mdi-magnify"
+        append-outer-icon="mdi-magnify"
         autocomplete="off"
+        @click:append-outer="search"
       >
-        <!-- <template v-slot:append>
-            <v-fade-transition leave-absolute>
-              <v-progress-circular
-                v-if="loading"
-                size="24"
-                color="info"
-                indeterminate
-              ></v-progress-circular>
-            </v-fade-transition>
-          </template> -->
+        <template v-slot:append>
+          <v-progress-circular
+            v-if="loading"
+            size="24"
+            color="info"
+            indeterminate
+          />
+        </template>
       </v-text-field>
     </v-row>
   </v-form>

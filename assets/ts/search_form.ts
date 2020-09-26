@@ -1,4 +1,4 @@
-import { Component, Vue, Emit } from "nuxt-property-decorator"
+import { Component, Vue, Emit, Prop, Watch } from "nuxt-property-decorator"
 
 @Component({})
 export default class SearchForm extends Vue {
@@ -18,5 +18,15 @@ export default class SearchForm extends Vue {
 
   stopLoading() {
     this.loading = false
+  }
+
+  @Prop({ default: false, required: false })
+  navDrawer: boolean
+
+  @Watch("navDrawer")
+  onWatchChanged(drawer: boolean) {
+    if (drawer === false) {
+      this.inputValue = ""
+    }
   }
 }

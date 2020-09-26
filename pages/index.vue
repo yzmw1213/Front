@@ -2,19 +2,29 @@
   <div class="content_wrapper">
     <!-- ヘッダー -->
     <Header
+      :authed="auth"
       @open-nav="openNav"
       @do-search="search"
+      @do-login="login"
+      @do-logout="logout"
+      @show-user="user"
     />
     <v-container
       class="px-3"
     >
-      <!-- prop isAuth -->
+      <!-- スマートフォンサイズで表示するサイドナビゲーション -->
       <v-navigation-drawer
+        v-if="$vuetify.breakpoint.sm || $vuetify.breakpoint.xs"
         v-model="drawer"
         temporary
         app
         left
       >
+        <search-form
+          class="header_form"
+          :nav-drawer="drawer"
+          @search="search"
+        />
         <v-list
           nav
           dense
@@ -29,13 +39,16 @@
               <v-list-item-icon>
                 <v-icon>mdi-home</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Home</v-list-item-title>
+              <v-list-item-title>トップ画面</v-list-item-title>
             </v-list-item>
-            <v-list-item>
+            <v-list-item
+              v-if="auth"
+              @click="user"
+            >
               <v-list-item-icon>
                 <v-icon>mdi-account</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Account</v-list-item-title>
+              <v-list-item-title>マイページ</v-list-item-title>
             </v-list-item>
             <v-list-item
               @click="post"
@@ -43,26 +56,10 @@
               <v-list-item-icon>
                 <v-icon>mdi-lead-pencil</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Post</v-list-item-title>
+              <v-list-item-title>記事を投稿する</v-list-item-title>
             </v-list-item>
           </v-list-item-group>
-
-          <!-- 未認証時 -->
-          <!-- <v-list-item-group
-              active-class="deep-purple--text text--accent-4"
-              v-if="!auth"
-            >
-              <v-list-item
-                @click="home"
-              >
-                <v-list-item-icon>
-                  <v-icon>mdi-home</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>Home</v-list-item-title>
-              </v-list-item>
-            </v-list-item-group> -->
         </v-list>
-
         <template
           v-slot:append
         >

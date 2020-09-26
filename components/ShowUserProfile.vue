@@ -29,7 +29,10 @@
               <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg" />
             </v-avatar>
           </v-col>
-          <v-col class="py-0">
+          <v-col
+            class="py-0"
+            cols="6"
+          >
             <v-list-item
               color="rgba(0, 0, 0, .4)"
               dark
@@ -41,6 +44,18 @@
                 <v-list-item-subtitle>Network Engineer</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
+          </v-col>
+          <v-col
+            v-if="$vuetify.breakpoint.xs"
+            class="py-0"
+            cols="4"
+          >
+            <v-btn class="ma-2" tile outlined color="success">
+              <v-icon left>
+                mdi-pencil
+              </v-icon>
+              Edit
+            </v-btn>
           </v-col>
         </v-row>
       </v-img>
@@ -54,7 +69,6 @@
             </v-icon>
             <span class="mr-2">Followers</span>
             <span class="subheading mr-2">256</span>
-            <span class="mr-1">·</span>
             <v-icon class="mr-1">
               mdi-share-variant
             </v-icon>
