@@ -5,6 +5,7 @@ import Header from "~/components/ui/Header.vue"
 import Footer from "~/components/ui/Footer.vue"
 import Login from "~/components/Login.vue"
 import Post from "~/components/Post.vue"
+import CreateTag from "~/components/Tag/Create.vue"
 import SearchForm from "~/components/ui/SearchForm.vue"
 import ShowUserProfile from "~/components/ShowUserProfile.vue"
 
@@ -15,6 +16,7 @@ import ShowUserProfile from "~/components/ShowUserProfile.vue"
     Footer,
     Login,
     Post,
+    CreateTag,
     SearchForm,
     ShowUserProfile,
   }
@@ -59,6 +61,11 @@ export default class Index extends Vue {
   post() {
     this.drawer = false
     this.currentPage = "Post"
+  }
+
+  tagPost() {
+    this.drawer = false
+    this.currentPage = "CreateTag"
   }
 
   search(inputVal: any) {
