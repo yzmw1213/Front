@@ -1,5 +1,5 @@
 import { Component, Vue, Prop } from "nuxt-property-decorator"
-import ShowPosts from "~/components/ui/ShowPosts.vue"
+import ShowPosts from "~/components/Post/Show.vue"
 import Profile from "~/components/ui/Profile.vue"
 
 @Component({

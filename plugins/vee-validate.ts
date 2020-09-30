@@ -7,7 +7,7 @@ import {
 } from "vee-validate"
 
 // 使用するvalidate rule
-import { oneOf, required, max, min, email, numeric, regex } from "vee-validate/dist/rules"
+import { required, max, min, email, numeric, oneOf, regex } from "vee-validate/dist/rules"
 
 // エラーメッセージの日本語化用
 const ja = require("vee-validate/dist/locale/ja.json")
