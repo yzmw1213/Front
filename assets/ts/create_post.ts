@@ -1,24 +1,34 @@
 import { Component, Vue, Emit } from "nuxt-property-decorator"
+import { genderChoices, numChoices, tagChoices } from "~/plugins/const"
 
 @Component({})
-export default class Post extends Vue {
+export default class CreatePost extends Vue {
   // variables
-  content: string = ""
   submittedArticle :{ title: string, description: string, image: string } ={
     title: "",
     description: "",
     image: "",
   }
 
-  fileContent: unknown = null
+  numChoices: Number[] = numChoices
+  genderChoices: { text: string, key: Number }[] = genderChoices
+  tagChoices: { text: string, key: Number }[] = tagChoices
+
+  postContent: { title: string, companyID: string, content: string, maxNum: Number, gender: Number, tags: Number[]} = {
+    title: "",
+    companyID: "", // ログイン情報から自動的に取得する
+    content: "",
+    maxNum: 0,
+    gender: 0,
+    tags: [],
+  }
 
   // methods
   post() {
     console.log("post")
 
     // imageはgRPCでサーバーに送り、サーバー側の処理ででS3に上げる。
-    console.log(this.content)
-    console.log(this.fileContent)
+    console.log(this.postContent.content)
     console.log(this.submittedArticle.image)
     console.log(this.submittedArticle.title)
 
