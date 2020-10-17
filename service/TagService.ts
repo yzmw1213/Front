@@ -31,6 +31,15 @@ export type TRstatus = {
   [status: number]: string
 }
 
+const defaultTagItem: tTagItem = {
+  tagID: 0,
+  tagName: "",
+  status: 0,
+  stutusText: "",
+  createUserID: "demoUser1", // ログインユーザーのIDをセットする
+  updateUserID: ""
+}
+
 export class TagService {
   makeTag(postTag: any): Tag {
     const tag = new Tag()
@@ -40,6 +49,10 @@ export class TagService {
     tag.setCreateuserId(postTag.createUserID)
     tag.setUpdateuserId(postTag.updateUserID)
     return tag
+  }
+
+  makeDefaultTag(): tTagItem {
+    return defaultTagItem
   }
 
   getTag(tag: Tag): tTagItem {

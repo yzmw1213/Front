@@ -3,8 +3,10 @@ import { Component, Vue } from "nuxt-property-decorator"
 import Home from "~/components/Home.vue"
 import Header from "~/components/ui/Header.vue"
 import Footer from "~/components/ui/Footer.vue"
+import Message from "~/components/ui/Message.vue"
 import Login from "~/components/Login.vue"
 import CreateTag from "~/components/Tag/Create.vue"
+import ListTag from "~/components/Tag/List.vue"
 import Post from "~/components/Post/Create.vue"
 import SearchForm from "~/components/ui/SearchForm.vue"
 import ShowUserProfile from "~/components/ShowUserProfile.vue"
@@ -14,9 +16,11 @@ import ShowUserProfile from "~/components/ShowUserProfile.vue"
     Home,
     Header,
     Footer,
+    Message,
     Login,
     Post,
     CreateTag,
+    ListTag,
     SearchForm,
     ShowUserProfile,
   }
@@ -63,7 +67,17 @@ export default class Index extends Vue {
     this.currentPage = "Post"
   }
 
+  tagList() {
+    console.log("tagList")
+    this.currentPage = "ListTag"
+  }
+
   tagPost() {
+    this.drawer = false
+    this.currentPage = "ListTag"
+  }
+
+  createTag() {
     this.drawer = false
     this.currentPage = "CreateTag"
   }

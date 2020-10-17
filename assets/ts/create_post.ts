@@ -1,5 +1,6 @@
 import { Component, Vue, Emit } from "nuxt-property-decorator"
 import { genderChoices, numChoices, tagChoices } from "~/plugins/const"
+import { tagsModule } from "@/store/modules/tags"
 
 @Component({})
 export default class CreatePost extends Vue {
@@ -37,6 +38,7 @@ export default class CreatePost extends Vue {
 
   @Emit("go-home")
   cancelPost() {
+    tagsModule.SET_EDIT_TAG(this.editedItem)
   }
 
   onImageUploaded(e: Event) {
