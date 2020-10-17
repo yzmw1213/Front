@@ -1,3 +1,5 @@
+import { TRstatus } from "~/service/TagService"
+
 const genderChoices: { text: string, key: Number }[] = [
   { text: "男女可能", key: 1 },
   { text: "男性のみ", key: 2 },
@@ -10,6 +12,11 @@ const tagChoices: { text: string, key: Number }[] = [
   { text: "家具付き", key: 3 },
 ]
 
+const Rstatus: TRstatus = {
+  1: "公開",
+  2: "非公開"
+}
+
 const numChoices: Number[] = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-export { genderChoices, numChoices, tagChoices }
+export { genderChoices, numChoices, Rstatus, tagChoices }

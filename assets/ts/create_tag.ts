@@ -1,124 +1,110 @@
-import { Component, Vue, Emit, Watch } from "nuxt-property-decorator"
+import { Component, Vue, Emit } from "nuxt-property-decorator"
+import { Error } from "grpc-web"
+import { Rstatus } from "~/plugins/const"
+import { tagsModule } from "@/store/modules/tags"
+
+import {
+  CreateTagRequest,
+  CreateTagResponse,
+  ResponseStatus,
+  Tag,
+  UpdateTagRequest,
+  UpdateTagResponse
+} from "~/grpc/tag_pb"
+
+import { tagServiceClient, TagService, tTagItem } from "~/service/TagService"
 
 @Component({})
 export default class CreateTag extends Vue {
-  // variables
-  dialog: boolean = false
-  headers: { text: string, sortable: boolean, value: string }[] = [
-    {
-      text: "タグ名",
-      sortable: true,
-      value: "tagName",
-    },
-    {
-      text: "状態",
-      sortable: true,
-      value: "stutusText",
-    },
-    {
-      text: "編集",
-      sortable: false,
-      value: "actions",
-    },
-  ]
-
-  tags: any[] = []
-  editedIndex: number = -1
-  editedItem: { tagID: number, tagName: string, status: number, stutusText: string } = {
+  tService: TagService
+  editedItem: tTagItem = {
     tagID: 0,
     tagName: "",
     status: 0,
-    stutusText: ""
+    stutusText: "",
+    createUserID: "demoUser1",
+    updateUserID: ""
   }
 
-  defaultItem: { tagID: number, tagName: string, status: number, stutusText: string } = {
+  defaultItem: tTagItem = {
     tagID: 0,
     tagName: "",
     status: 0,
-    stutusText: ""
-  }
-
-  Rstatus: { [status: number ]: string} = {
-    1: "公開",
-    2: "非公開"
+    stutusText: "",
+    createUserID: "demoUser1", // ログインユーザーのIDをセットする
+    updateUserID: ""
   }
 
   rStatus: { key: Number, value: string}[] = [
     {
       key: 1,
-      value: this.Rstatus[1]
+      value: Rstatus[1]
     },
     {
       key: 2,
-      value: this.Rstatus[2]
+      value: Rstatus[2]
     }
   ]
 
-  formTitle(): string {
-    return this.editedIndex === -1 ? "New Item" : "Edit Item"
-  }
-
-  @Watch("dialog")
-  onDialogChanged(dialog: boolean) {
-    dialog || this.close()
+  post() {
+    const id: number = this.editedItem.tagID
+    const tag = this.tService.makeTag(this.editedItem)
+    if (id === 0) {
+      this.create(tag)
+    }
+    if (id > 0) {
+      this.update(tag)
+    }
   }
 
   created() {
-    this.initialize()
+    this.tService = new TagService()
+    this.editedItem = tagsModule.editTag
   }
 
-  //  methods
-  initialize() {
-    this.tags = [
-      {
-        id: 1,
-        tagName: "駅から近い",
-        status: 1,
-        stutusText: ""
-      }
-    ]
-    let i = 0
-    while (i < this.tags.length) {
-      this.tags[i].stutusText = this.Rstatus[this.tags[i].status]
-      i++
-    }
-  }
-
-  editItem(item: any) {
-    this.editedIndex = this.tags.indexOf(item)
-    this.editedItem = Object.assign({}, item)
-    this.dialog = true
-  }
-
-  deleteItem(item: any) {
-    const index = this.tags.indexOf(item)
-    console.log(this.tags[index].tagName)
-    confirm("タグ 「" + this.tags[index].tagName + "」 を削除します。よろしいですか ? ") && this.tags.splice(index, 1)
-  }
-
-  close() {
-    this.dialog = false
-    this.$nextTick(() => {
-      this.editedItem = Object.assign({}, this.defaultItem)
-      this.editedIndex = -1
+  create(tag: Tag) {
+    const request = new CreateTagRequest()
+    request.setTag(tag)
+    tagServiceClient.createTag(request, {}, (err, res: CreateTagResponse) => {
+      this.handleCreateUpdateResponse(res, err)
     })
   }
 
-  save() {
-    this.editedItem.stutusText = this.Rstatus[this.editedItem.status]
-    if (this.editedIndex > -1) {
-      Object.assign(this.tags[this.editedIndex], this.editedItem)
-    } else {
-      this.tags.push(this.editedItem)
-    }
-    this.close()
+  update(tag: Tag) {
+    const request = new UpdateTagRequest()
+    request.setTag(tag)
+    tagServiceClient.updateTag(request, {}, (err, res: UpdateTagResponse) => {
+      this.handleCreateUpdateResponse(res, err)
+    })
   }
 
-  post() {
-    console.log(this.tags)
+  handleCreateUpdateResponse(res: CreateTagResponse | UpdateTagRequest, err: Error) {
+    if (err != null) {
+      console.log(err.message)
+      // status.codeに応じたダイアログ表示
+      this.showDialog(err.message)
+    } else {
+      console.log(res)
+      const status: ResponseStatus | undefined = res.getStatus()
+      const code = status.getCode()
+      // status.codeに応じたダイアログ表示
+      this.showDialog(code)
+      this.goList()
+    }
+  }
+
+  showDialog(code: string) {
+    this.$setStatusMessage(code)
   }
 
   @Emit("go-home")
   cancelPost() {
+    const defaultTag = this.tService.makeDefaultTag()
+    tagsModule.SET_EDIT_TAG(defaultTag)
+    // Remove message
+  }
+
+  @Emit("go-tag-list")
+  goList() {
   }
 }

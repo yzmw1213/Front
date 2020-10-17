@@ -1,15 +1,9 @@
 version: '3'
 
 services:
-  client:
-    build: .
-    container_name: client-container
+  proxy:
+    build: ./proxy
+    ports:
+      - "8080:8080"
     networks:
-      - client_network
-    volumes:
-      - .:/app
-      - /app/node_modules
-    command: "npm run dev"
-networks:
-  client_network:
-    external: true
+      - test-network

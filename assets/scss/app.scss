@@ -6,8 +6,25 @@
   .content_wrapper {
 
     .container {
-      margin-top: 68px;
+      margin-top: 56px;
       padding-top: 0;
+
+      .header_message {
+        border-radius: 5px;
+        padding: 12px;
+
+        .success {
+          background-color: #13d84e;
+        }
+
+        .error {
+          background-color: #d343e9;
+        }
+
+        p {
+          margin-bottom: 0;
+        }
+      }
 
       .content_inner {
         // 各ページコンポーネント上部ヘッダー

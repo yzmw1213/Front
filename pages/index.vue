@@ -12,6 +12,7 @@
     <v-container
       class="px-3"
     >
+      <message />
       <!-- スマートフォンサイズで表示するサイドナビゲーション -->
       <v-navigation-drawer
         v-if="$vuetify.breakpoint.sm || $vuetify.breakpoint.xs"
@@ -99,6 +100,8 @@
           :detail-user-id="detailUserId"
           @authenticated="authed"
           @go-home="home"
+          @go-tag-list="tagList"
+          @edit-tag="createTag"
           @show-user="user"
         />
       </v-main>

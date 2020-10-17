@@ -37,6 +37,7 @@ export default {
   */
   plugins: [
     '~/plugins/const',
+    '~/plugins/myPlugin',
     '~/plugins/vee-validate',
   ],
   /*
