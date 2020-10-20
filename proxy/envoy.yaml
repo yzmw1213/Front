@@ -16,7 +16,11 @@ static_resources:
             - name: local_service
               domains: ["*"]
               routes:
-              - match: { prefix: "/" }
+              - match: { prefix: "/user_grpc" }
+                route:
+                  cluster: user_service
+                  max_grpc_timeout: 2s
+              - match: { prefix: "/post_grpc" }
                 route:
                   cluster: post_service
                   max_grpc_timeout: 2s
@@ -34,13 +38,24 @@ static_resources:
           - name: envoy.router
 
   clusters:
+  - name: user_service
+    connect_timeout: 15s
+    type: strict_dns
+    http2_protocol_options: {}
+    lb_policy: round_robin
+    hosts:
+    - socket_address:
+        address: host.docker.internal
+        port_value: 50052
   - name: post_service
     connect_timeout: 15s
-    type: logical_dns
+    type: strict_dns
     http2_protocol_options: {}
-    # dns_lookup_family: V4_ONLY
     lb_policy: round_robin
-    hosts: [{ socket_address: { address: host.docker.internal, port_value: 50053 }}]
+    hosts:
+    - socket_address:
+        address: host.docker.internal
+        port_value: 50053
 
 admin:
   access_log_path: /tmp/admin_access.log
