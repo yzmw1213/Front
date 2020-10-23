@@ -4,10 +4,11 @@ import Home from "~/components/Home.vue"
 import Header from "~/components/ui/Header.vue"
 import Footer from "~/components/ui/Footer.vue"
 import Message from "~/components/ui/Message.vue"
-import Login from "~/components/Login.vue"
+import Login from "~/components/Login/Login.vue"
 import CreateTag from "~/components/Tag/Create.vue"
 import ListTag from "~/components/Tag/List.vue"
 import Post from "~/components/Post/Create.vue"
+import SignUp from "~/components/Login/SignUp.vue"
 import SearchForm from "~/components/ui/SearchForm.vue"
 import ShowUserProfile from "~/components/ShowUserProfile.vue"
 
@@ -21,6 +22,7 @@ import ShowUserProfile from "~/components/ShowUserProfile.vue"
     Post,
     CreateTag,
     ListTag,
+    SignUp,
     SearchForm,
     ShowUserProfile,
   }
@@ -92,5 +94,10 @@ export default class Index extends Vue {
     this.currentPage = "ShowUserProfile"
     this.detailUserId = id
     console.log(id)
+  }
+
+  signUp() {
+    this.drawer = false
+    this.currentPage = "SignUp"
   }
 }

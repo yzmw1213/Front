@@ -17,6 +17,17 @@ const Rstatus: TRstatus = {
   2: "非公開"
 }
 
+const UserKind: {[kind: number]: string} = {
+  1: "一般",
+  2: "企業"
+}
+
+const Sex: {[key: number]: string} = {
+  1: "男性",
+  2: "女性",
+  9: "その他",
+}
+
 const numChoices: Number[] = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-export { genderChoices, numChoices, Rstatus, tagChoices }
+export { genderChoices, numChoices, Sex, Rstatus, tagChoices, UserKind }

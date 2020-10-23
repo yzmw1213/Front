@@ -12,6 +12,7 @@ Vue.prototype.$setStatusMessage = (code: string) => {
   let message: string = ""
   let messageStatus: string = ""
   switch (code) {
+    // タグサービス
     // 重複登録エラー
     case "TAG_NAME_ALREADY_USED_ERROR":
       message = "同じ名前のタグが既に登録済のため、登録できません"
@@ -36,6 +37,19 @@ Vue.prototype.$setStatusMessage = (code: string) => {
     case "TAG_NOT_EXISTS_ERROR":
       message = "指定されたタグは既に削除済みか、登録されていないため削除できません"
       messageStatus = "ERROR"
+      break
+    // ユーザーサービス
+    case "EMAIL_ALREADY_USED_ERROR":
+      message = "指定されたEメールアドレスは既に使われているため使用できません"
+      messageStatus = "ERROR"
+      break
+    case "USER_CREATE_SUCCESS":
+      message = "アカウントの作成に成功しました。ログイン画面より、ログインしてください。"
+      messageStatus = "SUCCESS"
+      break
+    case "USER_UPDATE_SUCCESS":
+      message = "アカウントの更新に成功しました。"
+      messageStatus = "SUCCESS"
       break
     default:
       break

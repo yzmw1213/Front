@@ -17,8 +17,17 @@ export default class Login extends Vue {
   }
 
   @Emit("authenticated")
-  demoLogin() {
-    console.log("demo login")
+  demoUserLogin() {
+    console.log("demo user login")
+  }
+  
+  @Emit("authenticated")
+  demoCompanyLogin() {
+    console.log("demo company login")
+  }
+
+  @Emit("sign-up")
+  createUser() {
   }
 }
 
