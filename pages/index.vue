@@ -99,6 +99,8 @@
           :is="currentPage"
           :detail-user-id="detailUserId"
           @authenticated="authed"
+          @back-to-login="login"
+          @sign-up="signUp"
           @go-home="home"
           @go-tag-list="tagList"
           @edit-tag="createTag"

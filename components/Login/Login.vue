@@ -6,8 +6,7 @@
         <span>some logos</span>
       </div>
       <h2 class="page_header_title_area">
-        <span class="header_main">LOGIN</span>
-        <!-- <span class="header_sub">コンテンツ</span> -->
+        <span class="header_main">ログイン</span>
       </h2>
     </div>
 
@@ -70,9 +69,43 @@
               color="secondary"
               block
               small
-              @click="demoLogin"
+              @click="demoUserLogin"
             >
-              デモユーザーでログインする
+              デモユーザーアカウントでログインする
+            </v-btn>
+          </v-col>
+          <v-col
+            class="button_dividor"
+          >
+            <span>または</span>
+          </v-col>
+          <v-col
+            class="pb-1"
+          >
+            <v-btn
+              color="secondary"
+              block
+              small
+              @click="demoCompanyLogin"
+            >
+              デモ企業アカウントでログインする
+            </v-btn>
+          </v-col>
+          <v-col
+            class="button_dividor"
+          >
+            <span>または</span>
+          </v-col>
+          <v-col
+            class="pb-1"
+          >
+            <v-btn
+              color="secondary"
+              block
+              small
+              @click="createUser"
+            >
+              アカウント新規登録
             </v-btn>
           </v-col>
         </v-row>

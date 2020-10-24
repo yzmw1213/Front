@@ -41,7 +41,7 @@ const defaultTagItem: tTagItem = {
 }
 
 export class TagService {
-  makeTag(postTag: any): Tag {
+  makeTag(postTag: tTagItem): Tag {
     const tag = new Tag()
     tag.setTagId(postTag.tagID)
     tag.setTagName(postTag.tagName)
