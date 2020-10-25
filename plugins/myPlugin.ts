@@ -12,6 +12,19 @@ Vue.prototype.$setStatusMessage = (code: string) => {
   let message: string = ""
   let messageStatus: string = ""
   switch (code) {
+    // 認証
+    case "LOGIN_SUCCESS":
+      message = "ログインしました"
+      messageStatus = "SUCCESS"
+      break
+    case "LOGIN_FAIL":
+      message = "ログインに失敗しました。メールアドレスとパスワードを確認してください"
+      messageStatus = "ERROR"
+      break
+    case "LOGOUT_SUCCESS":
+      message = "ログアウトしました"
+      messageStatus = "SUCCESS"
+      break
     // タグサービス
     // 重複登録エラー
     case "TAG_NAME_ALREADY_USED_ERROR":
@@ -41,6 +54,10 @@ Vue.prototype.$setStatusMessage = (code: string) => {
     // ユーザーサービス
     case "EMAIL_ALREADY_USED_ERROR":
       message = "指定されたEメールアドレスは既に使われているため使用できません"
+      messageStatus = "ERROR"
+      break
+    case "PASSWORD_NOT_SAME_ERROR":
+      message = "確認用パスワードが一致しません。"
       messageStatus = "ERROR"
       break
     case "USER_CREATE_SUCCESS":

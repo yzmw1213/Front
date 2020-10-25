@@ -1,4 +1,5 @@
 import { Component, Vue } from "nuxt-property-decorator"
+import { usersModule } from "@/store/modules/users"
 
 import Home from "~/components/Home.vue"
 import Header from "~/components/ui/Header.vue"
@@ -34,6 +35,10 @@ export default class Index extends Vue {
   currentPage: string = "Home"
   detailUserId: string = ""
 
+  get getAuthState() {
+    return usersModule.auth
+  }
+
   // @Emit()
   setHeader() {
     // this.$nuxt.$emit('updateHeader', this.header.title)
@@ -50,8 +55,10 @@ export default class Index extends Vue {
 
   logout() {
     this.drawer = false
-    this.auth = false
+    usersModule.logout()
     this.currentPage = "Home"
+    // ログアウトに成功したことをメッセージ表示
+    this.$setStatusMessage("LOGOUT_SUCCESS")
   }
 
   authed() {

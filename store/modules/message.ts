@@ -23,7 +23,7 @@ class Message extends VuexModule implements MessageState {
     this.message = messageVal
     this.status = statusVal
     this.showMessage = true
-    setTimeout(() => (this.showMessage = false), 7000)
+    setTimeout(() => (this.showMessage = false), 5000)
   }
 
   // action
