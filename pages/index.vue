@@ -75,7 +75,7 @@
           v-slot:append
         >
           <div
-            v-if="!auth"
+            v-if="!getAuthState"
             class="pa-2"
             @click="login"
           >
@@ -84,7 +84,7 @@
             </v-btn>
           </div>
           <div
-            v-if="auth"
+            v-if="getAuthState"
             class="pa-2"
             @click="logout"
           >

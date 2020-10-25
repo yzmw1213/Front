@@ -38,6 +38,10 @@ export default class SignUp extends Vue {
   sex: typeof Sex = Sex
 
   post() {
+    if (this.editedUser.confirmPassword !== this.editedUser.password) {
+      this.showDialog("PASSWORD_NOT_SAME_ERROR")
+      return
+    }
     const user = this.uService.makeUser(this.editedUser)
     this.create(user)
   }
