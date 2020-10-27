@@ -14,16 +14,24 @@ export default class Login extends Vue {
   showEmail: boolean = false
   showPassword: boolean = false
   email: string = "demo@gmail.com"
-  demoEmail: string = "demo@abc.com"
+  demoUserEmail: string = "demo@gmail.com"
+  demoCompanyUserEmail: string = "company@gmail.com"
+  demoSuperUserEmail: string = "super@gmail.com"
   password: string = "demopassword"
-  demoPassword: string = "password1234"
+  demoUserPassword: string = "demopassword"
+  demoSuperUserPassword: string = "superpassword"
+  demoCompanyUserPassword: string = "companypassword"
 
   // methods
   login() {
     const request = new LoginRequest()
+    console.log(this.email)
+    console.log(this.password)
     request.setEmail(this.email)
     request.setPassword(this.password)
     userServiceClient.login(request, {}, (err, res: LoginResponse | undefined) => {
+      console.log(res)
+      console.log(err)
       if (err != null) {
         // ログインに失敗したことをメッセージ表示
         this.$setStatusMessage("LOGIN_FAIL")
@@ -39,7 +47,7 @@ export default class Login extends Vue {
         // トークン、ユーザーIDをストアに保存
         usersModule.SET_TOKEN(auth!.getToken())
         usersModule.SET_LOGIN_USER_ID(auth!.getUserId())
-        usersModule.SET_AUTH(true)
+        usersModule.SET_AUTH_KIND(auth!.getAuthority())
         // ログインに成功したことをメッセージ表示
         this.$setStatusMessage("LOGIN_SUCCESS")
         this.goHome()
@@ -54,12 +62,21 @@ export default class Login extends Vue {
 
   @Emit("authenticated")
   demoUserLogin() {
-    console.log("demo user login")
+    this.password = this.demoUserPassword
+    this.email = this.demoUserEmail
+    this.login()
   }
 
-  @Emit("authenticated")
   demoCompanyLogin() {
-    console.log("demo company login")
+    this.password = this.demoCompanyUserPassword
+    this.email = this.demoCompanyUserEmail
+    this.login()
+  }
+
+  demoSuperUserLogin() {
+    this.password = this.demoSuperUserPassword
+    this.email = this.demoSuperUserEmail
+    this.login()
   }
 
   @Emit("sign-up")
