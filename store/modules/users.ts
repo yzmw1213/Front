@@ -4,7 +4,7 @@ import store from "~/store/store"
 export interface UsersState {
   token: string
   loginUserId: number
-  auth: boolean
+  authority: number
 }
 
 @Module({
@@ -17,7 +17,7 @@ export interface UsersState {
 class Users extends VuexModule implements UsersState {
   token: string = ""
   loginUserId: number = 0
-  auth: boolean = false
+  authority: number = 0
 
   // mutation
   @Mutation
@@ -33,13 +33,13 @@ class Users extends VuexModule implements UsersState {
 
   // mutation
   @Mutation
-  public SET_AUTH(auth: boolean) {
-    this.auth = auth
+  public SET_AUTH_KIND(authority: number) {
+    this.authority = authority
   }
 
   @Action
   public logout() {
-    this.SET_AUTH(false)
+    this.SET_AUTH_KIND(0)
     this.SET_LOGIN_USER_ID(0)
     this.SET_TOKEN("")
   }

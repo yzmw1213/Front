@@ -71,7 +71,7 @@
               small
               @click="demoUserLogin"
             >
-              デモユーザーアカウントでログインする
+              ゲストアカウントでログインする
             </v-btn>
           </v-col>
           <v-col
@@ -89,6 +89,23 @@
               @click="demoCompanyLogin"
             >
               デモ企業アカウントでログインする
+            </v-btn>
+          </v-col>
+          <v-col
+            class="button_dividor"
+          >
+            <span>または</span>
+          </v-col>
+          <v-col
+            class="pb-1"
+          >
+            <v-btn
+              color="secondary"
+              block
+              small
+              @click="demoSuperUserLogin"
+            >
+              管理者アカウントでログインする
             </v-btn>
           </v-col>
           <v-col

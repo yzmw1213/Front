@@ -22,6 +22,15 @@ const UserKind: {[kind: number]: string} = {
   2: "企業"
 }
 
+const UserAuthority: { [key: string]: number } = {
+  // 一般ユーザー
+  AUTHORITY_NORMAL_USER: 1,
+  // 企業ユーザー
+  AUTHORITY_COMPANY_USER: 2,
+  // 管理者ユーザー
+  AUTHORITY_SUPER_USER: 9,
+}
+
 const Sex: {[key: number]: string} = {
   1: "男性",
   2: "女性",
@@ -30,4 +39,4 @@ const Sex: {[key: number]: string} = {
 
 const numChoices: Number[] = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-export { genderChoices, numChoices, Sex, Rstatus, tagChoices, UserKind }
+export { genderChoices, numChoices, Sex, Rstatus, tagChoices, UserKind, UserAuthority }

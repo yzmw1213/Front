@@ -10,13 +10,11 @@ const userServiceClient: UserServiceClient = new UserServiceClient(
 export type tUserItem = {
   userID: number
   userName: string
+  password: string
   email: string
   gender: number
-  password: string
   confirmPassword: string
-  // profileContent: string
-  kind: number
-  isSuper: boolean
+  authoriry: number
 }
 
 // Userkind ユーザー種類の型
@@ -31,9 +29,8 @@ export class UserService {
     user.setEmail(postUser.email)
     user.setPassword(postUser.password)
     user.setUserName(postUser.userName)
-    user.setKind(postUser.kind)
+    user.setAuthority(postUser.authoriry)
     user.setGender(postUser.gender)
-    user.setIsSuper(postUser.isSuper)
     return user
   }
 }

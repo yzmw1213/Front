@@ -1,5 +1,6 @@
 import { Component, Vue } from "nuxt-property-decorator"
 import { usersModule } from "@/store/modules/users"
+import { UserAuthority } from "~/plugins/const"
 
 import Home from "~/components/Home.vue"
 import Header from "~/components/ui/Header.vue"
@@ -35,8 +36,16 @@ export default class Index extends Vue {
   currentPage: string = "Home"
   detailUserId: string = ""
 
-  get getAuthState() {
-    return usersModule.auth
+  get getAuthKind() {
+    return usersModule.authority
+  }
+
+  isCompanyUser(): boolean {
+    return usersModule.authority === UserAuthority.AUTHORITY_COMPANY_USER
+  }
+
+  isSuperUser(): boolean {
+    return usersModule.authority === UserAuthority.AUTHORITY_SUPER_USER
   }
 
   // @Emit()

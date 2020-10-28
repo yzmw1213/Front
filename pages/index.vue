@@ -53,15 +53,17 @@
             </v-list-item>
             <!-- 企業アカウントの場合に表示 -->
             <v-list-item
+              v-if="isCompanyUser() === true"
               @click="post"
             >
               <v-list-item-icon>
                 <v-icon>mdi-lead-pencil</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>記事を投稿する</v-list-item-title>
+              <v-list-item-title>物件を投稿する</v-list-item-title>
             </v-list-item>
             <!-- 管理者アカウントの場合に表示 -->
             <v-list-item
+              v-if="isSuperUser() == true"
               @click="tagPost"
             >
               <v-list-item-icon>
@@ -74,8 +76,9 @@
         <template
           v-slot:append
         >
+          <!-- 未認証時に表示 -->
           <div
-            v-if="!getAuthState"
+            v-if="getAuthKind < 1"
             class="pa-2"
             @click="login"
           >
@@ -83,8 +86,9 @@
               ログイン
             </v-btn>
           </div>
+          <!-- 認証済時に表示 -->
           <div
-            v-if="getAuthState"
+            v-if="getAuthKind > 0"
             class="pa-2"
             @click="logout"
           >
