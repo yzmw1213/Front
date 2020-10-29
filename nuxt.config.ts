@@ -1,6 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
+import type { Configuration } from '@nuxt/types'
 
-export default {
+const config: Configuration = {
   mode: 'spa',
   server: {
     port: 3000,
@@ -52,6 +53,7 @@ export default {
   */
   modules: [
     '@nuxtjs/pwa',
+    '@nuxtjs/dotenv',
   ],
   /*
   ** vuetify module configuration
@@ -83,9 +85,7 @@ export default {
     */
     extend(config: any, ctx: any) {
     },
-    typescript: {
-      typeCheck: true,
-      // ignoreNotFoundWarnings: true
-    }
   }
 }
+
+export default config
