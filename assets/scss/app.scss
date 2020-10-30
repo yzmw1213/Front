@@ -67,4 +67,15 @@ button.v-btn--block {
 
 .v-form {
   padding: 8px 16px;
+
+  div.check_message_area {
+
+    p.check_message {
+      margin-bottom: 0;
+    }
+
+    .v-input--selection-controls {
+      margin-top: 0;
+    }
+  }
 }

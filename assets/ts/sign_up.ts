@@ -16,6 +16,8 @@ export default class SignUp extends Vue {
   uService: UserService
   showPassword: boolean = false
   showConfirmPassword: boolean = false
+  confirmCheck: string = ""
+  confirmMessage: string = "※登録後、ユーザー区分・性別は変更できません。"
   editedUser: tUserItem = {
     userID: 0,
     userName: "abcdefg",
@@ -23,8 +25,7 @@ export default class SignUp extends Vue {
     gender: 1,
     password: "abcdefg",
     confirmPassword: "abcdefg",
-    kind: 1,
-    isSuper: false
+    authoriry: 1,
   }
 
   created() {
@@ -66,7 +67,7 @@ export default class SignUp extends Vue {
     } else {
       console.log(res)
       const status: ResponseStatus | undefined = res.getStatus()
-      const code = status.getCode()
+      const code = status!.getCode()
       // status.codeに応じたダイアログ表示
       this.showDialog(code)
     }
@@ -80,11 +81,16 @@ export default class SignUp extends Vue {
   cancelCreateUser() {
   }
 
-  @Watch("editedUser.kind")
+  @Watch("editedUser.authoriry")
   onChangeStatus() {
+    // 一般が選ばれた場合
+    if (this.editedUser.authoriry === 1) {
+      this.confirmMessage = "※登録後、ユーザー区分・性別は変更できません。"
+    }
     // 企業が選ばれた場合、性別には0を設定する
-    if (this.editedUser.kind === 2) {
+    if (this.editedUser.authoriry === 2) {
       this.editedUser.gender = 0
+      this.confirmMessage = "※登録後、ユーザー区分は変更できません。"
     }
   }
 }

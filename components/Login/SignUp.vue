@@ -80,7 +80,7 @@
           name="ユーザー区分"
         >
           <v-radio-group
-            v-model="editedUser.kind"
+            v-model="editedUser.authoriry"
             label="ユーザー区分"
             row
           >
@@ -95,7 +95,7 @@
           </v-radio-group>
         </validation-provider>
         <validation-provider
-          v-show="editedUser.kind == 1"
+          v-show="editedUser.authoriry == 1"
           v-slot="{ errors, valid }"
           name="性別"
         >
@@ -114,6 +114,21 @@
             />
           </v-radio-group>
         </validation-provider>
+        <div class="check_message_area">
+          <p class="check_message">{{ confirmMessage }}</p>
+          <validation-provider
+            v-slot="{ valid }"
+            rules="required"
+          >
+            <v-checkbox
+              v-model="confirmCheck"
+              :label="`確認しました`"
+              :success="valid"
+              type="checkbox"
+              value="1"
+            />
+          </validation-provider>
+        </div>
         <v-row class="flex-column">
           <v-col
             class="pb-1"

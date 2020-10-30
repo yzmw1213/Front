@@ -4,16 +4,16 @@ import { Tag } from "~/grpc/tag_pb"
 import { TagItem } from "~/assets/ts/constructor/TagItem"
 import { TagServiceClient } from "~/grpc/TagServiceClientPb"
 
-let proxy_server_url: string = ""
+let proxyServerUrl: string = ""
 const url = process.env.NUXT_ENV_PROXY_SERVER_URL
 
 if (typeof url === "string") {
-  proxy_server_url = url
+  proxyServerUrl = url
 }
 
 // Client credentials
 const tagServiceClient: TagServiceClient = new TagServiceClient(
-  proxy_server_url, {}, {}
+  proxyServerUrl, {}, {}
 )
 
 // tTagItem Formで編集するタグの型
