@@ -20,9 +20,13 @@ static_resources:
                 route:
                   cluster: user_service
                   max_grpc_timeout: 2s
-              - match: { prefix: "/post_grpc" }
+              - match: { prefix: "/postservice" }
                 route:
-                  cluster: post_service
+                  cluster: postservice
+                  max_grpc_timeout: 2s
+              - match: { prefix: "/tagservice" }
+                route:
+                  cluster: postservice
                   max_grpc_timeout: 2s
               cors:
                 allow_origin_string_match:
@@ -47,7 +51,7 @@ static_resources:
     - socket_address:
         address: host.docker.internal
         port_value: 50052
-  - name: post_service
+  - name: postservice
     connect_timeout: 15s
     type: strict_dns
     http2_protocol_options: {}
