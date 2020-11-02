@@ -1,16 +1,16 @@
 import { User } from "~/grpc/user_pb"
 import { UserServiceClient } from "~/grpc/UserServiceClientPb"
 
-let proxy_server_url: string = ""
+let proxyServerUrl: string = ""
 const url = process.env.NUXT_ENV_PROXY_SERVER_URL
 
 if (typeof url === "string") {
-  proxy_server_url = url
+  proxyServerUrl = url
 }
 
 // Client credentials
 const userServiceClient: UserServiceClient = new UserServiceClient(
-  proxy_server_url, {}, {}
+  proxyServerUrl, {}, {}
 )
 
 // tUserItem Formで編集するユーザーの型
