@@ -26,7 +26,6 @@ Vue.prototype.$setStatusMessage = (code: string) => {
       messageStatus = "SUCCESS"
       break
     // タグサービス
-    // 重複登録エラー
     case "TAG_NAME_ALREADY_USED_ERROR":
       message = "同じ名前のタグが既に登録済のため、登録できません"
       messageStatus = "ERROR"
@@ -49,6 +48,31 @@ Vue.prototype.$setStatusMessage = (code: string) => {
       break
     case "TAG_NOT_EXISTS_ERROR":
       message = "指定されたタグは既に削除済みか、登録されていないため削除できません"
+      messageStatus = "ERROR"
+      break
+    // 投稿サービス
+    case "POST_CREATE_SUCCESS":
+      message = "投稿の登録に成功しました"
+      messageStatus = "SUCCESS"
+      break
+    case "POST_UPDATE_SUCCESS":
+      message = "投稿の更新に成功しました"
+      messageStatus = "SUCCESS"
+      break
+    case "POST_DELETE_SUCCESS":
+      message = "投稿の削除に成功しました"
+      messageStatus = "SUCCESS"
+      break
+    case "POST_NOT_EXISTS_ERROR":
+      message = "指定された投稿は既に削除済みか、登録されていないため削除できません"
+      messageStatus = "ERROR"
+      break
+    case "POST_TITLE_COUNT_ERROR":
+      message = "件名は1文字以上32文字以下で入力してください"
+      messageStatus = "ERROR"
+      break
+    case "POST_CONTENT_COUNT_ERROR":
+      message = "タグ名は1文字以上240文字以下で入力してください"
       messageStatus = "ERROR"
       break
     // ユーザーサービス

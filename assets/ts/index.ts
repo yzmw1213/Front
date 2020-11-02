@@ -9,7 +9,7 @@ import Message from "~/components/ui/Message.vue"
 import Login from "~/components/Login/Login.vue"
 import CreateTag from "~/components/Tag/Create.vue"
 import ListTag from "~/components/Tag/List.vue"
-import Post from "~/components/Post/Create.vue"
+import CreatePost from "~/components/Post/Create.vue"
 import SignUp from "~/components/Login/SignUp.vue"
 import SearchForm from "~/components/ui/SearchForm.vue"
 import ShowUserProfile from "~/components/ShowUserProfile.vue"
@@ -21,7 +21,7 @@ import ShowUserProfile from "~/components/ShowUserProfile.vue"
     Footer,
     Message,
     Login,
-    Post,
+    CreatePost,
     CreateTag,
     ListTag,
     SignUp,
@@ -82,7 +82,7 @@ export default class Index extends Vue {
 
   post() {
     this.drawer = false
-    this.currentPage = "Post"
+    this.currentPage = "CreatePost"
   }
 
   tagList() {

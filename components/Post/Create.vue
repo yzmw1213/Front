@@ -18,7 +18,7 @@
           rules="required|max:32"
         >
           <v-textarea
-            v-model="postContent.title"
+            v-model="editedItem.title"
             class="py-3"
             row-height="30"
             autofocus
@@ -38,10 +38,10 @@
         <validation-provider
           v-slot="{ errors, valid }"
           name="本文"
-          rules="required|max:140"
+          rules="required|max:240"
         >
           <v-textarea
-            v-model="postContent.content"
+            v-model="editedItem.content"
             class="py-3"
             row-height="30"
             clearable
@@ -69,7 +69,7 @@
               rules="oneOf:2,3,4,5,6,7,8,9,10"
             >
               <v-select
-                v-model="postContent.maxNum"
+                v-model="editedItem.maxNum"
                 :items="numChoices"
                 label="最大人数"
                 :error-messages="errors"
@@ -89,7 +89,7 @@
               rules="oneOf:1,2,3"
             >
               <v-select
-                v-model="postContent.gender"
+                v-model="editedItem.gender"
                 :items="genderChoices"
                 item-text="text"
                 item-value="key"
@@ -107,7 +107,7 @@
           name="タグ"
         >
           <v-select
-            v-model="postContent.tags"
+            v-model="editedItem.tags"
             chips
             :items="tagChoices"
             item-text="text"

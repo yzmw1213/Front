@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package postservice;
+
+option go_package = ".;postservice";
+
+message Post {
+  uint32 id = 1;
+  uint32 status = 2;
+  string title=3;
+  string content =4;
+  uint32 max_num =5;
+  uint32 gender =6;
+  // string photo_url =7;
+  repeated uint32 tags=7;
+  uint32 createUser_id =8;
+  uint32 updateUser_id =9;
+}
+
+// レスポンスのステータス
+message ResponseStatus{
+  string code =1;
+}
+
+message CreatePostRequest {
+  Post post=1;
+}
+
+message CreatePostResponse {
+  ResponseStatus status=1;
+}
+
+message ReadPostRequest {
+  uint32 id=1;
+}
+
+message ReadPostResponse {
+  Post post=1;
+}
+
+message UpdatePostRequest {
+  Post post=1;
+}
+
+message UpdatePostResponse {
+  ResponseStatus status=1;
+}
+
+message DeletePostRequest {
+  uint32 id=1;
+}
+
+message DeletePostResponse {
+  ResponseStatus status=1;
+}
+
+message ListPostRequest {
+}
+
+message ListPostResponse {
+  Post post=1;
+}
+
+service PostService {
+  rpc CreatePost(CreatePostRequest) returns (CreatePostResponse);
+  rpc ReadPost(ReadPostRequest) returns (ReadPostResponse);
+  rpc UpdatePost(UpdatePostRequest) returns (UpdatePostResponse);
+  rpc DeletePost(DeletePostRequest) returns (DeletePostResponse);
+  rpc ListPost(ListPostRequest) returns (stream ListPostResponse);
+}
