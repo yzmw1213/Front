@@ -91,12 +91,12 @@ export default class CreatePost extends Vue {
       console.log(err.message)
       console.log(err)
       // status.codeに応じたダイアログ表示
-      this.showDialog(err.message)
+      this.$setStatusMessage(err.message)
     } else {
       const status: ResponseStatus | undefined = res.getStatus()
       const code = status!.getCode()
       // status.codeに応じたダイアログ表示
-      this.showDialog(code)
+      this.$setStatusMessage(code)
       this.cancelPost()
     }
   }
@@ -105,10 +105,6 @@ export default class CreatePost extends Vue {
   cancelPost() {
     const defaultPost = this.pService.makeDefaultPost()
     postModule.SET_EDIT_POST(defaultPost)
-  }
-
-  showDialog(code: string) {
-    this.$setStatusMessage(code)
   }
 
   onImageUploaded(e: Event) {

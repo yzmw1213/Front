@@ -74,18 +74,14 @@ export default class CreateTag extends Vue {
   handleCreateUpdateResponse(res: CreateTagResponse | UpdateTagResponse, err: Error) {
     if (err != null) {
       // status.codeに応じたダイアログ表示
-      this.showDialog(err.message)
+      this.$setStatusMessage(err.message)
     } else {
       console.log(res)
       const status: ResponseStatus | undefined = res.getStatus()
       const code = status!.getCode()
       // status.codeに応じたダイアログ表示
-      this.showDialog(code)
+      this.$setStatusMessage(code)
     }
-  }
-
-  showDialog(code: string) {
-    this.$setStatusMessage(code)
   }
 
   @Emit("go-home")

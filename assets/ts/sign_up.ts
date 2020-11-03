@@ -40,7 +40,7 @@ export default class SignUp extends Vue {
 
   post() {
     if (this.editedUser.confirmPassword !== this.editedUser.password) {
-      this.showDialog("PASSWORD_NOT_SAME_ERROR")
+      this.$setStatusMessage("PASSWORD_NOT_SAME_ERROR")
       return
     }
     const user = this.uService.makeUser(this.editedUser)
@@ -63,18 +63,14 @@ export default class SignUp extends Vue {
     if (err != null) {
       console.log(err.message)
       // status.codeに応じたダイアログ表示
-      this.showDialog(err.message)
+      this.$setStatusMessage(err.message)
     } else {
       console.log(res)
       const status: ResponseStatus | undefined = res.getStatus()
       const code = status!.getCode()
       // status.codeに応じたダイアログ表示
-      this.showDialog(code)
+      this.$setStatusMessage(code)
     }
-  }
-
-  showDialog(code: string) {
-    this.$setStatusMessage(code)
   }
 
   @Emit("back-to-login")

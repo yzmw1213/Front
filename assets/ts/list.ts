@@ -1,4 +1,4 @@
-import { Component, Vue, Emit, Watch } from "nuxt-property-decorator"
+import { Component, Vue, Emit } from "nuxt-property-decorator"
 import { Rstatus } from "~/plugins/const"
 import { tagsModule } from "@/store/modules/tags"
 
@@ -16,7 +16,6 @@ import { usersModule } from "~/store/modules/users"
 export default class ListTag extends Vue {
   tService: TagService
   // variables
-  dialog: boolean = false
   headers: tTagHeader[] = [
     {
       text: "タグ名",
@@ -65,16 +64,6 @@ export default class ListTag extends Vue {
       value: Rstatus[2]
     }
   ]
-  // responseStatus: ResponseStatus
-
-  formTitle(): string {
-    return this.editedIndex === -1 ? "New Item" : "Edit Item"
-  }
-
-  @Watch("dialog")
-  onDialogChanged(dialog: boolean) {
-    dialog || this.close()
-  }
 
   created() {
     this.initialize()
@@ -115,33 +104,15 @@ export default class ListTag extends Vue {
     request.setTagId(id)
     tagServiceClient.deleteTag(request, {}, (err, res: DeleteTagResponse) => {
       if (err != null) {
-        this.showDialog(err.message)
+        this.$setStatusMessage(err.message)
       }
       const status: ResponseStatus | undefined = res.getStatus()
       const code = status!.getCode()
       // status.codeに応じたダイアログ表示
-      this.showDialog(code)
+      this.$setStatusMessage(code)
       // deleteした後に一覧表示の更新処理を行う。
       this.initialize()
     })
-  }
-
-  close() {
-    this.dialog = false
-    this.$nextTick(() => {
-      this.editedItem = Object.assign({}, this.defaultItem)
-      this.editedIndex = -1
-    })
-  }
-
-  save() {
-    this.editedItem.stutusText = Rstatus[this.editedItem.status]
-    if (this.editedIndex > -1) {
-      Object.assign(this.tags[this.editedIndex], this.editedItem)
-    } else {
-      this.tags.push(this.editedItem)
-    }
-    this.close()
   }
 
   getAllTag() {
@@ -149,17 +120,13 @@ export default class ListTag extends Vue {
     const request = new ListTagRequest()
     tagServiceClient.listTag(request, {}, (err, res) => {
       if (err != null) {
-        this.showDialog("エラーが発生しました。もう1度お試しください")
+        this.$setStatusMessage("エラーが発生しました。もう1度お試しください")
       }
       while (i < res.getTagList().length) {
         this.tags.push(this.tService.getTag(res.getTagList()[i]))
         i++
       }
     })
-  }
-
-  showDialog(code: string) {
-    this.$setStatusMessage(code)
   }
 
   @Emit("go-home")
