@@ -47,4 +47,4 @@
   </div>
 </template>
 
-<script lang="ts" src="@/assets/ts/list.ts"></script>
+<script lang="ts" src="@/assets/ts/list_tag.ts"></script>

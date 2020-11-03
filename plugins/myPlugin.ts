@@ -92,6 +92,9 @@ Vue.prototype.$setStatusMessage = (code: string) => {
       message = "アカウントの更新に成功しました。"
       messageStatus = "SUCCESS"
       break
+    case "UNKNOWN_ERROR":
+      message = "エラーが発生しました。もう1度お試しください。"
+      messageStatus = "ERROR"
     default:
       break
   }
