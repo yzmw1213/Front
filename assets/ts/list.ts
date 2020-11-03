@@ -10,6 +10,7 @@ import {
 } from "~/grpc/tag_pb"
 
 import { tagServiceClient, TagService, tTagHeader, tTagItem } from "~/service/TagService"
+import { usersModule } from "~/store/modules/users"
 
 @Component({})
 export default class ListTag extends Vue {
@@ -41,8 +42,8 @@ export default class ListTag extends Vue {
     tagName: "",
     status: 0,
     stutusText: "",
-    createUserID: "demoUser1",
-    updateUserID: ""
+    createUserID: 0,
+    updateUserID: 0
   }
 
   defaultItem: tTagItem = {
@@ -50,8 +51,8 @@ export default class ListTag extends Vue {
     tagName: "",
     status: 0,
     stutusText: "",
-    createUserID: "demoUser1", // ログインユーザーのIDをセットする
-    updateUserID: ""
+    createUserID: usersModule.loginUserId,
+    updateUserID: 0
   }
 
   rStatus: { key: Number, value: string}[] = [
@@ -82,6 +83,7 @@ export default class ListTag extends Vue {
   //  methods
   initialize() {
     this.tService = new TagService()
+    this.tags = []
     this.getAllTag()
     let i = 0
     while (i < this.tags.length) {
@@ -97,6 +99,11 @@ export default class ListTag extends Vue {
     tagsModule.SET_EDIT_TAG(this.editedItem)
   }
 
+  @Emit("edit-tag")
+  createTag() {
+    tagsModule.SET_EDIT_TAG(this.defaultItem)
+  }
+
   deleteItem(item: any) {
     const index = this.tags.indexOf(item)
     const id = this.tags[index].tagID
@@ -108,14 +115,13 @@ export default class ListTag extends Vue {
     request.setTagId(id)
     tagServiceClient.deleteTag(request, {}, (err, res: DeleteTagResponse) => {
       if (err != null) {
-        console.log(err)
+        this.showDialog(err.message)
       }
-      console.log(res)
       const status: ResponseStatus | undefined = res.getStatus()
+      const code = status!.getCode()
       // status.codeに応じたダイアログ表示
-      this.showDialog(status)
+      this.showDialog(code)
       // deleteした後に一覧表示の更新処理を行う。
-      this.tags.splice(index, 1)
       this.initialize()
     })
   }
@@ -143,8 +149,7 @@ export default class ListTag extends Vue {
     const request = new ListTagRequest()
     tagServiceClient.listTag(request, {}, (err, res) => {
       if (err != null) {
-        console.log(err.code)
-        console.log(err.message)
+        this.showDialog("エラーが発生しました。もう1度お試しください")
       }
       while (i < res.getTagList().length) {
         this.tags.push(this.tService.getTag(res.getTagList()[i]))
@@ -153,11 +158,8 @@ export default class ListTag extends Vue {
     })
   }
 
-  showDialog(status: any) {
-    if (status === undefined) {
-      return
-    }
-    this.$setStatusMessage(status.getCode())
+  showDialog(code: string) {
+    this.$setStatusMessage(code)
   }
 
   @Emit("go-home")

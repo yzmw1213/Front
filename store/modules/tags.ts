@@ -22,8 +22,8 @@ class Tags extends VuexModule implements TagsState {
     tagName: "",
     status: 0,
     stutusText: "",
-    createUserID: "demoUser1", // ログインユーザーのIDをセットする
-    updateUserID: ""
+    createUserID: 0, // ログインユーザーのIDをセットする
+    updateUserID: 0
   }
 
   // mutation

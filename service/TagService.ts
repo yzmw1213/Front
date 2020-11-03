@@ -22,8 +22,8 @@ export type tTagItem = {
   tagName: string
   status: number
   stutusText: string
-  createUserID: string
-  updateUserID: string
+  createUserID: number
+  updateUserID: number
 }
 
 // tTagHeader Formで表示するタグデータテーブルの型
@@ -43,8 +43,8 @@ const defaultTagItem: tTagItem = {
   tagName: "",
   status: 0,
   stutusText: "",
-  createUserID: "demoUser1", // ログインユーザーのIDをセットする
-  updateUserID: ""
+  createUserID: 0, // ログインユーザーのIDをセットする
+  updateUserID: 0
 }
 
 export class TagService {

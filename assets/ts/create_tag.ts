@@ -2,6 +2,7 @@ import { Component, Vue, Emit } from "nuxt-property-decorator"
 import { Error } from "grpc-web"
 import { Rstatus } from "~/plugins/const"
 import { tagsModule } from "@/store/modules/tags"
+import { usersModule } from "@/store/modules/users"
 
 import {
   CreateTagRequest,
@@ -22,17 +23,8 @@ export default class CreateTag extends Vue {
     tagName: "",
     status: 0,
     stutusText: "",
-    createUserID: "demoUser1",
-    updateUserID: ""
-  }
-
-  defaultItem: tTagItem = {
-    tagID: 0,
-    tagName: "",
-    status: 0,
-    stutusText: "",
-    createUserID: "demoUser1", // ログインユーザーのIDをセットする
-    updateUserID: ""
+    createUserID: usersModule.loginUserId,
+    updateUserID: 0
   }
 
   rStatus: { key: Number, value: string}[] = [
@@ -78,18 +70,16 @@ export default class CreateTag extends Vue {
     })
   }
 
-  handleCreateUpdateResponse(res: CreateTagResponse | UpdateTagRequest, err: Error) {
+  handleCreateUpdateResponse(res: CreateTagResponse | UpdateTagResponse, err: Error) {
     if (err != null) {
-      console.log(err.message)
       // status.codeに応じたダイアログ表示
       this.showDialog(err.message)
     } else {
       console.log(res)
       const status: ResponseStatus | undefined = res.getStatus()
-      const code = status.getCode()
+      const code = status!.getCode()
       // status.codeに応じたダイアログ表示
       this.showDialog(code)
-      this.goList()
     }
   }
 
@@ -101,7 +91,6 @@ export default class CreateTag extends Vue {
   cancelPost() {
     const defaultTag = this.tService.makeDefaultTag()
     tagsModule.SET_EDIT_TAG(defaultTag)
-    // Remove message
   }
 
   @Emit("go-tag-list")
