@@ -45,6 +45,7 @@ export default class CreateTag extends Vue {
       this.create(tag)
     }
     if (id > 0) {
+      tag.setUpdateuserId(usersModule.loginUserId)
       this.update(tag)
     }
   }
