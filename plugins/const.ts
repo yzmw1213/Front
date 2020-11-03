@@ -1,9 +1,9 @@
 import { TRstatus } from "~/service/TagService"
 
 const genderChoices: { text: string, key: Number }[] = [
-  { text: "男女可能", key: 1 },
-  { text: "男性のみ", key: 2 },
-  { text: "女性のみ", key: 3 },
+  { text: "男性のみ", key: 1 },
+  { text: "女性のみ", key: 2 },
+  { text: "男女共住", key: 3 },
 ]
 
 const tagChoices: { text: string, key: Number }[] = [
@@ -17,7 +17,7 @@ const Rstatus: TRstatus = {
   2: "非公開"
 }
 
-const UserKind: {[kind: number]: string} = {
+const UserKind: { [kind: number]: string } = {
   1: "一般",
   2: "企業"
 }

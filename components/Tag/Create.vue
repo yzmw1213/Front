@@ -9,38 +9,71 @@
         <span class="header_sub">タグ編集</span>
       </h2>
     </div>
-    <!-- ここにタグのフォームを設ける -->
-    <v-row class="flex-column">
-      <v-col
-        class="pb-1"
+    <div class="form">
+      <validation-observer>
+        <v-col cols="8" xs="6" sm="6" md="6" lg="4"  xl="4">
+          <validation-provider
+            v-slot="{ errors, valid }"
+            name="タグ名"
+            rules="required|min:1|max:12"
+          >
+            <v-text-field
+              v-model="editedItem.tagName"
+              cols="6"
+              label="タグ名"
+              :error-messages="errors"
+              :success="valid"
+            />
+          </validation-provider>
+        </v-col>
+        <v-col cols="8" xs="6" sm="6" md="6" lg=""  xl="4">
+          <validation-provider
+            v-slot="{ errors, valid }"
+            name="公開ステータス"
+            rules="oneOf:1,2"
+          >
+            <v-select
+              v-model="editedItem.status"
+              :items="rStatus"
+              item-text="value"
+              item-value="key"
+              label="公開ステータス"
+              :error-messages="errors"
+              :success="valid"
+            />
+          </validation-provider>
+        </v-col>
+      </validation-observer>
+      <v-row
       >
-        <v-btn
-          color="primary"
-          block
-          small
-          @click="post"
+        <v-col
+          class="pb-1"
+          cols="4"
         >
-          投稿する
-        </v-btn>
-      </v-col>
-      <v-col
-        class="button_dividor"
-      >
-        <span>または</span>
-      </v-col>
-      <v-col
-        class="pb-1"
-      >
-        <v-btn
-          color="secondary"
-          block
-          small
-          @click="goList"
+          <v-btn
+            color="secondary"
+            block
+            small
+            @click="goList"
+          >
+            戻る
+          </v-btn>
+        </v-col>
+        <v-col
+          class="pb-1"
+          cols="4"
         >
-          キャンセル
-        </v-btn>
-      </v-col>
-    </v-row>
+          <v-btn
+            color="primary"
+            block
+            small
+            @click="post"
+          >
+            投稿する
+          </v-btn>
+        </v-col>
+      </v-row>
+    </div>
   </div>
 </template>
 

@@ -4,8 +4,8 @@ class TagItem {
     public tagName: string,
     public status: number,
     public stutusText: string,
-    public createUserID: string,
-    public updateUserID: string
+    public createUserID: number,
+    public updateUserID: number
   ) {
     this.tagID = tagID
     this.tagName = tagName

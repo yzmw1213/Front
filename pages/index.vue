@@ -64,7 +64,7 @@
             <!-- 管理者アカウントの場合に表示 -->
             <v-list-item
               v-if="isSuperUser() == true"
-              @click="tagPost"
+              @click="listTag"
             >
               <v-list-item-icon>
                 <v-icon>mdi-lead-pencil</v-icon>

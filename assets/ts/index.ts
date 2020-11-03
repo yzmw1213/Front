@@ -90,7 +90,7 @@ export default class Index extends Vue {
     this.currentPage = "ListTag"
   }
 
-  tagPost() {
+  listTag() {
     this.drawer = false
     this.currentPage = "ListTag"
   }
