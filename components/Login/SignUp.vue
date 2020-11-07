@@ -66,7 +66,7 @@
           rules="required"
         >
           <v-text-field
-            v-model="editedUser.confirmPassword"
+            v-model="confirmPassword"
             label="確認用パスワード"
             :error-messages="errors"
             :success="valid"

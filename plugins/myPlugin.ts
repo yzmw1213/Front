@@ -95,6 +95,7 @@ Vue.prototype.$setStatusMessage = (code: string) => {
     case "UNKNOWN_ERROR":
       message = "エラーが発生しました。もう1度お試しください。"
       messageStatus = "ERROR"
+      break
     default:
       break
   }
