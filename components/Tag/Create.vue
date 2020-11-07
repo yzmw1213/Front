@@ -11,40 +11,62 @@
     </div>
     <div class="form">
       <validation-observer>
-        <v-col cols="8" xs="6" sm="6" md="6" lg="4"  xl="4">
-          <validation-provider
-            v-slot="{ errors, valid }"
-            name="タグ名"
-            rules="required|min:1|max:12"
+        <v-row
+          justify="center"
+        >
+          <v-col
+            cols="8"
+            xs="6"
+            sm="6"
+            md="6"
+            lg="4"
+            xl="4"
           >
-            <v-text-field
-              v-model="editedItem.tagName"
-              cols="6"
-              label="タグ名"
-              :error-messages="errors"
-              :success="valid"
-            />
-          </validation-provider>
-        </v-col>
-        <v-col cols="8" xs="6" sm="6" md="6" lg=""  xl="4">
-          <validation-provider
-            v-slot="{ errors, valid }"
-            name="公開ステータス"
-            rules="oneOf:1,2"
+            <validation-provider
+              v-slot="{ errors, valid }"
+              name="タグ名"
+              rules="required|min:1|max:12"
+            >
+              <v-text-field
+                v-model="editedItem.tagName"
+                label="タグ名"
+                :error-messages="errors"
+                :success="valid"
+              />
+            </validation-provider>
+          </v-col>
+        </v-row>
+        <v-row
+          justify="center"
+        >
+          <v-col
+            cols="8"
+            xs="6"
+            sm="6"
+            md="6"
+            lg="4"
+            xl="4"
           >
-            <v-select
-              v-model="editedItem.status"
-              :items="rStatus"
-              item-text="value"
-              item-value="key"
-              label="公開ステータス"
-              :error-messages="errors"
-              :success="valid"
-            />
-          </validation-provider>
-        </v-col>
+            <validation-provider
+              v-slot="{ errors, valid }"
+              name="公開ステータス"
+              rules="oneOf:1,2"
+            >
+              <v-select
+                v-model="editedItem.status"
+                :items="rStatus"
+                item-text="value"
+                item-value="key"
+                label="公開ステータス"
+                :error-messages="errors"
+                :success="valid"
+              />
+            </validation-provider>
+          </v-col>
+        </v-row>
       </validation-observer>
       <v-row
+        justify="center"
       >
         <v-col
           class="pb-1"
