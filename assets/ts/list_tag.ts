@@ -35,15 +35,6 @@ export default class ListTag extends Vue {
   ]
 
   tags: any[] = []
-  editedIndex: number = -1
-  editedItem: tTagItem = {
-    tagID: 0,
-    tagName: "",
-    status: 0,
-    stutusText: "",
-    createUserID: 0,
-    updateUserID: 0
-  }
 
   defaultItem: tTagItem = {
     tagID: 0,
@@ -83,9 +74,7 @@ export default class ListTag extends Vue {
 
   @Emit("edit-tag")
   editItem(item: any) {
-    this.editedIndex = this.tags.indexOf(item)
-    this.editedItem = Object.assign({}, item)
-    tagsModule.SET_EDIT_TAG(this.editedItem)
+    tagsModule.SET_EDIT_TAG(Object.assign({}, item))
   }
 
   @Emit("edit-tag")
@@ -96,10 +85,10 @@ export default class ListTag extends Vue {
   deleteItem(item: any) {
     const index = this.tags.indexOf(item)
     const id = this.tags[index].tagID
-    confirm("タグ 「" + this.tags[index].tagName + "」 を削除します。よろしいですか ? ") && this.delete(index, id)
+    confirm("タグ 「" + this.tags[index].tagName + "」 を削除します。よろしいですか ? ") && this.delete(id)
   }
 
-  delete(index: number, id: number) {
+  delete(id: number) {
     const request = new DeleteTagRequest()
     request.setTagId(id)
     tagServiceClient.deleteTag(request, {}, (err, res: DeleteTagResponse) => {
