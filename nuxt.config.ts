@@ -64,15 +64,18 @@ const config: Configuration = {
     theme: {
       // dark: true,
       themes: {
-        dark: {
+        light: {
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
+          secondary: colors.lime.lighten2,
+          tertiary: colors.amber.darken3,
+          super: colors.pink.lighten3,
+          negative: colors.grey.darken3,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
-        }
+        },
       }
     }
   },

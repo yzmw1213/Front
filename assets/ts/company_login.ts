@@ -9,15 +9,13 @@ import {
 import { userServiceClient } from "~/service/UserService"
 
 @Component({})
-export default class Login extends Vue {
+export default class CompanyLogin extends Vue {
   // variables
   showPassword: boolean = false
   email: string = "demo@gmail.com"
-  demoUserEmail: string = "demo@gmail.com"
-  demoSuperUserEmail: string = "super@gmail.com"
+  demoCompanyUserEmail: string = "company@gmail.com"
   password: string = "demopassword"
-  demoUserPassword: string = "demopassword"
-  demoSuperUserPassword: string = "superpassword"
+  demoCompanyUserPassword: string = "companypassword"
 
   // methods
   login() {
@@ -55,16 +53,9 @@ export default class Login extends Vue {
   goHome() {
   }
 
-  @Emit("authenticated")
-  demoUserLogin() {
-    this.password = this.demoUserPassword
-    this.email = this.demoUserEmail
-    this.login()
-  }
-
-  demoSuperUserLogin() {
-    this.password = this.demoSuperUserPassword
-    this.email = this.demoSuperUserEmail
+  demoCompanyLogin() {
+    this.password = this.demoCompanyUserPassword
+    this.email = this.demoCompanyUserEmail
     this.login()
   }
 

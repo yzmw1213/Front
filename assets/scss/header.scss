@@ -1,3 +1,6 @@
+// common variables
+@import '_variables.scss';
+
 .v-application--wrap {
 
   .content_wrapper {
@@ -21,8 +24,13 @@
           list-style: none;
           display: flex;
 
-          li {
+          li.button_item {
             margin-left: 16px;
+            color: $LINK_FONT_COLOR;
+
+            &:hover {
+              cursor: pointer;
+            }
           }
         }
       }

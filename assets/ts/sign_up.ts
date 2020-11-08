@@ -80,7 +80,7 @@ export default class SignUp extends Vue {
 
   @Watch("editedUser.authority")
   onChangeStatus() {
-    // 一般が選ばれた場合
+    // 個人が選ばれた場合
     if (this.editedUser.authority === 1) {
       this.confirmMessage = "※登録後、ユーザー区分・性別は変更できません。"
     }
