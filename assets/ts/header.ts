@@ -1,4 +1,6 @@
 import { Component, Vue, Emit, Prop } from "nuxt-property-decorator"
+import { usersModule } from "@/store/modules/users"
+import { UserAuthority } from "~/plugins/const"
 
 import SearchForm from "~/components/ui/SearchForm.vue"
 @Component({
@@ -21,6 +23,18 @@ export default class Header extends Vue {
     { title: "Click Me 2" },
   ];
 
+  get getAuthKind() {
+    return usersModule.authority
+  }
+
+  isCompanyUser(): boolean {
+    return usersModule.authority === UserAuthority.AUTHORITY_COMPANY_USER
+  }
+
+  isSuperUser(): boolean {
+    return usersModule.authority === UserAuthority.AUTHORITY_SUPER_USER
+  }
+
   @Emit("open-nav")
   openNav() {
   }
@@ -34,11 +48,19 @@ export default class Header extends Vue {
   login() {
   }
 
+  @Emit("do-company-login")
+  companyUserLogin() {
+  }
+
   @Emit("do-logout")
   logout() {
   }
 
   @Emit("show-user")
   showAuthUser() {
+  }
+
+  @Emit("sign-up")
+  signUp() {
   }
 }

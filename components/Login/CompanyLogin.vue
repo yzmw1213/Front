@@ -3,7 +3,7 @@
     <!-- ログイン画面では、page_header_areaの代わりにアプリのロゴを表示するなど -->
     <div class="page_header_area">
       <h2 class="page_header_title_area">
-        <span class="header_main">ログイン</span>
+        <span class="header_main">企業ログイン</span>
       </h2>
     </div>
 
@@ -62,9 +62,9 @@
               color="secondary"
               block
               small
-              @click="demoUserLogin"
+              @click="demoCompanyLogin"
             >
-              ゲストアカウントでログインする
+              デモ企業アカウントでログインする
             </v-btn>
           </v-col>
           <v-col
@@ -78,18 +78,6 @@
               @click="createUser"
             >
               アカウント新規登録
-            </v-btn>
-          </v-col>
-          <v-col
-            class="pb-1"
-          >
-            <v-btn
-              color="super"
-              block
-              small
-              @click="demoSuperUserLogin"
-            >
-              管理者アカウントでログインする
             </v-btn>
           </v-col>
           <v-col
@@ -111,4 +99,4 @@
   </div>
 </template>
 
-<script lang="ts" src="@/assets/ts/login.ts"></script>
+<script lang="ts" src="@/assets/ts/company_login.ts"></script>

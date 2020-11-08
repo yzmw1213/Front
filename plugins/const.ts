@@ -18,12 +18,12 @@ const Rstatus: TRstatus = {
 }
 
 const UserKind: { [kind: number]: string } = {
-  1: "一般",
+  1: "個人",
   2: "企業"
 }
 
 const UserAuthority: { [key: string]: number } = {
-  // 一般ユーザー
+  // 個人ユーザー
   AUTHORITY_NORMAL_USER: 1,
   // 企業ユーザー
   AUTHORITY_COMPANY_USER: 2,

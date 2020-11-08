@@ -1,9 +1,6 @@
 <template>
   <div class="content_inner">
     <div class="page_header_area">
-      <div class="page_header_logo_area">
-        <span>some logos</span>
-      </div>
       <h2 class="page_header_title_area">
         <span class="header_main">ユーザー登録</span>
         <!-- <span class="header_sub">コンテンツ</span> -->
@@ -41,7 +38,7 @@
             :success="valid"
           />
         </validation-provider>
-        <!-- kind 一般ユーザー/企業アカウントの設定 -->
+        <!-- kind 個人ユーザー/企業アカウントの設定 -->
         <!-- 1度登録した後は、変更できない -->
         <!-- セレクトボックス/ラジオボタン -->
 
@@ -80,7 +77,7 @@
           name="ユーザー区分"
         >
           <v-radio-group
-            v-model="editedUser.authoriry"
+            v-model="editedUser.authority"
             label="ユーザー区分"
             row
           >
@@ -95,7 +92,7 @@
           </v-radio-group>
         </validation-provider>
         <validation-provider
-          v-show="editedUser.authoriry == 1"
+          v-show="editedUser.authority == 1"
           v-slot="{ errors, valid }"
           name="性別"
         >
