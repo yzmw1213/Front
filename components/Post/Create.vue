@@ -109,7 +109,7 @@
           <v-select
             v-model="editedItem.tags"
             chips
-            :items="tagChoices"
+            :items="validTags"
             item-text="text"
             item-value="key"
             label="タグ"

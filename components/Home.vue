@@ -2,9 +2,6 @@
   <div class="content_inner">
     <!-- ヘッダーエリア -->
     <div class="page_header_area">
-      <div class="page_header_logo_area">
-        <span>some logos</span>
-      </div>
       <h2 class="page_header_title_area">
         <span class="header_main">POSTS</span>
         <span class="header_sub">コンテンツ</span>
