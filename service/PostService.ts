@@ -42,7 +42,7 @@ export class PostService {
   makePost(postItem: tPostItem): Post {
     const post = new Post()
     post.setId(postItem.postID)
-    post.setStatus(postItem.status)
+    // post.setStatus(postItem.status)
     post.setTitle(postItem.title)
     post.setContent(postItem.content)
     post.setMaxNum(postItem.maxNum)
@@ -60,7 +60,7 @@ export class PostService {
   getPost(post: Post): tPostItem {
     return new PostItem(
       post.getId(),
-      post.getStatus(),
+      0,
       // Rstatus[post.getStatus()],
       post.getTitle(),
       post.getContent(),

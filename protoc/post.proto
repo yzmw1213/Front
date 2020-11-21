@@ -6,13 +6,13 @@ option go_package = ".;postservice";
 
 message Post {
   uint32 id = 1;
-  uint32 status = 2;
+  // uint32 status = 2;
   string title=3;
   string content =4;
   uint32 max_num =5;
   uint32 gender =6;
-  // string photo_url =7;
   repeated uint32 tags=7;
+  // string photo_url =7;
   uint32 createUser_id =8;
   uint32 updateUser_id =9;
 }
@@ -58,7 +58,7 @@ message ListPostRequest {
 }
 
 message ListPostResponse {
-  Post post=1;
+  repeated Post post=1;
 }
 
 service PostService {
@@ -66,5 +66,5 @@ service PostService {
   rpc ReadPost(ReadPostRequest) returns (ReadPostResponse);
   rpc UpdatePost(UpdatePostRequest) returns (UpdatePostResponse);
   rpc DeletePost(DeletePostRequest) returns (DeletePostResponse);
-  rpc ListPost(ListPostRequest) returns (stream ListPostResponse);
+  rpc ListPost(ListPostRequest) returns (ListPostResponse);
 }
