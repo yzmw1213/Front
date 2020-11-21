@@ -16,9 +16,9 @@ static_resources:
             - name: local_service
               domains: ["*"]
               routes:
-              - match: { prefix: "/user_grpc" }
+              - match: { prefix: "/userservice" }
                 route:
-                  cluster: user_service
+                  cluster: userservice
                   max_grpc_timeout: 2s
               - match: { prefix: "/postservice" }
                 route:
@@ -42,7 +42,7 @@ static_resources:
           - name: envoy.router
 
   clusters:
-  - name: user_service
+  - name: userservice
     connect_timeout: 15s
     type: strict_dns
     http2_protocol_options: {}
