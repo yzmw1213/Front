@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <div
-      v-show="showMessenger == true"
-      :class="(isSuccess)? 'header_message success':'header_message error'"
-    >
-      <p>{{ getMessage }}</p>
-    </div>
+  <div
+    v-show="showMessenger == true"
+    :class="(isSuccess)? 'header_message success':'header_message error'"
+  >
+    <p>{{ getMessage }}</p>
   </div>
 </template>
 
