@@ -24,8 +24,11 @@ export type tPostItem = {
   gender: number
   tags: number[]
   createUserID: number
+  createUserName: string
   updateUserID: number
+  updateUserName: string
 }
+
 const defaultPostItem: tPostItem = {
   postID: 0,
   status: 0,
@@ -35,7 +38,9 @@ const defaultPostItem: tPostItem = {
   gender: 0,
   tags: [],
   createUserID: 0,
-  updateUserID: 0
+  createUserName: "",
+  updateUserID: 0,
+  updateUserName: "",
 }
 
 export class PostService {
@@ -68,7 +73,9 @@ export class PostService {
       post.getGender(),
       post.getTagsList(),
       post.getCreateuserId(),
+      post.getCreateuserName(),
       post.getUpdateuserId(),
+      post.getUpdateuserName(),
     )
   }
 }
