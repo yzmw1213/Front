@@ -6,7 +6,6 @@ class PostItem {
     public title: string,
     public content: string,
     public maxNum: number,
-    public gender: number,
     public tags: number[],
     public createUserID: number,
     public createUserName: string,
@@ -19,7 +18,6 @@ class PostItem {
     this.title = title
     this.content = content
     this.maxNum = maxNum
-    this.gender = gender
     this.tags = tags
     this.createUserID = createUserID
     this.createUserName = createUserName

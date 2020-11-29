@@ -1,4 +1,4 @@
-import { Component, Vue, Emit, Watch } from "nuxt-property-decorator"
+import { Component, Vue, Emit } from "nuxt-property-decorator"
 import { Error } from "grpc-web"
 import { Sex, UserKind } from "~/plugins/const"
 
@@ -17,14 +17,13 @@ export default class SignUp extends Vue {
   showPassword: boolean = false
   showConfirmPassword: boolean = false
   confirmPassword: string = ""
-  confirmCheck: string = ""
-  confirmMessage: string = "※登録後、ユーザー区分・性別は変更できません。"
+  // confirmCheck: string = ""
+  // confirmMessage: string = "※登録後、ユーザー区分・性別は変更できません。"
   editedUser: tUserItem = {
     userID: 0,
     userName: "abcdefg",
     email: "a@a.com",
     profileText: "",
-    gender: 1,
     password: "abcdefg",
     authority: 1,
   }
@@ -76,18 +75,5 @@ export default class SignUp extends Vue {
 
   @Emit("back-to-login")
   cancelCreateUser() {
-  }
-
-  @Watch("editedUser.authority")
-  onChangeStatus() {
-    // 個人が選ばれた場合
-    if (this.editedUser.authority === 1) {
-      this.confirmMessage = "※登録後、ユーザー区分・性別は変更できません。"
-    }
-    // 企業が選ばれた場合、性別には0を設定する
-    if (this.editedUser.authority === 2) {
-      this.editedUser.gender = 0
-      this.confirmMessage = "※登録後、ユーザー区分は変更できません。"
-    }
   }
 }

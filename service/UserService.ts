@@ -21,7 +21,6 @@ export type tUserItem = {
   password: string
   profileText: string
   email: string
-  gender: number
   authority: number
 }
 
@@ -30,7 +29,6 @@ export type tUserProfileItem = {
   userID: number
   userName: string
   profileText: string
-  gender: number
   authority: number
 }
 
@@ -47,7 +45,6 @@ export class UserService {
     user.setPassword(postUser.password)
     user.setUserName(postUser.userName)
     user.setAuthority(postUser.authority)
-    user.setGender(postUser.gender)
     user.setProfileText(postUser.profileText)
     return user
   }
@@ -72,7 +69,6 @@ export class UserService {
       profile.getUserName(),
       profile.getProfileText(),
       profile.getAuthority(),
-      profile.getGender(),
     )
   }
 }

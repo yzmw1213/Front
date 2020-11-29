@@ -13,7 +13,6 @@ const Rstatus: TRstatus = {
 
 const UserKind: { [kind: number]: string } = {
   1: "個人",
-  2: "企業"
 }
 
 const UserAuthority: { [key: string]: number } = {

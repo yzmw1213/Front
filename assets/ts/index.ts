@@ -8,7 +8,7 @@ import Footer from "~/components/ui/Footer.vue"
 import Message from "~/components/ui/Message.vue"
 import Login from "~/components/Login/Login.vue"
 import CompanyLogin from "~/components/Login/CompanyLogin.vue"
-import ListCompany from "~/components/Company/List.vue"
+import ListUser from "~/components/User/List.vue"
 import CreateTag from "~/components/Tag/Create.vue"
 import ListTag from "~/components/Tag/List.vue"
 import CreatePost from "~/components/Post/Create.vue"
@@ -24,7 +24,7 @@ import ShowUserProfile from "~/components/ShowUserProfile.vue"
     Message,
     Login,
     CompanyLogin,
-    ListCompany,
+    ListUser,
     CreatePost,
     CreateTag,
     ListTag,
@@ -44,8 +44,8 @@ export default class Index extends Vue {
     return usersModule.authority
   }
 
-  isCompanyUser(): boolean {
-    return usersModule.authority === UserAuthority.AUTHORITY_COMPANY_USER
+  isNormalUser(): boolean {
+    return usersModule.authority === UserAuthority.AUTHORITY_NORMAL_USER
   }
 
   isSuperUser(): boolean {
@@ -94,9 +94,9 @@ export default class Index extends Vue {
     this.currentPage = "CreatePost"
   }
 
-  listCompany() {
+  listUser() {
     this.drawer = false
-    this.currentPage = "ListCompany"
+    this.currentPage = "ListUser"
   }
 
   listTag() {

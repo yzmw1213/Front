@@ -72,60 +72,6 @@
             @click:append="showConfirmPassword = !showConfirmPassword"
           />
         </validation-provider>
-        <validation-provider
-          v-slot="{ errors, valid }"
-          name="ユーザー区分"
-        >
-          <v-radio-group
-            v-model="editedUser.authority"
-            label="ユーザー区分"
-            row
-          >
-            <v-radio
-              v-for="n in 2"
-              :key="n"
-              :label="userKind[n]"
-              :value="n"
-              :error-messages="errors"
-              :success="valid"
-            />
-          </v-radio-group>
-        </validation-provider>
-        <validation-provider
-          v-show="editedUser.authority == 1"
-          v-slot="{ errors, valid }"
-          name="性別"
-        >
-          <v-radio-group
-            v-model="editedUser.gender"
-            label="性別"
-            row
-          >
-            <v-radio
-              v-for="n in [1,2,9]"
-              :key="n"
-              :label="sex[n]"
-              :value="n"
-              :error-messages="errors"
-              :success="valid"
-            />
-          </v-radio-group>
-        </validation-provider>
-        <div class="check_message_area">
-          <p class="check_message">{{ confirmMessage }}</p>
-          <validation-provider
-            v-slot="{ valid }"
-            rules="required"
-          >
-            <v-checkbox
-              v-model="confirmCheck"
-              :label="`確認しました`"
-              :success="valid"
-              type="checkbox"
-              value="1"
-            />
-          </validation-provider>
-        </div>
         <v-row class="flex-column">
           <v-col
             class="pb-1"
