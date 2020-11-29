@@ -9,7 +9,9 @@ class PostItem {
     public gender: number,
     public tags: number[],
     public createUserID: number,
+    public createUserName: string,
     public updateUserID: number,
+    public updateUserName: string,
   ) {
     this.postID = postID
     this.status = status
@@ -20,7 +22,9 @@ class PostItem {
     this.gender = gender
     this.tags = tags
     this.createUserID = createUserID
+    this.createUserName = createUserName
     this.updateUserID = updateUserID
+    this.updateUserName = updateUserName
   }
 }
 

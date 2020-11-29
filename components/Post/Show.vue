@@ -10,6 +10,7 @@
       <v-card
         class="mx-auto"
       >
+        <!-- 上部は画像表示 -->
         <!-- タブレット、PCなどはcol幅を別途調整 -->
         <v-row>
           <v-col
@@ -26,11 +27,16 @@
           <v-col
             :cols="10"
           >
+            <!-- 単票画面へのリンク -->
             <v-card-title
+            >
+              {{ post.title }}
+            </v-card-title>
+            <v-card-subtitle
               @click="showUser(post.userId)"
             >
-              {{ post.userName }}
-            </v-card-title>
+              {{ post.createUserName }}
+            </v-card-subtitle>
             <v-card-text>{{ post.content }}</v-card-text>
             <v-card-actions>
               <v-row
@@ -39,6 +45,7 @@
                 <v-icon class="mr-1">
                   mdi-heart
                 </v-icon>
+                <!-- お気に入りユーザ数を表示 -->
                 <span class="subheading mr-2">256</span>
                 <span class="mr-1">·</span>
                 <v-icon class="mr-1">

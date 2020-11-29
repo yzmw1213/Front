@@ -24,8 +24,11 @@ export type tPostItem = {
   gender: number
   tags: number[]
   createUserID: number
+  createUserName: string
   updateUserID: number
+  updateUserName: string
 }
+
 const defaultPostItem: tPostItem = {
   postID: 0,
   status: 0,
@@ -35,14 +38,16 @@ const defaultPostItem: tPostItem = {
   gender: 0,
   tags: [],
   createUserID: 0,
-  updateUserID: 0
+  createUserName: "",
+  updateUserID: 0,
+  updateUserName: "",
 }
 
 export class PostService {
   makePost(postItem: tPostItem): Post {
     const post = new Post()
     post.setId(postItem.postID)
-    post.setStatus(postItem.status)
+    // post.setStatus(postItem.status)
     post.setTitle(postItem.title)
     post.setContent(postItem.content)
     post.setMaxNum(postItem.maxNum)
@@ -60,7 +65,7 @@ export class PostService {
   getPost(post: Post): tPostItem {
     return new PostItem(
       post.getId(),
-      post.getStatus(),
+      0,
       // Rstatus[post.getStatus()],
       post.getTitle(),
       post.getContent(),
@@ -68,7 +73,9 @@ export class PostService {
       post.getGender(),
       post.getTagsList(),
       post.getCreateuserId(),
+      post.getCreateuserName(),
       post.getUpdateuserId(),
+      post.getUpdateuserName(),
     )
   }
 }
