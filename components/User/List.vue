@@ -2,7 +2,7 @@
   <div class="content_inner">
     <div class="page_header_area">
       <h2 class="page_header_title_area">
-        <span class="header_sub">企業一覧</span>
+        <span class="header_sub">ユーザー一覧</span>
       </h2>
     </div>
     <!-- コンテントエリア -->
@@ -34,4 +34,4 @@
   </div>
 </template>
 
-<script lang="ts" src="@/assets/ts/list_company.ts"></script>
+<script lang="ts" src="@/assets/ts/list_user.ts"></script>

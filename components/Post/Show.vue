@@ -28,8 +28,7 @@
             :cols="10"
           >
             <!-- 単票画面へのリンク -->
-            <v-card-title
-            >
+            <v-card-title>
               {{ post.title }}
             </v-card-title>
             <v-card-subtitle

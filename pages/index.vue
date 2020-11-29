@@ -55,16 +55,16 @@
             </v-list-item>
             <!-- 企業一覧 -->
             <v-list-item
-              @click="listCompany"
+              @click="listUser"
             >
               <v-list-item-icon>
                 <v-icon>mdi-office-building</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>企業一覧</v-list-item-title>
+              <v-list-item-title>ユーザー一覧</v-list-item-title>
             </v-list-item>
             <!-- 企業アカウントの場合に表示 -->
             <v-list-item
-              v-if="isCompanyUser() == true"
+              v-if="isNormalUser() == true"
               @click="post"
             >
               <v-list-item-icon>
