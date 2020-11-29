@@ -58,50 +58,6 @@
             rows="5"
           />
         </validation-provider>
-        <v-row>
-          <v-col
-            class=""
-            cols="5"
-          >
-            <validation-provider
-              v-slot="{ errors, valid }"
-              name="最大人数"
-              rules="oneOf:2,3,4,5,6,7,8,9,10"
-            >
-              <v-select
-                v-model="editedItem.maxNum"
-                :items="numChoices"
-                label="最大人数"
-                :error-messages="errors"
-                :success="valid"
-                dense
-                outlined
-              />
-            </validation-provider>
-          </v-col>
-          <v-col
-            class=""
-            cols="7"
-          >
-            <validation-provider
-              v-slot="{ errors, valid }"
-              name="性別"
-              rules="oneOf:1,2,3"
-            >
-              <v-select
-                v-model="editedItem.gender"
-                :items="genderChoices"
-                item-text="text"
-                item-value="key"
-                label="性別"
-                :error-messages="errors"
-                :success="valid"
-                dense
-                outlined
-              />
-            </validation-provider>
-          </v-col>
-        </v-row>
         <validation-provider
           v-slot="{ errors, valid }"
           name="タグ"

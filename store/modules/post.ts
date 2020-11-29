@@ -22,11 +22,11 @@ class Post extends VuexModule implements PostState {
     status: 0,
     title: "",
     content: "",
-    maxNum: 1,
-    gender: 0,
     tags: [],
     createUserID: 0,
-    updateUserID: 0
+    createUserName: "",
+    updateUserID: 0,
+    updateUserName: "",
   }
 
   // mutation
