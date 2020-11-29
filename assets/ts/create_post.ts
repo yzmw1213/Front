@@ -1,6 +1,5 @@
 import { Component, Vue, Emit } from "nuxt-property-decorator"
 import { Error } from "grpc-web"
-import { genderChoices, numChoices } from "~/plugins/const"
 import { postModule } from "@/store/modules/post"
 import { usersModule } from "@/store/modules/users"
 
@@ -31,8 +30,6 @@ export default class CreatePost extends Vue {
     image: "",
   }
 
-  numChoices: Number[] = numChoices
-  genderChoices: { text: string, key: Number }[] = genderChoices
   validTags: TTagChoice[] = []
 
   editedItem: tPostItem = {
@@ -40,8 +37,6 @@ export default class CreatePost extends Vue {
     status: 0,
     title: "",
     content: "",
-    maxNum: 2,
-    // gender: 0,
     tags: [],
     createUserID: usersModule.loginUserId,
     // Vuexにログインユーザー名を追加し取得する
@@ -86,8 +81,6 @@ export default class CreatePost extends Vue {
     const request = new UpdatePostRequest()
     request.setPost(post)
     postServiceClient.updatePost(request, {}, (err, res: UpdatePostResponse) => {
-      console.log("update")
-      console.log(res)
       this.handleCreateUpdateResponse(res, err)
     })
   }

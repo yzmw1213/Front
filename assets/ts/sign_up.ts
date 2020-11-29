@@ -1,6 +1,6 @@
 import { Component, Vue, Emit } from "nuxt-property-decorator"
 import { Error } from "grpc-web"
-import { Sex, UserKind } from "~/plugins/const"
+import { UserKind } from "~/plugins/const"
 
 import {
   CreateUserRequest,
@@ -32,11 +32,9 @@ export default class SignUp extends Vue {
     this.uService = new UserService()
     console.log(UserKind[1])
     console.log(UserKind[2])
-    console.log(this.sex)
   }
 
   userKind: tUserkind = UserKind
-  sex: typeof Sex = Sex
 
   post() {
     if (this.confirmPassword !== this.editedUser.password) {

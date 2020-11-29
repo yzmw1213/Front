@@ -20,7 +20,6 @@ export type tPostItem = {
   status: number
   title: string
   content: string
-  maxNum: number
   tags: number[]
   createUserID: number
   createUserName: string
@@ -33,7 +32,6 @@ const defaultPostItem: tPostItem = {
   status: 0,
   title: "",
   content: "",
-  maxNum: 1,
   tags: [],
   createUserID: 0,
   createUserName: "",
@@ -48,7 +46,6 @@ export class PostService {
     // post.setStatus(postItem.status)
     post.setTitle(postItem.title)
     post.setContent(postItem.content)
-    post.setMaxNum(postItem.maxNum)
     post.setTagsList(postItem.tags)
     post.setCreateuserId(postItem.createUserID)
     post.setUpdateuserId(postItem.updateUserID)
@@ -66,7 +63,6 @@ export class PostService {
       // Rstatus[post.getStatus()],
       post.getTitle(),
       post.getContent(),
-      post.getMaxNum(),
       post.getTagsList(),
       post.getCreateuserId(),
       post.getCreateuserName(),
