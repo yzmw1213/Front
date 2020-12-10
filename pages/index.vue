@@ -6,7 +6,6 @@
       @open-nav="openNav"
       @do-search="search"
       @do-login="userLogin"
-      @do-company-login="companyUserLogin"
       @do-logout="logout"
       @show-user="user"
       @sign-up="signUp"
@@ -107,15 +106,6 @@
               ログイン
             </v-btn>
           </div>
-          <div
-            v-if="getAuthKind < 1"
-            class="pa-2"
-            @click="companyUserLogin"
-          >
-            <v-btn block>
-              企業ログイン
-            </v-btn>
-          </div>
           <!-- 認証済時に表示 -->
           <div
             v-if="getAuthKind > 0"
@@ -133,7 +123,7 @@
           :is="currentPage"
           :detail-user-id="detailUserId"
           @authenticated="authed"
-          @back-to-login="userLogin"
+          @do-login="userLogin"
           @sign-up="signUp"
           @go-home="home"
           @go-tag-list="listTag"

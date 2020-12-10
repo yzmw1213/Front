@@ -7,7 +7,6 @@ import Header from "~/components/ui/Header.vue"
 import Footer from "~/components/ui/Footer.vue"
 import Message from "~/components/ui/Message.vue"
 import Login from "~/components/Login/Login.vue"
-import CompanyLogin from "~/components/Login/CompanyLogin.vue"
 import ListUser from "~/components/User/List.vue"
 import CreateTag from "~/components/Tag/Create.vue"
 import ListTag from "~/components/Tag/List.vue"
@@ -23,7 +22,6 @@ import ShowUserProfile from "~/components/ShowUserProfile.vue"
     Footer,
     Message,
     Login,
-    CompanyLogin,
     ListUser,
     CreatePost,
     CreateTag,
@@ -66,17 +64,12 @@ export default class Index extends Vue {
     this.currentPage = "Login"
   }
 
-  companyUserLogin() {
-    this.drawer = false
-    this.currentPage = "CompanyLogin"
-  }
-
   logout() {
     this.drawer = false
     usersModule.logout()
-    this.currentPage = "Home"
     // ログアウトに成功したことをメッセージ表示
     this.$setStatusMessage("LOGOUT_SUCCESS")
+    this.currentPage = "Login"
   }
 
   authed() {
