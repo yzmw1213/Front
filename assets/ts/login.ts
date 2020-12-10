@@ -12,12 +12,12 @@ import { userServiceClient } from "~/service/UserService"
 export default class Login extends Vue {
   // variables
   showPassword: boolean = false
-  email: string = "demo@gmail.com"
+  email: string = "test@gmail.com"
   demoUserEmail: string = "demo@gmail.com"
   demoSuperUserEmail: string = "super@gmail.com"
-  password: string = "demopassword"
-  demoUserPassword: string = "demopassword"
-  demoSuperUserPassword: string = "superpassword"
+  password: string = "password"
+  demoUserPassword: string = "password"
+  demoSuperUserPassword: string = "password"
 
   // methods
   login() {

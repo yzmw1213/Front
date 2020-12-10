@@ -71,7 +71,7 @@ export default class SignUp extends Vue {
     }
   }
 
-  @Emit("back-to-login")
+  @Emit("do-login")
   cancelCreateUser() {
   }
 }

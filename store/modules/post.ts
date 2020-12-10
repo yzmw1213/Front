@@ -27,6 +27,8 @@ class Post extends VuexModule implements PostState {
     createUserName: "",
     updateUserID: 0,
     updateUserName: "",
+    likeUsers: [],
+    likeUsersNum: 0,
   }
 
   // mutation

@@ -38,15 +38,7 @@
           @click="login"
         >
           <v-icon>mdi-account</v-icon>
-          個人ログイン
-        </li>
-        <li
-          v-if="getAuthKind < 1"
-          class="button_item"
-          @click="companyUserLogin"
-        >
-          <v-icon>mdi-office-building</v-icon>
-          企業ログイン
+          ログイン
         </li>
         <li
           v-if="getAuthKind < 1"
