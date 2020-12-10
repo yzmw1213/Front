@@ -6,7 +6,9 @@
       </h2>
     </div>
     <!-- コンテントエリア -->
-    <div class="content_area">
+    <div
+      :class="{ wide_content_area: $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl }"
+    >
       <v-flex
         v-for="company of companies"
         :key="company.userId"

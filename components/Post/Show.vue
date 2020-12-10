@@ -1,63 +1,57 @@
 <template>
   <!-- 一覧表示 -->
   <!-- できれば無限スクロール -->
-  <v-layout wrap>
-    <v-flex
-      v-for="post of posts"
+  <div
+    class="card_area"
+  >
+    <v-card
+      v-for="(post, index) of posts"
       :key="post.post_id"
-      md4
+      class="mx-auto"
     >
-      <v-card
-        class="mx-auto"
+      <v-img
+        height="250"
+        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+      />
+      <!-- 上部は画像表示 -->
+      <!-- タブレット、PCなどはcol幅を別途調整 -->
+      <!-- 単票画面へのリンク -->
+      <v-card-title>
+        {{ post.title }}
+      </v-card-title>
+      <v-card-subtitle
+        @click="showUser(post.userId)"
       >
-        <!-- 上部は画像表示 -->
-        <!-- タブレット、PCなどはcol幅を別途調整 -->
-        <v-row>
-          <v-col
-            :cols="2"
-          >
-            <v-list-item>
-              <v-list-item-avatar
-                color="grey"
-                @click="showUser(post.userId)"
-              />
-            </v-list-item>
-          </v-col>
-
-          <v-col
-            :cols="10"
-          >
-            <!-- 単票画面へのリンク -->
-            <v-card-title>
-              {{ post.title }}
-            </v-card-title>
-            <v-card-subtitle
-              @click="showUser(post.userId)"
-            >
-              {{ post.createUserName }}
-            </v-card-subtitle>
-            <v-card-text>{{ post.content }}</v-card-text>
-            <v-card-actions>
-              <v-row
-                align="center"
-              >
-                <v-icon class="mr-1">
-                  mdi-heart
-                </v-icon>
-                <!-- お気に入りユーザ数を表示 -->
-                <span class="subheading mr-2">256</span>
-                <span class="mr-1">·</span>
-                <v-icon class="mr-1">
-                  mdi-share-variant
-                </v-icon>
-                <span class="subheading">45</span>
-              </v-row>
-            </v-card-actions>
-          </v-col>
-        </v-row>
-      </v-card>
-    </v-flex>
-  </v-layout>
+        {{ post.createUserName }}
+      </v-card-subtitle>
+      <v-card-text>{{ post.content }}</v-card-text>
+      <!-- ユーザーがlikeしている場合はlikeをredにする -->
+      <v-card-actions>
+        <v-icon
+          class="mr-1"
+          :class="{red_text: post.likedByLoginUser}"
+          @click="changeLikeStatus(post, index)"
+        >
+          mdi-heart
+        </v-icon>
+        <span
+          v-if=" post.likeUsersNum > 0"
+          class="subheading mr-2"
+        >
+          {{ post.likeUsersNum }}
+        </span>
+      </v-card-actions>
+      <v-card-actions>
+        <v-list-item>
+          <v-list-item-avatar
+            color="grey"
+            @click="showUser(post.userId)"
+          />
+          <span>Create User</span>
+        </v-list-item>
+      </v-card-actions>
+    </v-card>
+  </div>
 </template>
 
 <script lang="ts" src="@/assets/ts/show_posts.ts"></script>

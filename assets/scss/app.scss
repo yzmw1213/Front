@@ -60,6 +60,16 @@
           display: inline-block;
           text-align: center;
         }
+
+        div.wide_content_area {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          div.card_area {
+            width: 65%;
+          }
+        }
       }
     }
   }
@@ -67,6 +77,11 @@
 
 button.v-btn--block {
   box-shadow: 0 2px #13cbd8;
+}
+
+button.red_text {
+  color: #ff3232 !important;
+  caret-color: #ff3232 !important;
 }
 
 .v-form {

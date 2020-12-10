@@ -1,11 +1,12 @@
 import { Component, Vue, Prop, Emit } from "nuxt-property-decorator"
+import { usersModule } from "@/store/modules/users"
 
 import {
   ListPostRequest,
   ListPostResponse,
 } from "~/grpc/post_pb"
 
-import { postServiceClient, PostService } from "~/service/PostService"
+import { tPostItem, postServiceClient, PostService } from "~/service/PostService"
 
 @Component({})
 export default class ShowPosts extends Vue {
@@ -24,11 +25,9 @@ export default class ShowPosts extends Vue {
   }
 
   getAllPost() {
-    console.log("getAllPost")
     let i = 0
     const request = new ListPostRequest()
     postServiceClient.listPost(request, {}, (err, res: ListPostResponse) => {
-      console.log("res", res)
       if (err != null) {
         this.$setStatusMessage("UNKNOWN_ERROR")
       }
@@ -37,6 +36,31 @@ export default class ShowPosts extends Vue {
         i++
       }
     })
+  }
+
+  // 投稿に対するお気に入り情報の更新
+  changeLikeStatus(post: tPostItem, i: number) {
+    if (usersModule.loginUserId < 1) {
+      // まだログインして無い場合、ログイン画面に遷移
+      this.moveToLogin()
+      return
+    }
+    // likeを取り消す
+    if (this.posts[i].likedByLoginUser === true) {
+      this.$notlikePost(post.postID)
+      this.posts[i].likeUsersNum--
+      this.posts[i].likedByLoginUser = false
+    // likeする
+    } else {
+      this.$likePost(post.postID)
+      this.posts[i].likeUsersNum++
+      this.posts[i].likedByLoginUser = true
+    }
+  }
+
+  // 上にHomeコンポーネントがあるからIndexに伝わらない...
+  @Emit("do-login")
+  moveToLogin() {
   }
 
   @Prop({ default: "", required: false })

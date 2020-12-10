@@ -39,6 +39,7 @@ const config: Configuration = {
   plugins: [
     '~/plugins/const',
     '~/plugins/myPlugin',
+    '~/plugins/postAction',
     '~/plugins/vee-validate',
   ],
   /*

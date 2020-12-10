@@ -1,6 +1,7 @@
 import { Post } from "~/grpc/post_pb"
 import { PostItem } from "~/assets/ts/constructor/PostItem"
 import { PostServiceClient } from "~/grpc/PostServiceClientPb"
+import { usersModule } from "@/store/modules/users"
 
 let proxyServerUrl: string = ""
 const url = process.env.NUXT_ENV_PROXY_SERVER_URL
@@ -25,6 +26,9 @@ export type tPostItem = {
   createUserName: string
   updateUserID: number
   updateUserName: string
+  likeUsers: number[]
+  likeUsersNum: number
+  likedByLoginUser: boolean
 }
 
 const defaultPostItem: tPostItem = {
@@ -37,6 +41,9 @@ const defaultPostItem: tPostItem = {
   createUserName: "",
   updateUserID: 0,
   updateUserName: "",
+  likeUsers: [],
+  likeUsersNum: 0,
+  likedByLoginUser: false,
 }
 
 export class PostService {
@@ -47,8 +54,8 @@ export class PostService {
     post.setTitle(postItem.title)
     post.setContent(postItem.content)
     post.setTagsList(postItem.tags)
-    post.setCreateuserId(postItem.createUserID)
-    post.setUpdateuserId(postItem.updateUserID)
+    post.setCreateUserId(postItem.createUserID)
+    post.setUpdateUserId(postItem.updateUserID)
     return post
   }
 
@@ -57,18 +64,25 @@ export class PostService {
   }
 
   getPost(post: Post): tPostItem {
-    return new PostItem(
+    const returnPost = new PostItem(
       post.getId(),
       0,
       // Rstatus[post.getStatus()],
       post.getTitle(),
       post.getContent(),
       post.getTagsList(),
-      post.getCreateuserId(),
-      post.getCreateuserName(),
-      post.getUpdateuserId(),
-      post.getUpdateuserName(),
+      post.getCreateUserId(),
+      post.getCreateUserName(),
+      post.getUpdateUserId(),
+      post.getUpdateUserName(),
+      post.getLikeUsersList(),
+      post.getLikeUsersList().length,
+      post.getLikeUsersList().includes(usersModule.loginUserId),
     )
+    if (usersModule.loginUserId < 1) {
+      returnPost.likedByLoginUser = false
+    }
+    return returnPost
   }
 }
 

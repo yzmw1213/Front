@@ -13,14 +13,16 @@
     <!-- 検索エリア -->
     <div class="search_area" />
     <!-- コンテントエリア -->
-    <div class="content_area">
+    <div
+      :class="{ wide_content_area: $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl }"
+    >
       <!-- テキスト入力 -->
 
       <!-- 一覧表示 -->
       <ShowPosts
-        :posts="posts"
         target="index"
         @show-user="showUser"
+        @do-login="moveToLogin"
       />
     </div>
   </div>
