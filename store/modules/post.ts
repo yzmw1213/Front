@@ -1,7 +1,7 @@
 import { Mutation, VuexModule, getModule, Module } from "vuex-module-decorators"
 import store from "~/store/store"
 
-import { tPostItem } from "~/service/PostService"
+import { tPostItem, defaultPostItem } from "~/service/PostService"
 
 export interface PostState {
   editPost: tPostItem
@@ -10,7 +10,7 @@ export interface PostState {
 @Module({
   dynamic: true,
   store,
-  name: "tag",
+  name: "post",
   namespaced: true
 })
 
@@ -29,12 +29,19 @@ class Post extends VuexModule implements PostState {
     updateUserName: "",
     likeUsers: [],
     likeUsersNum: 0,
+    likedByLoginUser: false
   }
 
   // mutation
   @Mutation
   public SET_EDIT_POST(ePost: tPostItem) {
     this.editPost = ePost
+  }
+
+  // mutation
+  @Mutation
+  public CLEAR_EDIT_POST() {
+    this.editPost = defaultPostItem
   }
 }
 

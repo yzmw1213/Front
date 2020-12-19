@@ -32,6 +32,7 @@ const config: Configuration = {
   css: [
     '~/assets/scss/app.scss',
     '~/assets/scss/header.scss',
+    '~/assets/scss/show_post.scss',
   ],
   /*
   ** Plugins to load before mounting the App

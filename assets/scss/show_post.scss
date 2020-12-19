@@ -1,0 +1,47 @@
+@import '_variables.scss';
+
+.v-application--wrap {
+
+  .content_wrapper {
+
+    .container {
+
+      .content_inner{
+
+        .content_lower_area {
+
+          p.title_text {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+          }
+
+          .create_user_area {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5em;
+            padding-right: 2.5em;
+
+            .user_img {
+              background-color: black;
+              border-radius: 50%;
+              width:  40px;
+              height: 40px;
+              margin-right: 1em;
+            }
+            .action_area {
+              margin: 0 0 0 auto;
+              justify-content: right;
+            }
+          }
+          .content_area{
+
+            p {
+              text-indent: 1em;
+            }
+          }
+        }
+      }
+    }
+  }
+}

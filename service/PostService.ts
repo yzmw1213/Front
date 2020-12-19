@@ -31,7 +31,7 @@ export type tPostItem = {
   likedByLoginUser: boolean
 }
 
-const defaultPostItem: tPostItem = {
+export const defaultPostItem: tPostItem = {
   postID: 0,
   status: 0,
   title: "",

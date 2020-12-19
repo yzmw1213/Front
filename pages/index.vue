@@ -7,11 +7,13 @@
       @do-search="search"
       @do-login="userLogin"
       @do-logout="logout"
+      @go-home="home"
       @show-user="user"
       @sign-up="signUp"
     />
     <v-container
       class="px-3"
+      :class="{ wide_screen: $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl }"
     >
       <message />
       <!-- スマートフォンサイズで表示するサイドナビゲーション -->
@@ -128,6 +130,7 @@
           @go-home="home"
           @go-tag-list="listTag"
           @edit-tag="createTag"
+          @show-post="showPost"
           @show-user="user"
         />
       </v-main>

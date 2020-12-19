@@ -6,8 +6,9 @@
   .content_wrapper {
 
     .container {
-      margin-top: 0px;
+      margin-top: 12px;
       padding-top: 56px;
+      word-wrap: break-word;
 
       .header_message {
         border-radius: 5px;
@@ -65,10 +66,6 @@
           display: flex;
           justify-content: center;
           align-items: center;
-
-          div.card_area {
-            width: 65%;
-          }
         }
       }
     }
@@ -97,4 +94,8 @@ button.red_text {
       margin-top: 0;
     }
   }
+}
+
+div.wide_screen{
+  width: 48%;
 }
