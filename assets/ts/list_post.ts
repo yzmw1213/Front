@@ -1,5 +1,6 @@
 import { Component, Vue, Prop, Emit } from "nuxt-property-decorator"
 import { usersModule } from "@/store/modules/users"
+import { postModule } from "@/store/modules/post"
 
 import {
   ListPostRequest,
@@ -58,7 +59,11 @@ export default class ShowPosts extends Vue {
     }
   }
 
-  // 上にHomeコンポーネントがあるからIndexに伝わらない...
+  @Emit("show-post")
+  showItem(item: tPostItem) {
+    postModule.SET_EDIT_POST(Object.assign({}, item))
+  }
+
   @Emit("do-login")
   moveToLogin() {
   }

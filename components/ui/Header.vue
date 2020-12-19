@@ -11,7 +11,11 @@
         v-if="$vuetify.breakpoint.sm || $vuetify.breakpoint.xs"
         @click="openNav()"
       />
-      <v-toolbar-title>Title</v-toolbar-title>
+      <v-toolbar-title
+        @click="home()"
+      >
+        Title
+      </v-toolbar-title>
       <!-- PC・タブレットで表示 -->
       <ul
         v-if="$vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl"

@@ -19,10 +19,11 @@
       <!-- テキスト入力 -->
 
       <!-- 一覧表示 -->
-      <ShowPosts
+      <ListPosts
         target="index"
         @show-user="showUser"
         @do-login="moveToLogin"
+        @show-post="showPost"
       />
     </div>
   </div>

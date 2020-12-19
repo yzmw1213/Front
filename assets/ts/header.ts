@@ -1,5 +1,6 @@
 import { Component, Vue, Emit, Prop } from "nuxt-property-decorator"
 import { usersModule } from "@/store/modules/users"
+import { postModule } from "@/store/modules/post"
 import { UserAuthority } from "~/plugins/const"
 
 import SearchForm from "~/components/ui/SearchForm.vue"
@@ -7,7 +8,6 @@ import SearchForm from "~/components/ui/SearchForm.vue"
   components: {
     SearchForm,
   }
-
 })
 
 export default class Header extends Vue {
@@ -37,6 +37,11 @@ export default class Header extends Vue {
 
   @Emit("open-nav")
   openNav() {
+  }
+
+  @Emit("go-home")
+  home() {
+    postModule.CLEAR_EDIT_POST()
   }
 
   @Emit("do-search")

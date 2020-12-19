@@ -13,6 +13,7 @@ import ListTag from "~/components/Tag/List.vue"
 import CreatePost from "~/components/Post/Create.vue"
 import SignUp from "~/components/Login/SignUp.vue"
 import SearchForm from "~/components/ui/SearchForm.vue"
+import ShowPost from "~/components/Post/Show.vue"
 import ShowUserProfile from "~/components/ShowUserProfile.vue"
 
 @Component({
@@ -28,6 +29,7 @@ import ShowUserProfile from "~/components/ShowUserProfile.vue"
     ListTag,
     SignUp,
     SearchForm,
+    ShowPost,
     ShowUserProfile,
   }
 })
@@ -105,6 +107,10 @@ export default class Index extends Vue {
   search(inputVal: any) {
     console.log("search func on index")
     console.log(inputVal)
+  }
+
+  showPost() {
+    this.currentPage = "ShowPost"
   }
 
   user(id: string) {

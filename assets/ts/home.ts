@@ -1,8 +1,9 @@
 import { Component, Vue, Emit } from "nuxt-property-decorator"
-import ShowPosts from "~/components/Post/Show.vue"
+import ListPosts from "~/components/Post/List.vue"
+
 @Component({
   components: {
-    ShowPosts,
+    ListPosts,
   }
 })
 
@@ -11,6 +12,10 @@ export default class Home extends Vue {
   @Emit("show-user")
   showUser(userId: string): string {
     return userId
+  }
+
+  @Emit("show-post")
+  showPost() {
   }
 
   @Emit("do-login")
