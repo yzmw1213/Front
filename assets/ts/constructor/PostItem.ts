@@ -1,3 +1,5 @@
+import { tCommentItem } from "~/service/CommentService"
+
 class PostItem {
   constructor(
     public postID: number,
@@ -13,6 +15,7 @@ class PostItem {
     public likeUsers: number[],
     public likeUsersNum: number,
     public likedByLoginUser: boolean,
+    public comments: tCommentItem[],
   ) {
     this.postID = postID
     this.status = status
@@ -27,6 +30,7 @@ class PostItem {
     this.likeUsers = likeUsers
     this.likeUsersNum = likeUsersNum
     this.likedByLoginUser = likedByLoginUser
+    this.comments = comments
   }
 }
 

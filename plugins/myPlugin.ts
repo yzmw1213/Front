@@ -50,6 +50,18 @@ Vue.prototype.$setStatusMessage = (code: string) => {
       message = "指定されたタグは既に削除済みか、登録されていないため削除できません"
       messageStatus = "ERROR"
       break
+    case "COMMENT_CREATE_SUCCESS":
+      message = "コメントを作成しました"
+      messageStatus = "SUCCESS"
+      break
+    // case "COMMENT_UPDATE_SUCCESS":
+    //   message = "コメントを更新しました"
+    //   messageStatus = "SUCCESS"
+    //   break
+    // case "COMMENT_DELETE_SUCCESS":
+    //   message = "コメントを削除しました"
+    //   messageStatus = "SUCCESS"
+    //   break
     // 投稿サービス
     case "POST_CREATE_SUCCESS":
       message = "投稿の登録に成功しました"

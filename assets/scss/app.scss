@@ -1,12 +1,12 @@
 // common variables
-// @import '_variables.scss';
+@import '_variables.scss';
 
 .v-application--wrap {
 
   .content_wrapper {
 
     .container {
-      margin-top: 12px;
+      margin-top: 12px 0;
       padding-top: 56px;
       word-wrap: break-word;
 
@@ -97,5 +97,11 @@ button.red_text {
 }
 
 div.wide_screen{
+  background-color: $BACK_COLOR;
   width: 48%;
+}
+
+.list_card {
+  margin-bottom: 12px;
+  border: 1px solid;
 }

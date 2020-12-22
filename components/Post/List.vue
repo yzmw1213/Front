@@ -5,7 +5,7 @@
     <v-card
       v-for="(post, index) of posts"
       :key="post.post_id"
-      class="mx-auto"
+      class="mx-auto list_card"
       @click="showItem(post)"
     >
       <v-img

@@ -16,10 +16,10 @@
             letter-spacing: 0.1em;
           }
 
-          .create_user_area {
+          .user_area {
             display: flex;
             align-items: center;
-            margin-bottom: 1.5em;
+            margin-bottom: 0.5em;
             padding-right: 2.5em;
 
             .user_img {
@@ -34,14 +34,45 @@
               justify-content: right;
             }
           }
-          .content_area{
+        }
 
-            p {
-              text-indent: 1em;
+        .comment_area {
+          padding: 2px;
+          font-size: $SUB_FONT_SIZE;
+          padding: 0.5em 1em;
+          margin: 1em 0;
+
+          .comment {
+            border-bottom: 0.1px dotted black;
+            margin-bottom: 2px;
+
+            .user_area {
+              display: flex;
+              align-items: center;
+              margin-bottom: 0.5em;
+              padding-right: 2.5em;
+
+              .user_img {
+                background-color: black;
+                border-radius: 50%;
+                width:  32px;
+                height: 32px;
+                margin-right: 1em;
+              }
             }
           }
         }
+
+        .button_area{
+          padding-left: 16px;
+        }
       }
     }
+  }
+}
+
+.content_area, .comment_area{
+  p {
+    text-indent: 1em;
   }
 }

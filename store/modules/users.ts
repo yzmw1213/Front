@@ -17,6 +17,7 @@ export interface UsersState {
 class Users extends VuexModule implements UsersState {
   token: string = ""
   loginUserId: number = 0
+  loginUserName: string = ""
   authority: number = 0
 
   // mutation
@@ -29,6 +30,12 @@ class Users extends VuexModule implements UsersState {
   @Mutation
   public SET_LOGIN_USER_ID(id: number) {
     this.loginUserId = id
+  }
+
+  // mutation
+  @Mutation
+  public SET_LOGIN_USER_NAME(name: string) {
+    this.loginUserName = name
   }
 
   // mutation
