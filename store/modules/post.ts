@@ -29,7 +29,8 @@ class Post extends VuexModule implements PostState {
     updateUserName: "",
     likeUsers: [],
     likeUsersNum: 0,
-    likedByLoginUser: false
+    likedByLoginUser: false,
+    comments: [],
   }
 
   // mutation

@@ -1,3 +1,4 @@
+import { CommentService, tCommentItem } from "./CommentService"
 import { Post } from "~/grpc/post_pb"
 import { PostItem } from "~/assets/ts/constructor/PostItem"
 import { PostServiceClient } from "~/grpc/PostServiceClientPb"
@@ -29,6 +30,7 @@ export type tPostItem = {
   likeUsers: number[]
   likeUsersNum: number
   likedByLoginUser: boolean
+  comments: tCommentItem[]
 }
 
 export const defaultPostItem: tPostItem = {
@@ -44,9 +46,12 @@ export const defaultPostItem: tPostItem = {
   likeUsers: [],
   likeUsersNum: 0,
   likedByLoginUser: false,
+  comments: []
 }
 
 export class PostService {
+  comments: any[] = []
+  cService: CommentService
   makePost(postItem: tPostItem): Post {
     const post = new Post()
     post.setId(postItem.postID)
@@ -64,6 +69,13 @@ export class PostService {
   }
 
   getPost(post: Post): tPostItem {
+    let j = 0
+    this.init()
+    while (j < post.getCommentsList().length) {
+      const comment = post.getCommentsList()[j]
+      this.comments.push(this.cService.getComment(comment))
+      j++
+    }
     const returnPost = new PostItem(
       post.getId(),
       0,
@@ -78,11 +90,18 @@ export class PostService {
       post.getLikeUsersList(),
       post.getLikeUsersList().length,
       post.getLikeUsersList().includes(usersModule.loginUserId),
+      // post.getCommentsList(),
+      this.comments,
     )
     if (usersModule.loginUserId < 1) {
       returnPost.likedByLoginUser = false
     }
     return returnPost
+  }
+
+  init() {
+    this.comments = []
+    this.cService = new CommentService()
   }
 }
 

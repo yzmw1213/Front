@@ -33,7 +33,8 @@ export default class ShowPosts extends Vue {
         this.$setStatusMessage("UNKNOWN_ERROR")
       }
       while (i < res.getPostList().length) {
-        this.posts.push(this.pService.getPost(res.getPostList()[i]))
+        const post = res.getPostList()[i]
+        this.posts.push(this.pService.getPost(post))
         i++
       }
     })

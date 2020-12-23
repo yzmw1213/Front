@@ -25,8 +25,6 @@ export default class Login extends Vue {
     request.setEmail(this.email)
     request.setPassword(this.password)
     userServiceClient.login(request, {}, (err, res: LoginResponse | undefined) => {
-      console.log(res)
-      console.log(err)
       if (err != null) {
         // ログインに失敗したことをメッセージ表示
         this.$setStatusMessage("LOGIN_FAIL")
@@ -39,13 +37,19 @@ export default class Login extends Vue {
         this.email = ""
 
         const auth = res!.getAuth()
+        const user = res!.getUser()
         // トークン、ユーザーIDをストアに保存
         usersModule.SET_TOKEN(auth!.getToken())
         usersModule.SET_LOGIN_USER_ID(auth!.getUserId())
         usersModule.SET_AUTH_KIND(auth!.getAuthority())
+        // ユーザー名をストアに保存
+        usersModule.SET_LOGIN_USER_NAME(user!.getUserName())
         // ログインに成功したことをメッセージ表示
         this.$setStatusMessage("LOGIN_SUCCESS")
         this.goHome()
+        // ログイン画面に飛ばされる前のページに遷移する
+        // ログイン画面に飛ばされる前のコンポーネントをstoreに保存
+        // storeを参照する
       }
     })
   }
