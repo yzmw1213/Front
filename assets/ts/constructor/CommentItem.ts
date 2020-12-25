@@ -5,12 +5,14 @@ class CommentItem {
     public createUserID: number,
     public createUserName: string,
     public commentContent: string,
+    public createdByLoginUser: boolean,
   ) {
     this.commentID = commentID
     this.postID = postID
     this.createUserID = createUserID
     this.createUserName = createUserName
     this.commentContent = commentContent
+    this.createdByLoginUser = createdByLoginUser
   }
 }
 

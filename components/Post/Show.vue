@@ -32,16 +32,31 @@
       </div>
     </div>
     <div class="comment_area">
-      <p>コメント</p>
-      <!-- コメント数だけ表示 -->
+      <span v-if=" item.comments.length > 0">コメント</span>
       <div
-        v-for="comment of item.comments"
+        v-for="(comment, index) of item.comments"
         :key="comment.commentID"
         class="comment"
       >
         <div class="user_area">
           <div class="user_img" />
           <span>{{ comment.createUserName }}</span>
+          <div class="action_area">
+            <v-icon
+              v-if="!commentEditing && comment.createdByLoginUser"
+              class="mr-1"
+              @click="editComment(index)"
+            >
+              mdi-pencil
+            </v-icon>
+            <v-icon
+              v-if="!commentEditing && comment.createdByLoginUser"
+              class="mr-1"
+              @click="deleteComment(index)"
+            >
+              mdi-trash-can-outline
+            </v-icon>
+          </div>
         </div>
         <div class="comment_content">
           <p>{{ comment.commentContent }}</p>
@@ -50,29 +65,29 @@
       <validation-observer ref="obs" v-slot="{ invalid }">
         <v-form>
           <validation-provider
-            v-slot="{ errors, valid }"
+            v-slot="{ valid }"
             name="コメント"
             rules="required|max:120"
           >
             <v-textarea
-              v-model="editComment.commentContent"
+              v-model="formComment.commentContent"
               class="py-3"
               row-height="30"
-              clearable
               counter
               dense
               no-resize
               outlined
               rounded
               label="コメント"
-              :error-messages="errors"
               placeholder="コメントを入力してください"
               :success="valid"
               required
               rows="5"
             />
           </validation-provider>
-          <v-row class="flex-column">
+          <v-row
+            class="flex-column"
+          >
             <v-col
               class="pb-1"
             >
@@ -84,6 +99,17 @@
                 @click="post"
               >
                 コメントする
+              </v-btn>
+            </v-col>
+            <v-col>
+              <v-btn
+                color="secondary"
+                block
+                small
+                :disabled="invalid"
+                @click="cancelComment"
+              >
+                コメントをやめる
               </v-btn>
             </v-col>
           </v-row>
