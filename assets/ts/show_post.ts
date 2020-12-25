@@ -2,7 +2,6 @@ import { Component, Vue, Emit } from "nuxt-property-decorator"
 import { Error } from "grpc-web"
 import { postModule } from "@/store/modules/post"
 import { usersModule } from "@/store/modules/users"
-import { commentModule } from "@/store/modules/comment"
 
 import {
   CreateCommentRequest,
@@ -10,7 +9,7 @@ import {
   ResponseStatus,
   Comment,
   UpdateCommentRequest,
-  UpdateCommentResponse
+  UpdateCommentResponse, ReadPostResponse, ReadPostRequest, DeleteCommentRequest, DeleteCommentResponse
 } from "~/grpc/post_pb"
 
 import { PostService, tPostItem, postServiceClient } from "~/service/PostService"
@@ -20,6 +19,8 @@ import { CommentService, tCommentItem } from "~/service/CommentService"
 export default class ShowPost extends Vue {
   pService: PostService
   cService: CommentService
+  commentEditing: boolean = false
+  dialog: boolean = false
   item: tPostItem = {
     postID: 0,
     status: 0,
@@ -36,7 +37,7 @@ export default class ShowPost extends Vue {
     comments: []
   }
 
-  editComment: tCommentItem = {
+  formComment: tCommentItem = {
     commentID: 0,
     postID: this.item.postID,
     commentContent: "",
@@ -50,14 +51,33 @@ export default class ShowPost extends Vue {
     this.item = postModule.editPost
   }
 
+  initialize() {
+    this.formComment.commentID = 0
+    this.formComment.commentContent = ""
+    this.getPost()
+    postModule.SET_EDIT_POST(Object.assign({}, this.item))
+  }
+
+  getPost() {
+    const request = new ReadPostRequest()
+    request.setId(this.item.postID)
+    postServiceClient.readPost(request, {}, (err, res: ReadPostResponse) => {
+      if (err != null) {
+        this.$setStatusMessage("UNKNOWN_ERROR")
+      }
+      const post: any = res.getPost()
+      this.item = this.pService.getPost(post)
+    })
+  }
+
   post() {
     if (usersModule.loginUserId < 1) {
       // まだログインして無い場合、ログイン画面に遷移
       this.moveToLogin()
       return
     }
-    const id: number = this.editComment.commentID
-    const comment = this.cService.makeComment(this.editComment)
+    const id: number = this.formComment.commentID
+    const comment = this.cService.makeComment(this.formComment)
     comment.setPostId(this.item.postID)
     if (id === 0) {
       this.create(comment)
@@ -72,6 +92,26 @@ export default class ShowPost extends Vue {
     request.setComment(comment)
     postServiceClient.createComment(request, {}, (err, res: CreateCommentResponse) => {
       this.handleCreateUpdateResponse(res, err)
+    })
+  }
+
+  editComment(i: number) {
+    this.formComment.commentContent = this.item.comments[i].commentContent
+    this.formComment.commentID = this.item.comments[i].commentID
+    this.commentEditing = !this.commentEditing
+  }
+
+  deleteComment(i: number) {
+    // 削除してよいかconfirm
+    const flag: boolean = confirm("コメントを削除しますか?")
+    if (flag !== true) {
+      return
+    }
+    const request = new DeleteCommentRequest()
+    request.setId(this.item.comments[i].commentID)
+    postServiceClient.deleteComment(request, {}, (err, res: DeleteCommentResponse) => {
+      this.handleCreateUpdateResponse(res, err)
+      this.initialize()
     })
   }
 
@@ -92,14 +132,18 @@ export default class ShowPost extends Vue {
       const code = status!.getCode()
       // status.codeに応じたダイアログ表示
       this.$setStatusMessage(code)
-      this.cancelPost()
+      // コメント後に表示情報を更新する。
+      this.initialize()
     }
+  }
+
+  cancelComment() {
+    this.formComment.commentContent = ""
+    this.commentEditing = !this.commentEditing
   }
 
   @Emit("go-home")
   cancelPost() {
-    const defaultComment = this.cService.makeDefaultComment()
-    commentModule.SET_EDIT_COMMENT(defaultComment)
   }
 
   // 投稿に対するお気に入り情報の更新

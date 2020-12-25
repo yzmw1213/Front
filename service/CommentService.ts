@@ -1,5 +1,6 @@
 import { Comment } from "~/grpc/post_pb"
 import { CommentItem } from "~/assets/ts/constructor/CommentItem"
+import { usersModule } from "~/store/modules/users"
 
 // tCommentItem Formで編集する物件投稿の型
 export type tCommentItem = {
@@ -40,6 +41,7 @@ export class CommentService {
       comment.getCreateUserId(),
       comment.getCreateUserName(),
       comment.getContent(),
+      comment.getCreateUserId() === usersModule.loginUserId,
     )
     return returnComment
   }

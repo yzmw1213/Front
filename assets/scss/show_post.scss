@@ -37,7 +37,6 @@
         }
 
         .comment_area {
-          padding: 2px;
           font-size: $SUB_FONT_SIZE;
           padding: 0.5em 1em;
           margin: 1em 0;
@@ -50,7 +49,12 @@
               display: flex;
               align-items: center;
               margin-bottom: 0.5em;
-              padding-right: 2.5em;
+              padding-right: 1em;
+
+              .action_area {
+                margin: 0 0 0 auto;
+                justify-content: right;
+              }
 
               .user_img {
                 background-color: black;
