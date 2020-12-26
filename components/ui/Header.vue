@@ -2,7 +2,7 @@
   <v-card class="overflow-hidden">
     <v-app-bar
       app
-      color="#6A76AB"
+      :color="$vuetify.theme.themes.light.primary"
       floating
       fade-img-on-scroll
     >

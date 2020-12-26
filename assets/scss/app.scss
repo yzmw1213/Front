@@ -6,9 +6,10 @@
   .content_wrapper {
 
     .container {
-      margin-top: 12px 0;
-      padding-top: 56px;
+      margin-top: $MARGIN_SIZE_SMALL;
+      padding-top: $HEADER_HIGHT;
       word-wrap: break-word;
+      padding-bottom: 2 * $MARGIN_SIZE_NORMAL;
 
       .header_message {
         border-radius: 5px;
@@ -43,10 +44,10 @@
           .page_header_title_area {
             text-align: center;
             display: block;
-            margin: 72px 0 50px;
+            margin:4 * $MARGIN_SIZE_LARGE 0 50px;
 
             .header_main {
-              font-size: 36px;
+              font-size: 2 * $MARGIN_SIZE_LARGE;
               letter-spacing: .2em;
             }
 

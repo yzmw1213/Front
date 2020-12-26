@@ -134,6 +134,11 @@
           @show-user="user"
         />
       </v-main>
+      <!-- フッターボタンエリア -->
+      <FooterButtonArea 
+        @go-home="home"
+        v-if="showFooterButton"
+      />
     </v-container>
     <!-- フッター -->
     <Footer />

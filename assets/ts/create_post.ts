@@ -39,10 +39,13 @@ export default class CreatePost extends Vue {
     content: "",
     tags: [],
     createUserID: usersModule.loginUserId,
-    // Vuexにログインユーザー名を追加し取得する
-    createUserName: "",
+    createUserName: usersModule.loginUserName,
     updateUserID: 0,
-    updateUserName: ""
+    updateUserName: "",
+    likeUsers: [],
+    likeUsersNum: 0,
+    likedByLoginUser: false,
+    comments: [],
   }
 
   created() {

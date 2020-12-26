@@ -12,11 +12,11 @@
         width: 100%;
 
         .v-toolbar__title {
-          margin-right: 36px;
+          margin-right: 2 * $MARGIN_SIZE_LARGE;
         }
 
         .v-toolbar__items {
-          margin: 36px 36px 0 0;
+          margin: 2 * $MARGIN_SIZE_LARGE 2 * $MARGIN_SIZE_LARGE 0 0;
           display: inline-block;
         }
 
@@ -25,7 +25,7 @@
           display: flex;
 
           li.button_item {
-            margin-left: 16px;
+            margin-left: $MARGIN_SIZE_NORMAL;
             color: $LINK_FONT_COLOR;
 
             &:hover {

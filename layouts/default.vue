@@ -1,5 +1,7 @@
 <template>
-  <v-app>
+  <v-app
+    :style="{ background: $vuetify.theme.themes.light.backgound }"
+  >
     <nuxt />
   </v-app>
 </template>

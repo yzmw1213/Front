@@ -5,6 +5,7 @@ import { UserAuthority } from "~/plugins/const"
 import Home from "~/components/Home.vue"
 import Header from "~/components/ui/Header.vue"
 import Footer from "~/components/ui/Footer.vue"
+import FooterButtonArea from "~/components/ui/FooterButtonArea.vue"
 import Message from "~/components/ui/Message.vue"
 import Login from "~/components/Login/Login.vue"
 import ListUser from "~/components/User/List.vue"
@@ -21,6 +22,7 @@ import ShowUserProfile from "~/components/ShowUserProfile.vue"
     Home,
     Header,
     Footer,
+    FooterButtonArea,
     Message,
     Login,
     ListUser,
@@ -37,6 +39,7 @@ import ShowUserProfile from "~/components/ShowUserProfile.vue"
 export default class Index extends Vue {
   drawer: boolean = false;
   auth: boolean = false;
+  showFooterButton: boolean = false
   currentPage: string = "Home"
   detailUserId: string = ""
 
@@ -63,6 +66,7 @@ export default class Index extends Vue {
 
   userLogin() {
     this.drawer = false
+    this.showFooterButton = false
     this.currentPage = "Login"
   }
 
@@ -71,36 +75,43 @@ export default class Index extends Vue {
     usersModule.logout()
     // ログアウトに成功したことをメッセージ表示
     this.$setStatusMessage("LOGOUT_SUCCESS")
+    this.showFooterButton = false
     this.currentPage = "Login"
   }
 
   authed() {
     this.currentPage = "Home"
+    this.showFooterButton = false
     this.auth = true
   }
 
   home() {
     this.drawer = false
+    this.showFooterButton = false
     this.currentPage = "Home"
   }
 
   post() {
     this.drawer = false
+    this.showFooterButton = false
     this.currentPage = "CreatePost"
   }
 
   listUser() {
     this.drawer = false
+    this.showFooterButton = true
     this.currentPage = "ListUser"
   }
 
   listTag() {
     this.drawer = false
+    this.showFooterButton = true
     this.currentPage = "ListTag"
   }
 
   createTag() {
     this.drawer = false
+    this.showFooterButton = false
     this.currentPage = "CreateTag"
   }
 
@@ -111,17 +122,19 @@ export default class Index extends Vue {
 
   showPost() {
     this.currentPage = "ShowPost"
+    this.showFooterButton = true
   }
 
   user(id: string) {
     this.drawer = false
     this.currentPage = "ShowUserProfile"
+    this.showFooterButton = true
     this.detailUserId = id
-    console.log(id)
   }
 
   signUp() {
     this.drawer = false
     this.currentPage = "SignUp"
+    this.showFooterButton = false
   }
 }

@@ -101,7 +101,9 @@
                 コメントする
               </v-btn>
             </v-col>
-            <v-col>
+            <v-col
+              class="pb-1"
+            >
               <v-btn
                 color="secondary"
                 block
@@ -115,13 +117,6 @@
           </v-row>
         </v-form>
       </validation-observer>
-    </div>
-    <div class="button_area">
-      <v-btn
-        @click="cancelPost()"
-      >
-        前の画面に戻る
-      </v-btn>
     </div>
   </div>
 </template>

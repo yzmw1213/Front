@@ -67,7 +67,7 @@ const config: Configuration = {
       // dark: true,
       themes: {
         light: {
-          primary: colors.blue.darken2,
+          primary: colors.indigo.lighten1,
           accent: colors.grey.darken3,
           secondary: colors.lime.lighten2,
           tertiary: colors.amber.darken3,
@@ -76,7 +76,8 @@ const config: Configuration = {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          success: colors.green.accent3,
+          backgound: colors.brown.lighten5,
         },
       }
     }
