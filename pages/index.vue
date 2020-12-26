@@ -135,9 +135,9 @@
         />
       </v-main>
       <!-- フッターボタンエリア -->
-      <FooterButtonArea 
-        @go-home="home"
+      <FooterButtonArea
         v-if="showFooterButton"
+        @go-home="home"
       />
     </v-container>
     <!-- フッター -->

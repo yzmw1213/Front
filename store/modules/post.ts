@@ -33,10 +33,22 @@ class Post extends VuexModule implements PostState {
     comments: [],
   }
 
+  posts: tPostItem[]
+
   // mutation
   @Mutation
   public SET_EDIT_POST(ePost: tPostItem) {
     this.editPost = ePost
+  }
+
+  @Mutation
+  public INIT_POSTS() {
+    this.posts = []
+  }
+
+  @Mutation
+  public SET_POSTS(posts: tPostItem[]) {
+    this.posts = posts
   }
 
   // mutation

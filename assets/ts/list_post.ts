@@ -1,15 +1,21 @@
-import { Component, Vue, Prop, Emit } from "nuxt-property-decorator"
-import { usersModule } from "@/store/modules/users"
+import { Component, Vue, Emit } from "nuxt-property-decorator"
 import { postModule } from "@/store/modules/post"
+
+import PostCard from "~/components/Post/Card.vue"
 
 import {
   ListPostRequest,
   ListPostResponse,
 } from "~/grpc/post_pb"
 
-import { tPostItem, postServiceClient, PostService } from "~/service/PostService"
+import { postServiceClient, PostService } from "~/service/PostService"
 
-@Component({})
+@Component({
+  components: {
+    PostCard,
+  }
+})
+
 export default class ShowPosts extends Vue {
   pService: PostService
   posts: any[] = []
@@ -26,6 +32,7 @@ export default class ShowPosts extends Vue {
   }
 
   getAllPost() {
+    // postModule.INIT_POSTS()
     let i = 0
     const request = new ListPostRequest()
     postServiceClient.listPost(request, {}, (err, res: ListPostResponse) => {
@@ -38,46 +45,19 @@ export default class ShowPosts extends Vue {
         i++
       }
     })
-  }
-
-  // 投稿に対するお気に入り情報の更新
-  changeLikeStatus(post: tPostItem, i: number) {
-    if (usersModule.loginUserId < 1) {
-      // まだログインして無い場合、ログイン画面に遷移
-      this.moveToLogin()
-      return
-    }
-    // likeを取り消す
-    if (this.posts[i].likedByLoginUser === true) {
-      this.$notlikePost(post.postID)
-      this.posts[i].likeUsersNum--
-      this.posts[i].likedByLoginUser = false
-    // likeする
-    } else {
-      this.$likePost(post.postID)
-      this.posts[i].likeUsersNum++
-      this.posts[i].likedByLoginUser = true
-    }
+    postModule.SET_POSTS(this.posts)
   }
 
   @Emit("show-post")
-  showItem(item: tPostItem) {
-    postModule.SET_EDIT_POST(Object.assign({}, item))
+  showPost() {
   }
 
   @Emit("do-login")
   moveToLogin() {
   }
 
-  @Prop({ default: "", required: false })
-  userId: string
-
-  @Prop({ default: "", required: false })
-  target: string
-
   // 選択されたユーザーIDをEmit
   @Emit("show-user")
-  showUser(userId: string): string {
-    return userId
+  showUser() {
   }
 }

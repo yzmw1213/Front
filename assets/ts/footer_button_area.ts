@@ -1,4 +1,4 @@
-import { Component, Vue, Prop, Emit } from "nuxt-property-decorator"
+import { Component, Vue, Emit } from "nuxt-property-decorator"
 
 @Component({})
 export default class FooterButtonArea extends Vue {

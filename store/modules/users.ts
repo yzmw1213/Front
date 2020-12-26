@@ -19,6 +19,8 @@ class Users extends VuexModule implements UsersState {
   loginUserId: number = 0
   loginUserName: string = ""
   authority: number = 0
+  // 閲覧中のユーザー
+  userId: number = 0
 
   // mutation
   @Mutation
@@ -42,6 +44,12 @@ class Users extends VuexModule implements UsersState {
   @Mutation
   public SET_AUTH_KIND(authority: number) {
     this.authority = authority
+  }
+
+  // mutation
+  @Mutation
+  public SET_USER_ID(id: number) {
+    this.userId = id
   }
 
   @Action

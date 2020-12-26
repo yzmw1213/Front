@@ -7,4 +7,6 @@
   </div>
 </template>
 
+<style lang="scss" scoped src="@/assets/scss/message.scss"></style>
+
 <script lang="ts" src="@/assets/ts/message.ts"></script>
