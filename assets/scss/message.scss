@@ -1,0 +1,23 @@
+// common variables
+@import '_variables.scss';
+
+.header_message {
+  border-radius: 5px;
+  padding: $MARGIN_SIZE_SMALL;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  right: 0;
+
+  .success {
+    background-color: #13d84e;
+  }
+
+  .error {
+    background-color: #d343e9;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}

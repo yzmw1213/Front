@@ -1,7 +1,6 @@
 <template>
   <div class="footer_button_area">
-    <v-col
-    >
+    <v-col>
       <v-btn
         :color="$vuetify.theme.themes.light.negative"
         block
