@@ -15,7 +15,7 @@ import CreatePost from "~/components/Post/Create.vue"
 import SignUp from "~/components/Login/SignUp.vue"
 import SearchForm from "~/components/ui/SearchForm.vue"
 import ShowPost from "~/components/Post/Show.vue"
-import ShowUserProfile from "~/components/ShowUserProfile.vue"
+import ShowUser from "~/components/User/ShowUser.vue"
 
 @Component({
   components: {
@@ -32,7 +32,7 @@ import ShowUserProfile from "~/components/ShowUserProfile.vue"
     SignUp,
     SearchForm,
     ShowPost,
-    ShowUserProfile,
+    ShowUser,
   }
 })
 
@@ -127,7 +127,7 @@ export default class Index extends Vue {
 
   user(id: string) {
     this.drawer = false
-    this.currentPage = "ShowUserProfile"
+    this.currentPage = "ShowUser"
     this.showFooterButton = true
     this.detailUserId = id
   }
