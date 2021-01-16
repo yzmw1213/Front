@@ -51,9 +51,16 @@ export default class PostCard extends Vue {
   moveToLogin() {
   }
 
+  selectUser(userId: number) {
+    if (userId === usersModule.loginUserId) {
+      return
+    }
+    this.showUser(userId)
+  }
+
   // 選択されたユーザーIDをEmit
   @Emit("show-user")
-  showUser(userId: number) {
-    usersModule.SET_USER_ID(userId)
+  showUser(id: number) {
+    usersModule.SET_USER_ID(id)
   }
 }

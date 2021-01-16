@@ -16,11 +16,6 @@
       <v-card-title>
         {{ post.title }}
       </v-card-title>
-      <v-card-subtitle
-        @click="showUser(post.userId)"
-      >
-        {{ post.createUserName }}
-      </v-card-subtitle>
       <v-card-text>{{ post.content }}</v-card-text>
     </div>
     <!-- ユーザーがlikeしている場合はlikeをredにする -->
@@ -41,12 +36,12 @@
     </v-card-actions>
     <v-card-actions>
       <v-list-item
-        @click="showUser(post.createUserID)"
+        @click="selectUser(post.createUserID)"
       >
         <v-list-item-avatar
           color="grey"
         />
-        <span>Create User</span>
+        <span>{{ post.createUserName }}</span>
       </v-list-item>
     </v-card-actions>
   </v-card>
