@@ -1,4 +1,4 @@
-FROM node:10.14.1-alpine as builder
+FROM node:10.14.1-alpine
 
 RUN apk --update add \
   curl \
@@ -19,16 +19,10 @@ RUN mkdir -p /tmp/protoc-gen-grpc-web && \
   mv /tmp/protoc-gen-grpc-web/protpc-gen-grpc-web /usr/local/bin/protoc-gen-grpc-web && \
   chmod +x /usr/local/bin/protoc-gen-grpc-web
 
-COPY . .
+WORKDIR /app
+
+COPY . /app
+
+ENV NODE_ENV development
 
 RUN npm i
-
-ENV NUXT_HOST 0.0.0.0
-
-ENV NODE_ENV production
-
-RUN node_modules/.bin/nuxt-ts build
-
-EXPOSE 3000
-
-ENTRYPOINT ["npm","run", "start"]
