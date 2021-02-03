@@ -21,10 +21,10 @@ export default class SignUp extends Vue {
   // confirmMessage: string = "※登録後、ユーザー区分・性別は変更できません。"
   editedUser: tUserItem = {
     userID: 0,
-    userName: "abcdefg",
-    email: "a@a.com",
+    userName: "",
+    email: "",
     profileText: "",
-    password: "abcdefg",
+    password: "",
     authority: 1,
   }
 

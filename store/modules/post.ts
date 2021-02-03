@@ -5,6 +5,7 @@ import { tPostItem, defaultPostItem } from "~/service/PostService"
 
 export interface PostState {
   editPost: tPostItem
+  condition: string
 }
 
 @Module({
@@ -33,6 +34,8 @@ class Post extends VuexModule implements PostState {
     comments: [],
   }
 
+  condition: string = ""
+
   posts: tPostItem[]
 
   // mutation
@@ -49,6 +52,11 @@ class Post extends VuexModule implements PostState {
   @Mutation
   public SET_POSTS(posts: tPostItem[]) {
     this.posts = posts
+  }
+
+  @Mutation
+  public SET_CONDITION(condition: string) {
+    this.condition = condition
   }
 
   // mutation

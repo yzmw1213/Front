@@ -16,6 +16,7 @@ import SignUp from "~/components/Login/SignUp.vue"
 import SearchForm from "~/components/ui/SearchForm.vue"
 import ShowPost from "~/components/Post/Show.vue"
 import ShowUser from "~/components/User/ShowUser.vue"
+import { postModule } from "~/store/modules/post"
 
 @Component({
   components: {
@@ -89,6 +90,8 @@ export default class Index extends Vue {
     this.drawer = false
     this.showFooterButton = false
     this.currentPage = "Home"
+    postModule.SET_CONDITION("")
+    usersModule.SET_USER_ID(0)
   }
 
   post() {
@@ -125,11 +128,14 @@ export default class Index extends Vue {
     this.showFooterButton = true
   }
 
+  // ユーザー詳細画面
   user(id: string) {
     this.drawer = false
     this.currentPage = "ShowUser"
     this.showFooterButton = true
     this.detailUserId = id
+    // ユーザーページ遷移時は、ユーザーが作成した投稿を表示
+    postModule.SET_CONDITION("create")
   }
 
   signUp() {
