@@ -19,16 +19,6 @@ jobs:
       - run:
           name: Dockerネットワーク作成
           command: docker network create test-network
-      - restore_cache:
-          keys:
-            - dependency-cache-{{ checksum "package.json" }}
-      - run: 
-          name: ビルド
-          command: docker-compose build
-      - save_cache: # 依存関係キャッシュを保存する特別なステップ
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
       - run: 
           name: 起動
           command: docker-compose up -d
