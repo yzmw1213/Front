@@ -4,4 +4,4 @@ generate:
 
 # Lint js,ts,vue files
 lint:
-	docker-compose exec front npm run lint
+	docker-compose exec front npm run lint -s
