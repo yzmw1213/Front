@@ -1,7 +1,7 @@
 # Generete Code by Protocol Buffer
 generate:
-	docker-compose exec front sh generate.sh
+	docker-compose exec client sh generate.sh
 
 # Lint js,ts,vue files
 lint:
-	docker-compose exec front npm run lint -s
+	docker-compose exec client npm run lint

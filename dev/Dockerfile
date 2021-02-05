@@ -25,5 +25,4 @@ COPY . /app
 
 ENV NODE_ENV development
 
-RUN npm i \
-    npm install eslint-plugin-prettier eslint-config-prettier --save-dev
+RUN npm i

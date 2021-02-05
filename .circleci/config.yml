@@ -18,7 +18,7 @@ jobs:
       - checkout
       - run:
           name: Dockerネットワーク作成
-          command: docker network create test-network
+          command: docker network create client_network
       - restore_cache:
           keys:
             - dependency-cache-{{ checksum "package-lock.json" }}
