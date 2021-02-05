@@ -52,9 +52,6 @@ export default class PostCard extends Vue {
   }
 
   selectUser(userId: number) {
-    if (userId === usersModule.loginUserId) {
-      return
-    }
     this.showUser(userId)
   }
 

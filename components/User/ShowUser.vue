@@ -7,16 +7,32 @@
       <div class="user_head_area">
         <div class="user_img" />
         <span>{{ item.userName }}</span>
-        <div class="action_area">
-          <!-- フォローする -->
-        </div>
+        <!-- プロフィール文、プロフィール修正のUI -->
+        <!-- <div
+          v-if="item.isLoginUser !== true"
+          class="action_area"
+        > -->
+          <!-- ログインユーザー未フォロー -->
+          <!-- <v-btn
+            v-if="item.followByLoginUser !== true"
+            @click="changeFollowStatus()"
+            color="primary"
+          >フォロー</v-btn> -->
+          <!-- ログインユーザーフォロー済 -->
+          <!-- <v-btn
+            v-if="item.followByLoginUser"
+            @click="changeFollowStatus()"
+            color="error"
+          >フォローを外す</v-btn> -->
+        <!-- </div> -->
       </div>
       <div class="user_lower_area">
-        <p>{{ item.profileText }}</p>
+        <p v-if="item.profileText">{{ item.profileText }}</p>
       </div>
     </div>
     <div class="tab_button_area">
       <v-tabs
+        v-model="tab"
         fixed-tabs
       >
         <v-tab
@@ -24,10 +40,11 @@
           :key="index"
         >
           {{ tab.name }}
-      </v-tab>
+        </v-tab>
       </v-tabs>
     </div>
     <ListPosts
+      :tab="target"
       @show-user="user"
     />
   </div>
