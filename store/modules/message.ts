@@ -1,4 +1,4 @@
-import { Mutation, MutationAction, Action, VuexModule, getModule, Module } from "vuex-module-decorators"
+import { Mutation, Action, VuexModule, getModule, Module } from "vuex-module-decorators"
 import store from "~/store/store"
 
 export interface MessageState {
@@ -30,13 +30,6 @@ class Message extends VuexModule implements MessageState {
   @Action({})
   public REMOVE_MESSAGE() {
     this.SET_MESSAGE("", "")
-  }
-
-  @MutationAction({ mutate: ["message"] })
-  async resetMessenger() {
-    return {
-      message: ""
-    }
   }
 }
 

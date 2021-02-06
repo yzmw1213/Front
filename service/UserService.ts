@@ -1,6 +1,7 @@
 import { User, UserProfile } from "~/grpc/user_pb"
 import { UserProfileItem } from "~/assets/ts/constructor/UserItem"
 import { UserServiceClient } from "~/grpc/UserServiceClientPb"
+import { usersModule } from "~/store/modules/users"
 
 let proxyServerUrl: string = ""
 
@@ -10,6 +11,7 @@ if (typeof url === "string") {
   proxyServerUrl = url
 }
 
+console.log("proxyServerUrl on User", proxyServerUrl)
 // Client credentials
 const userServiceClient: UserServiceClient = new UserServiceClient(
   proxyServerUrl, {}, {}
@@ -30,7 +32,9 @@ export type tUserProfileItem = {
   userID: number
   userName: string
   profileText: string
-  authority: number
+  authority: number,
+  isLoginUser: boolean,
+  followByLoginUser: boolean,
 }
 
 // Userkind ユーザー種類の型
@@ -70,6 +74,8 @@ export class UserService {
       profile.getUserName(),
       profile.getProfileText(),
       profile.getAuthority(),
+      profile.getUserId() === usersModule.loginUserId,
+      profile.getFollowUsersList().includes(usersModule.loginUserId),
     )
   }
 }

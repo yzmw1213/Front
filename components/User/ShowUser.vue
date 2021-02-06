@@ -8,23 +8,27 @@
         <div class="user_img" />
         <span>{{ item.userName }}</span>
         <!-- プロフィール文、プロフィール修正のUI -->
-        <!-- <div
+        <div
           v-if="item.isLoginUser !== true"
           class="action_area"
-        > -->
+        >
           <!-- ログインユーザー未フォロー -->
-          <!-- <v-btn
+          <v-btn
             v-if="item.followByLoginUser !== true"
-            @click="changeFollowStatus()"
             color="primary"
-          >フォロー</v-btn> -->
-          <!-- ログインユーザーフォロー済 -->
-          <!-- <v-btn
-            v-if="item.followByLoginUser"
             @click="changeFollowStatus()"
+          >
+            フォロー
+          </v-btn>
+          <!-- ログインユーザーフォロー済 -->
+          <v-btn
+            v-if="item.followByLoginUser"
             color="error"
-          >フォローを外す</v-btn> -->
-        <!-- </div> -->
+            @click="changeFollowStatus()"
+          >
+            フォローを外す
+          </v-btn>
+        </div>
       </div>
       <div class="user_lower_area">
         <p v-if="item.profileText">{{ item.profileText }}</p>
