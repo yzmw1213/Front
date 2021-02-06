@@ -1,4 +1,4 @@
-import { Component, Vue, Prop, Emit, Watch } from "nuxt-property-decorator"
+import { Component, Vue, Emit, Watch } from "nuxt-property-decorator"
 import ListPosts from "~/components/Post/List.vue"
 import { ReadUserRequest, ReadUserResponse } from "~/grpc/user_pb"
 import { UserService, tUserProfileItem, userServiceClient } from "~/service/UserService"
@@ -37,8 +37,8 @@ export default class ShowUser extends Vue {
     }
   ]
 
-  @Prop({ default: "", required: true })
-  detailUserId: string
+  // @Prop({ default: "", required: true })
+  // detailUserId: string
 
   created() {
     this.uService = new UserService()

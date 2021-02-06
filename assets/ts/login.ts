@@ -3,6 +3,8 @@ import { usersModule } from "@/store/modules/users"
 
 import {
   LoginRequest,
+  GuestLoginRequest,
+  SuperUserLoginRequest,
   LoginResponse,
 } from "~/grpc/user_pb"
 
@@ -12,10 +14,10 @@ import { userServiceClient } from "~/service/UserService"
 export default class Login extends Vue {
   // variables
   showPassword: boolean = false
-  email: string = "test@gmail.com"
+  email: string = ""
   demoUserEmail: string = "demo@gmail.com"
   demoSuperUserEmail: string = "super@gmail.com"
-  password: string = "password"
+  password: string = ""
   demoUserPassword: string = "password"
   demoSuperUserPassword: string = "password"
 
@@ -26,6 +28,7 @@ export default class Login extends Vue {
     request.setPassword(this.password)
     userServiceClient.login(request, {}, (err, res: LoginResponse | undefined) => {
       if (err != null) {
+        console.log("err login", err)
         // ログインに失敗したことをメッセージ表示
         this.$setStatusMessage("LOGIN_FAIL")
       } else {
@@ -35,23 +38,58 @@ export default class Login extends Vue {
         // 入力パスワード、メールアドレスをクリア
         this.password = ""
         this.email = ""
-
-        const auth = res!.getAuth()
-        const user = res!.getUser()
-        // トークン、ユーザーIDをストアに保存
-        usersModule.SET_TOKEN(auth!.getToken())
-        usersModule.SET_LOGIN_USER_ID(auth!.getUserId())
-        usersModule.SET_AUTH_KIND(auth!.getAuthority())
-        // ユーザー名をストアに保存
-        usersModule.SET_LOGIN_USER_NAME(user!.getUserName())
-        // ログインに成功したことをメッセージ表示
-        this.$setStatusMessage("LOGIN_SUCCESS")
-        this.goHome()
-        // ログイン画面に飛ばされる前のページに遷移する
-        // ログイン画面に飛ばされる前のコンポーネントをstoreに保存
-        // storeを参照する
+        this.loginSuccess(res!)
       }
     })
+  }
+
+  guestUserLogin() {
+    const request = new GuestLoginRequest()
+    userServiceClient.guestLogin(request, {}, (err, res: LoginResponse | undefined) => {
+      if (err != null) {
+        // ログインに失敗したことをメッセージ表示
+        this.$setStatusMessage("LOGIN_FAIL")
+      } else {
+        if (res === null) {
+          return
+        }
+        this.loginSuccess(res!)
+      }
+    })
+  }
+
+  superUserLogin() {
+    const request = new SuperUserLoginRequest()
+    userServiceClient.superUserLogin(request, {}, (err, res: LoginResponse | undefined) => {
+      if (err != null) {
+        console.log("err super", err)
+        // ログインに失敗したことをメッセージ表示
+        this.$setStatusMessage("LOGIN_FAIL")
+      } else {
+        if (res === null) {
+          return
+        }
+        this.loginSuccess(res!)
+      }
+    })
+  }
+
+  loginSuccess(res: LoginResponse) {
+    const auth = res.getAuth()
+    const user = res.getUser()
+    // トークン、ユーザーIDをストアに保存
+    usersModule.SET_TOKEN(auth!.getToken())
+    usersModule.SET_LOGIN_USER_ID(auth!.getUserId())
+    usersModule.SET_AUTH_KIND(auth!.getAuthority())
+    // ユーザー名をストアに保存
+    usersModule.SET_LOGIN_USER_NAME(user!.getUserName())
+    // ログインに成功したことをメッセージ表示
+    this.$setStatusMessage("LOGIN_SUCCESS")
+    this.goHomeAfterLogin()
+  }
+
+  @Emit("sign-up")
+  createUser() {
   }
 
   // トップ画面に遷移
@@ -59,20 +97,8 @@ export default class Login extends Vue {
   goHome() {
   }
 
+  // トップ画面に遷移
   @Emit("authenticated")
-  demoUserLogin() {
-    this.password = this.demoUserPassword
-    this.email = this.demoUserEmail
-    this.login()
-  }
-
-  demoSuperUserLogin() {
-    this.password = this.demoSuperUserPassword
-    this.email = this.demoSuperUserEmail
-    this.login()
-  }
-
-  @Emit("sign-up")
-  createUser() {
+  goHomeAfterLogin() {
   }
 }

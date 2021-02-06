@@ -47,14 +47,14 @@
             </v-list-item>
             <v-list-item
               v-if="auth"
-              @click="user"
+              @click="myPage"
             >
               <v-list-item-icon>
                 <v-icon>mdi-account</v-icon>
               </v-list-item-icon>
               <v-list-item-title>マイページ</v-list-item-title>
             </v-list-item>
-            <!-- 企業一覧 -->
+            <!-- ユーザー一覧 -->
             <v-list-item
               @click="listUser"
             >
@@ -63,7 +63,7 @@
               </v-list-item-icon>
               <v-list-item-title>ユーザー一覧</v-list-item-title>
             </v-list-item>
-            <!-- 企業アカウントの場合に表示 -->
+            <!-- 一般アカウントの場合に表示 -->
             <v-list-item
               v-if="isNormalUser() == true"
               @click="post"
@@ -123,7 +123,6 @@
       <v-main>
         <component
           :is="currentPage"
-          :detail-user-id="detailUserId"
           @authenticated="authed"
           @do-login="userLogin"
           @sign-up="signUp"

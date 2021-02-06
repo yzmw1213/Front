@@ -62,7 +62,7 @@
               color="secondary"
               block
               small
-              @click="demoUserLogin"
+              @click="guestUserLogin"
             >
               ゲストアカウントでログインする
             </v-btn>
@@ -87,7 +87,7 @@
               color="super"
               block
               small
-              @click="demoSuperUserLogin"
+              @click="superUserLogin"
             >
               管理者アカウントでログインする
             </v-btn>
