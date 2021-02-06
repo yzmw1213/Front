@@ -21,12 +21,16 @@ class UserProfileItem {
     public userID: number,
     public userName: string,
     public profileText: string,
-    public authority: number
+    public authority: number,
+    public isLoginUser: boolean,
+    public followByLoginUser: boolean
   ) {
     this.userID = userID
     this.userName = userName
     this.profileText = profileText
     this.authority = authority
+    this.isLoginUser = isLoginUser
+    this.followByLoginUser = followByLoginUser
   }
 }
 

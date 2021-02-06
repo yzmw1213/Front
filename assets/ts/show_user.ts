@@ -21,7 +21,8 @@ export default class ShowUser extends Vue {
     userName: "",
     profileText: "",
     authority: 0,
-    // followByLoginUser: false
+    isLoginUser: false,
+    followByLoginUser: false
   }
 
   // タブに応じて表示するコンポーネントを定義する
@@ -64,20 +65,22 @@ export default class ShowUser extends Vue {
   }
 
   // ユーザーに対するフォロー状態の更新
-  // changeFollowStatus() {
-  //   if (usersModule.loginUserId < 1) {
-  //     // まだログインして無い場合、ログイン画面に遷移
-  //     this.moveToLogin()
-  //     return
-  //   }
-  //   // likeを取り消す
-  //   if (this.item.followByLoginUser === true) {
-  //     this.item.followByLoginUser = false
-  //   // likeする
-  //   } else {
-  //     this.item.followByLoginUser = true
-  //   }
-  // }
+  changeFollowStatus() {
+    if (usersModule.loginUserId < 1) {
+      // まだログインして無い場合、ログイン画面に遷移
+      this.moveToLogin()
+      return
+    }
+    // フォローを取り消す
+    if (this.item.followByLoginUser === true) {
+      this.$notFollowUser(usersModule.loginUserId, this.item.userID)
+      this.item.followByLoginUser = false
+    // フォローする
+    } else {
+      this.$followUser(usersModule.loginUserId, this.item.userID)
+      this.item.followByLoginUser = true
+    }
+  }
 
   @Watch("tab")
   onChangeStatus() {
@@ -89,7 +92,7 @@ export default class ShowUser extends Vue {
   user() {
   }
 
-  // @Emit("do-login")
-  // moveToLogin() {
-  // }
+  @Emit("do-login")
+  moveToLogin() {
+  }
 }

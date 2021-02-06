@@ -20,6 +20,7 @@ message UserProfile {
   string user_name = 2;
   string profile_text = 3;
   uint32 authority = 4;
+  repeated uint32 follow_users=5;
 }
 
 message Auth {
@@ -65,13 +66,6 @@ message DeleteUserResponse {
   ResponseStatus status=1;
 }
 
-message ListCompanyRequest {
-}
-
-message ListCompanyResponse {
-  repeated UserProfile profile=1;
-}
-
 message ListUserRequest {
 }
 
@@ -97,14 +91,32 @@ message TokenAuthResponse {
   User user=1;
 }
 
+message FollowUserRequet {
+  uint32 follwer_user_id=1;
+  uint32 follwed_user_id=2;
+}
+
+message FollowUserResponse {
+  ResponseStatus status=1;
+}
+
+message UnFollowUserRequet {
+  uint32 follwer_user_id=1;
+  uint32 follwed_user_id=2;
+}
+
+message UnFollowUserResponse {
+  ResponseStatus status=1;
+}
+
 service UserService {
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
   rpc ReadUser(ReadUserRequest) returns (ReadUserResponse);
   rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
   rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
-  // ListCompany 廃止予定
-  rpc ListCompany(ListCompanyRequest) returns (ListCompanyResponse);
   rpc ListUser(ListUserRequest) returns (ListUserResponse);
   rpc Login(LoginRequest) returns (LoginResponse);
   rpc TokenAuth(TokenAuthRequest) returns (TokenAuthResponse);
+  rpc FollowUser(FollowUserRequet) returns (FollowUserResponse);
+  rpc UnFollowUser(UnFollowUserRequet) returns (UnFollowUserResponse);
 }
