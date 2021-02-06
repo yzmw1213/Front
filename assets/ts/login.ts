@@ -43,11 +43,6 @@ export default class Login extends Vue {
     })
   }
 
-  // トップ画面に遷移
-  @Emit("go-home")
-  goHome() {
-  }
-  
   guestUserLogin() {
     const request = new GuestLoginRequest()
     userServiceClient.guestLogin(request, {}, (err, res: LoginResponse | undefined) => {
@@ -90,10 +85,20 @@ export default class Login extends Vue {
     usersModule.SET_LOGIN_USER_NAME(user!.getUserName())
     // ログインに成功したことをメッセージ表示
     this.$setStatusMessage("LOGIN_SUCCESS")
-    this.goHome()
+    this.goHomeAfterLogin()
   }
 
   @Emit("sign-up")
   createUser() {
+  }
+
+  // トップ画面に遷移
+  @Emit("go-home")
+  goHome() {
+  }
+
+  // トップ画面に遷移
+  @Emit("authenticated")
+  goHomeAfterLogin() {
   }
 }

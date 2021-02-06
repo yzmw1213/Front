@@ -129,13 +129,19 @@ export default class Index extends Vue {
   }
 
   // ユーザー詳細画面
-  user(id: string) {
+  user() {
     this.drawer = false
     this.currentPage = "ShowUser"
     this.showFooterButton = true
-    this.detailUserId = id
     // ユーザーページ遷移時は、ユーザーが作成した投稿を表示
     postModule.SET_CONDITION("create")
+  }
+
+  // マイページ表示
+  myPage() {
+    usersModule.SET_USER_ID(usersModule.loginUserId)
+    // ユーザーページ遷移時は、ユーザーが作成した投稿を表示
+    this.user()
   }
 
   signUp() {
