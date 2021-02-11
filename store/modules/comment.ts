@@ -1,5 +1,6 @@
 import { Mutation, VuexModule, getModule, Module } from "vuex-module-decorators"
 import store from "~/store/store"
+import { Comment as _Comment } from "~/grpc/post_pb"
 
 import { tCommentItem } from "~/service/CommentService"
 
@@ -28,6 +29,16 @@ class Comment extends VuexModule implements CommentState {
   @Mutation
   public SET_EDIT_COMMENT(eComment: tCommentItem) {
     this.editComment = eComment
+  }
+}
+
+export const mapPbCommentToComment = (comment: _Comment): tCommentItem => {
+  return {
+    commentID: comment.getId(),
+    postID: comment.getPostId(),
+    commentContent: comment.getContent(),
+    createUserID: comment.getCreateUserId(),
+    createUserName: comment.getCreateUserName()
   }
 }
 

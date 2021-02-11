@@ -1,15 +1,5 @@
 <template>
   <div class="content_inner">
-    <!-- ヘッダーエリア -->
-    <div class="page_header_area">
-      <h2 class="page_header_title_area">
-        <span class="header_main">POSTS</span>
-        <span class="header_sub">コンテンツ</span>
-      </h2>
-    </div>
-
-    <!-- フォロー、いいねの通知 -->
-
     <!-- 検索エリア -->
     <div class="search_area" />
     <!-- コンテントエリア -->
