@@ -68,7 +68,6 @@ class Post extends VuexModule implements PostState {
   // 表示ユーザーが作成した投稿を取得
   @Action({ commit: "SET_POSTS" })
   async getPostsByCreateUserID(id: number) {
-    alert("getPostsByCreateUserID")
     const cp: tPostItem[] = []
     let i = 0
     const request = new ListPostRequest()
@@ -91,7 +90,6 @@ class Post extends VuexModule implements PostState {
   // 表示ユーザーがLIKEした投稿を取得
   @Action({ commit: "SET_POSTS" })
   async getPostsByLikeUserID(id: number) {
-    alert("getPostsByLikeUserID")
     const lp: tPostItem[] = []
     let i = 0
     const request = new ListPostRequest()
@@ -113,7 +111,6 @@ class Post extends VuexModule implements PostState {
   // 選択したタグが付与された投稿を取得
   @Action({ commit: "SET_POSTS" })
   async getPostsByTagID(id: number) {
-    alert("getPostsByTagID")
     const tp: tPostItem[] = []
     let i = 0
     const request = new ListPostRequest()
@@ -135,7 +132,6 @@ class Post extends VuexModule implements PostState {
   // 全ての投稿を取得
   @Action({ commit: "SET_POSTS" })
   async getAllPosts() {
-    alert("getAllPosts")
     const p: tPostItem[] = []
     let i = 0
     const request = new ListPostRequest()

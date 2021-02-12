@@ -13,7 +13,7 @@
         <v-btn
           color="primary"
           dark
-          class="mb-2"
+          class="button_area"
           @click="createTag"
         >
           タグ追加
