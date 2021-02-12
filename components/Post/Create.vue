@@ -1,12 +1,9 @@
 <template>
   <div class="content_inner">
     <div class="page_header_area">
-      <div class="page_header_logo_area">
-        <span>some logos</span>
-      </div>
       <h2 class="page_header_title_area">
         <span class="header_main">POST</span>
-        <span class="header_sub">物件を投稿しよう</span>
+        <span class="header_sub">発酵食品を投稿しよう</span>
       </h2>
     </div>
 
@@ -28,7 +25,7 @@
             no-resize
             label="タイトル"
             :error-messages="errors"
-            placeholder="駅から徒歩5分!冷蔵庫、洗濯機つき"
+            placeholder="風味が素晴らしい!チリンビール淡麗生"
             :success="valid"
             required
             rows="3"
@@ -52,7 +49,7 @@
             rounded
             label="本文"
             :error-messages="errors"
-            placeholder="とても住みやすいお部屋です"
+            placeholder="とても飲みやすいビールです"
             :success="valid"
             required
             rows="5"

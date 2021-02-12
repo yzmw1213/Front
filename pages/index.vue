@@ -4,7 +4,6 @@
     <Header
       :authed="auth"
       @open-nav="openNav"
-      @do-search="search"
       @do-login="userLogin"
       @do-logout="logout"
       @go-home="home"
@@ -24,11 +23,11 @@
         app
         left
       >
-        <search-form
+        <!-- <search-form
           class="header_form"
           :nav-drawer="drawer"
           @search="search"
-        />
+        /> -->
         <v-list
           nav
           dense
@@ -120,19 +119,21 @@
           </div>
         </template>
       </v-navigation-drawer>
-      <v-main>
-        <component
-          :is="currentPage"
-          @authenticated="authed"
-          @do-login="userLogin"
-          @sign-up="signUp"
-          @go-home="home"
-          @go-tag-list="listTag"
-          @edit-tag="createTag"
-          @show-post="showPost"
-          @show-user="user"
-        />
-      </v-main>
+      <!-- <search-dialog
+        @do-search="search"
+      /> -->
+
+      <component
+        :is="currentPage"
+        @authenticated="authed"
+        @do-login="userLogin"
+        @sign-up="signUp"
+        @go-home="home"
+        @go-tag-list="listTag"
+        @edit-tag="createTag"
+        @show-post="showPost"
+        @show-user="user"
+      />
       <!-- フッターボタンエリア -->
       <FooterButtonArea
         v-if="showFooterButton"

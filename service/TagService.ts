@@ -5,7 +5,7 @@ import { TagItem } from "~/assets/ts/constructor/TagItem"
 import { TagServiceClient } from "~/grpc/TagServiceClientPb"
 
 let proxyServerUrl: string = ""
-const url = process.env.NUXT_ENV_PROXY_SERVER_URL
+const url = process.env.NODE_ENV === "production" ? process.env.NUXT_ENV_API_DNS : "http://localhost:8080"
 
 if (typeof url === "string") {
   proxyServerUrl = url

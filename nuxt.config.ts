@@ -67,7 +67,9 @@ const config: Configuration = {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      // dark: true,
+      dark: false,
+      default: 'dark',
+      disable: false,
       themes: {
         light: {
           primary: colors.indigo.lighten1,
@@ -82,8 +84,24 @@ const config: Configuration = {
           success: colors.green.accent3,
           backgound: colors.brown.lighten5,
         },
+        dark: {
+          primary: colors.indigo.lighten1,
+          accent: colors.grey.darken3,
+          secondary: colors.lime.lighten2,
+          tertiary: colors.amber.darken3,
+          super: colors.pink.lighten3,
+          negative: colors.grey.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3,
+          backgound: colors.brown.lighten5,
+        },
+      },
+      options: {
       }
-    }
+    },
+    optionsPath: './vuetify.options.js',
   },
   /*
   ** Build configuration

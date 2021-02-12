@@ -20,5 +20,6 @@ module.exports = {
     "no-console": "off",
     "space-before-function-paren": ["error", "never"],
     "vue/singleline-html-element-content-newline": "off",
+    "object-shorthand": [0, "never"],
   }
 }

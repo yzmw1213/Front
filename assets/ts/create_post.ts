@@ -2,6 +2,7 @@ import { Component, Vue, Emit } from "nuxt-property-decorator"
 import { Error } from "grpc-web"
 import { postModule } from "@/store/modules/post"
 import { usersModule } from "@/store/modules/users"
+import { tagsModule } from "~/store/modules/tags"
 
 import {
   CreatePostRequest,
@@ -12,13 +13,7 @@ import {
   UpdatePostResponse,
 } from "~/grpc/post_pb"
 
-import {
-  ListValidTagRequest,
-  ListValidTagResponse,
-} from "~/grpc/tag_pb"
-
 import { tPostItem, postServiceClient, PostService } from "~/service/PostService"
-import { TTagChoice, tagServiceClient } from "~/service/TagService"
 
 @Component({})
 export default class CreatePost extends Vue {
@@ -30,7 +25,7 @@ export default class CreatePost extends Vue {
     image: "",
   }
 
-  validTags: TTagChoice[] = []
+  // validTags: TTagChoice[] = []
 
   editedItem: tPostItem = {
     postID: 0,
@@ -50,7 +45,10 @@ export default class CreatePost extends Vue {
 
   created() {
     this.pService = new PostService()
-    this.getValidTag()
+  }
+
+  get validTags() {
+    return tagsModule.validTags
   }
 
   // methods
@@ -102,24 +100,24 @@ export default class CreatePost extends Vue {
   }
 
   // getValidTag 有効タグを取得しセレクトボックスに格納する
-  getValidTag() {
-    let i = 0
-    const request = new ListValidTagRequest()
-    tagServiceClient.listValidTag(request, {}, (err, res: ListValidTagResponse) => {
-      while (i < res.getTagList().length) {
-        if (err != null) {
-          this.$setStatusMessage("UNKNOWN_ERROR")
-        }
-        const tag = res.getTagList()[i]
-        const tagChoice: TTagChoice = {
-          text: tag.getTagName(),
-          key: tag.getTagId()
-        }
-        this.validTags.push(tagChoice)
-        i++
-      }
-    })
-  }
+  // getValidTag() {
+  //   let i = 0
+  //   const request = new ListValidTagRequest()
+  //   tagServiceClient.listValidTag(request, {}, (err, res: ListValidTagResponse) => {
+  //     while (i < res.getTagList().length) {
+  //       if (err != null) {
+  //         this.$setStatusMessage("UNKNOWN_ERROR")
+  //       }
+  //       const tag = res.getTagList()[i]
+  //       const tagChoice: TTagChoice = {
+  //         text: tag.getTagName(),
+  //         key: tag.getTagId()
+  //       }
+  //       this.validTags.push(tagChoice)
+  //       i++
+  //     }
+  //   })
+  // }
 
   @Emit("go-home")
   cancelPost() {

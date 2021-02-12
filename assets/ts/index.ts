@@ -1,4 +1,7 @@
 import { Component, Vue } from "nuxt-property-decorator"
+import { postModule } from "~/store/modules/post"
+// import { searchModule } from "@/store/modules/search"
+import { tagsModule } from "~/store/modules/tags"
 import { usersModule } from "@/store/modules/users"
 import { UserAuthority } from "~/plugins/const"
 
@@ -8,15 +11,14 @@ import Footer from "~/components/ui/Footer.vue"
 import FooterButtonArea from "~/components/ui/FooterButtonArea.vue"
 import Message from "~/components/ui/Message.vue"
 import Login from "~/components/Login/Login.vue"
-import ListUser from "~/components/User/List.vue"
 import CreateTag from "~/components/Tag/Create.vue"
 import ListTag from "~/components/Tag/List.vue"
 import CreatePost from "~/components/Post/Create.vue"
 import SignUp from "~/components/Login/SignUp.vue"
+// import SearchDialog from "~/components/ui/SearchDialog.vue"
 import SearchForm from "~/components/ui/SearchForm.vue"
 import ShowPost from "~/components/Post/Show.vue"
 import ShowUser from "~/components/User/ShowUser.vue"
-import { postModule } from "~/store/modules/post"
 
 @Component({
   components: {
@@ -26,11 +28,11 @@ import { postModule } from "~/store/modules/post"
     FooterButtonArea,
     Message,
     Login,
-    ListUser,
     CreatePost,
     CreateTag,
     ListTag,
     SignUp,
+    // SearchDialog,
     SearchForm,
     ShowPost,
     ShowUser,
@@ -46,6 +48,14 @@ export default class Index extends Vue {
 
   get getAuthKind() {
     return usersModule.authority
+  }
+
+  get validTags() {
+    return tagsModule.validTags
+  }
+
+  created() {
+    tagsModule.getValidTags()
   }
 
   isNormalUser(): boolean {
@@ -118,10 +128,11 @@ export default class Index extends Vue {
     this.currentPage = "CreateTag"
   }
 
-  search(inputVal: any) {
-    console.log("search func on index")
-    console.log(inputVal)
-  }
+  // search() {
+  //   this.currentPage = "Home"
+  //   searchModule.SET_EXEC_STATE("")
+  //   this.$nuxt.$emit("doSearch")
+  // }
 
   showPost() {
     this.currentPage = "ShowPost"
