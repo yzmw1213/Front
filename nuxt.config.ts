@@ -34,7 +34,6 @@ const config: Configuration = {
     '~/assets/scss/header.scss',
     '~/assets/scss/message.scss',
     '~/assets/scss/post_card.scss',
-    '~/assets/scss/search_dialog.scss',
     '~/assets/scss/show_post.scss',
   ],
   /*
