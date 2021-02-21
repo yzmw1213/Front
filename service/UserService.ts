@@ -5,8 +5,9 @@ import { usersModule } from "~/store/modules/users"
 
 let proxyServerUrl: string = ""
 
-const url = process.env.NODE_ENV === "production" ? process.env.NUXT_ENV_API_DNS : "http://localhost:8080"
+// const url = process.env.NODE_ENV === "production" ? process.env.NUXT_ENV_API_DNS : "http://localhost:8080"
 
+const url = "https://api.fermentgo.com:443"
 if (typeof url === "string") {
   proxyServerUrl = url
 }
