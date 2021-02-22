@@ -11,6 +11,8 @@ if (typeof url === "string") {
   proxyServerUrl = url
 }
 
+console.log("proxyServerUrl on Post", proxyServerUrl)
+
 // Client credentials
 const postServiceClient: PostServiceClient = new PostServiceClient(
   proxyServerUrl, {}, {}
