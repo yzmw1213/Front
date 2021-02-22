@@ -3,7 +3,7 @@
     <!-- ログイン画面では、page_header_areaの代わりにアプリのロゴを表示するなど -->
     <div class="page_header_area">
       <h2 class="page_header_title_area">
-        <span class="header_main">ログイン</span>
+        <span class="header_main">あああああ</span>
       </h2>
     </div>
 
