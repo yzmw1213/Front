@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div
+  <v-layout row wrap>
+    <v-flex
       v-for="(post, index) of posts"
       :key="post.post_id"
     >
@@ -11,8 +11,8 @@
         @show-post="showPost"
         @show-user="showUser"
       />
-    </div>
-  </div>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script lang="ts" src="@/assets/ts/list_post.ts"></script>

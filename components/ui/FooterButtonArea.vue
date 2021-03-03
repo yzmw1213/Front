@@ -2,7 +2,7 @@
   <div class="footer_button_area">
     <v-col>
       <v-btn
-        :color="$vuetify.theme.themes.light.negative"
+        color="accent"
         block
         small
         @click="goHome()"

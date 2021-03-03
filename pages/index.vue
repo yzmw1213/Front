@@ -2,12 +2,13 @@
   <div class="content_wrapper">
     <!-- ヘッダー -->
     <Header
-      :authed="auth"
       @open-nav="openNav"
       @do-login="userLogin"
       @do-logout="logout"
+      @do-post="post"
+      @do-tag="listTag"
       @go-home="home"
-      @show-user="user"
+      @show-user="myPage"
       @sign-up="signUp"
     />
     <v-container
@@ -23,11 +24,6 @@
         app
         left
       >
-        <!-- <search-form
-          class="header_form"
-          :nav-drawer="drawer"
-          @search="search"
-        /> -->
         <v-list
           nav
           dense
@@ -53,15 +49,6 @@
               </v-list-item-icon>
               <v-list-item-title>マイページ</v-list-item-title>
             </v-list-item>
-            <!-- ユーザー一覧 -->
-            <v-list-item
-              @click="listUser"
-            >
-              <v-list-item-icon>
-                <v-icon>mdi-office-building</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>ユーザー一覧</v-list-item-title>
-            </v-list-item>
             <!-- 一般アカウントの場合に表示 -->
             <v-list-item
               v-if="isNormalUser() == true"
@@ -70,7 +57,7 @@
               <v-list-item-icon>
                 <v-icon>mdi-lead-pencil</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>物件を投稿する</v-list-item-title>
+              <v-list-item-title>発酵食品を投稿する</v-list-item-title>
             </v-list-item>
             <!-- 管理者アカウントの場合に表示 -->
             <v-list-item
@@ -119,10 +106,9 @@
           </div>
         </template>
       </v-navigation-drawer>
-      <!-- <search-dialog
-        @do-search="search"
-      /> -->
-
+      <search-dialog
+        v-if="showSearchDialog"
+      />
       <component
         :is="currentPage"
         @authenticated="authed"

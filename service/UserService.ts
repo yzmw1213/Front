@@ -11,7 +11,6 @@ if (typeof url === "string") {
   proxyServerUrl = url
 }
 
-console.log("proxyServerUrl on User", proxyServerUrl)
 // Client credentials
 const userServiceClient: UserServiceClient = new UserServiceClient(
   proxyServerUrl, {}, {}

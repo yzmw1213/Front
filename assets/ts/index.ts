@@ -1,6 +1,5 @@
 import { Component, Vue } from "nuxt-property-decorator"
 import { postModule } from "~/store/modules/post"
-// import { searchModule } from "@/store/modules/search"
 import { tagsModule } from "~/store/modules/tags"
 import { usersModule } from "@/store/modules/users"
 import { UserAuthority } from "~/plugins/const"
@@ -15,8 +14,7 @@ import CreateTag from "~/components/Tag/Create.vue"
 import ListTag from "~/components/Tag/List.vue"
 import CreatePost from "~/components/Post/Create.vue"
 import SignUp from "~/components/Login/SignUp.vue"
-// import SearchDialog from "~/components/ui/SearchDialog.vue"
-import SearchForm from "~/components/ui/SearchForm.vue"
+import SearchDialog from "~/components/ui/SearchDialog.vue"
 import ShowPost from "~/components/Post/Show.vue"
 import ShowUser from "~/components/User/ShowUser.vue"
 
@@ -32,8 +30,7 @@ import ShowUser from "~/components/User/ShowUser.vue"
     CreateTag,
     ListTag,
     SignUp,
-    // SearchDialog,
-    SearchForm,
+    SearchDialog,
     ShowPost,
     ShowUser,
   }
@@ -42,6 +39,8 @@ import ShowUser from "~/components/User/ShowUser.vue"
 export default class Index extends Vue {
   drawer: boolean = false;
   auth: boolean = false;
+  showSearchDialogButton: boolean = true
+  showSearchDialog: boolean = true
   showFooterButton: boolean = false
   currentPage: string = "Home"
   detailUserId: string = ""
@@ -55,7 +54,6 @@ export default class Index extends Vue {
   }
 
   created() {
-    tagsModule.getValidTags()
   }
 
   isNormalUser(): boolean {
@@ -77,6 +75,7 @@ export default class Index extends Vue {
 
   userLogin() {
     this.drawer = false
+    this.showSearchDialog = false
     this.showFooterButton = false
     this.currentPage = "Login"
   }
@@ -86,12 +85,14 @@ export default class Index extends Vue {
     usersModule.logout()
     // ログアウトに成功したことをメッセージ表示
     this.$setStatusMessage("LOGOUT_SUCCESS")
+    this.showSearchDialog = false
     this.showFooterButton = false
     this.currentPage = "Login"
   }
 
   authed() {
     this.currentPage = "Home"
+    this.showSearchDialog = true
     this.showFooterButton = false
     this.auth = true
   }
@@ -99,6 +100,7 @@ export default class Index extends Vue {
   home() {
     this.drawer = false
     this.showFooterButton = false
+    this.showSearchDialog = true
     this.currentPage = "Home"
     postModule.SET_CONDITION("")
     usersModule.SET_USER_ID(0)
@@ -106,6 +108,7 @@ export default class Index extends Vue {
 
   post() {
     this.drawer = false
+    this.showSearchDialog = false
     this.showFooterButton = false
     this.currentPage = "CreatePost"
   }
@@ -118,24 +121,21 @@ export default class Index extends Vue {
 
   listTag() {
     this.drawer = false
+    this.showSearchDialog = false
     this.showFooterButton = true
     this.currentPage = "ListTag"
   }
 
   createTag() {
     this.drawer = false
+    this.showSearchDialog = false
     this.showFooterButton = false
     this.currentPage = "CreateTag"
   }
 
-  // search() {
-  //   this.currentPage = "Home"
-  //   searchModule.SET_EXEC_STATE("")
-  //   this.$nuxt.$emit("doSearch")
-  // }
-
   showPost() {
     this.currentPage = "ShowPost"
+    this.showSearchDialog = false
     this.showFooterButton = true
   }
 
@@ -143,6 +143,7 @@ export default class Index extends Vue {
   user() {
     this.drawer = false
     this.currentPage = "ShowUser"
+    this.showSearchDialog = false
     this.showFooterButton = true
     // ユーザーページ遷移時は、ユーザーが作成した投稿を表示
     postModule.SET_CONDITION("create")
@@ -158,6 +159,7 @@ export default class Index extends Vue {
   signUp() {
     this.drawer = false
     this.currentPage = "SignUp"
+    this.showSearchDialog = false
     this.showFooterButton = false
   }
 }

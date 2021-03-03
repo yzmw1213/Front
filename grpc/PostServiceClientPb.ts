@@ -30,8 +30,6 @@ import {
   NotLikePostResponse,
   ReadPostRequest,
   ReadPostResponse,
-  SearchPostRequest,
-  SearchPostResponse,
   UpdateCommentRequest,
   UpdateCommentResponse,
   UpdatePostRequest,
@@ -334,46 +332,6 @@ export class PostServiceClient {
     request,
     metadata || {},
     this.methodInfoListPost);
-  }
-
-  methodInfoSearchPost = new grpcWeb.AbstractClientBase.MethodInfo(
-    SearchPostResponse,
-    (request: SearchPostRequest) => {
-      return request.serializeBinary();
-    },
-    SearchPostResponse.deserializeBinary
-  );
-
-  searchPost(
-    request: SearchPostRequest,
-    metadata: grpcWeb.Metadata | null): Promise<SearchPostResponse>;
-
-  searchPost(
-    request: SearchPostRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback: (err: grpcWeb.Error,
-               response: SearchPostResponse) => void): grpcWeb.ClientReadableStream<SearchPostResponse>;
-
-  searchPost(
-    request: SearchPostRequest,
-    metadata: grpcWeb.Metadata | null,
-    callback?: (err: grpcWeb.Error,
-               response: SearchPostResponse) => void) {
-    if (callback !== undefined) {
-      return this.client_.rpcCall(
-        this.hostname_ +
-          '/postservice.PostService/SearchPost',
-        request,
-        metadata || {},
-        this.methodInfoSearchPost,
-        callback);
-    }
-    return this.client_.unaryCall(
-    this.hostname_ +
-      '/postservice.PostService/SearchPost',
-    request,
-    metadata || {},
-    this.methodInfoSearchPost);
   }
 
   methodInfoCreateComment = new grpcWeb.AbstractClientBase.MethodInfo(

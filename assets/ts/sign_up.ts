@@ -17,8 +17,6 @@ export default class SignUp extends Vue {
   showPassword: boolean = false
   showConfirmPassword: boolean = false
   confirmPassword: string = ""
-  // confirmCheck: string = ""
-  // confirmMessage: string = "※登録後、ユーザー区分・性別は変更できません。"
   editedUser: tUserItem = {
     userID: 0,
     userName: "",
@@ -30,8 +28,6 @@ export default class SignUp extends Vue {
 
   created() {
     this.uService = new UserService()
-    console.log(UserKind[1])
-    console.log(UserKind[2])
   }
 
   userKind: tUserkind = UserKind
@@ -51,7 +47,6 @@ export default class SignUp extends Vue {
     userServiceClient.createUser(request, {}, (err, res: CreateUserResponse) => {
       this.handleCreateUpdateResponse(res, err)
       if (err == null) {
-        console.log("go login")
         this.cancelCreateUser()
       }
     })

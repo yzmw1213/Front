@@ -398,54 +398,6 @@ export namespace ListPostResponse {
   }
 }
 
-export class SearchPostRequest extends jspb.Message {
-  getTagList(): Array<number>;
-  setTagList(value: Array<number>): SearchPostRequest;
-  clearTagList(): SearchPostRequest;
-  addTag(value: number, index?: number): SearchPostRequest;
-
-  getText(): string;
-  setText(value: string): SearchPostRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SearchPostRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: SearchPostRequest): SearchPostRequest.AsObject;
-  static serializeBinaryToWriter(message: SearchPostRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SearchPostRequest;
-  static deserializeBinaryFromReader(message: SearchPostRequest, reader: jspb.BinaryReader): SearchPostRequest;
-}
-
-export namespace SearchPostRequest {
-  export type AsObject = {
-    tagList: Array<number>,
-    text: string,
-  }
-}
-
-export class SearchPostResponse extends jspb.Message {
-  getCount(): number;
-  setCount(value: number): SearchPostResponse;
-
-  getPostList(): Array<Post>;
-  setPostList(value: Array<Post>): SearchPostResponse;
-  clearPostList(): SearchPostResponse;
-  addPost(value?: Post, index?: number): Post;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SearchPostResponse.AsObject;
-  static toObject(includeInstance: boolean, msg: SearchPostResponse): SearchPostResponse.AsObject;
-  static serializeBinaryToWriter(message: SearchPostResponse, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SearchPostResponse;
-  static deserializeBinaryFromReader(message: SearchPostResponse, reader: jspb.BinaryReader): SearchPostResponse;
-}
-
-export namespace SearchPostResponse {
-  export type AsObject = {
-    count: number,
-    postList: Array<Post.AsObject>,
-  }
-}
-
 export class CreateCommentRequest extends jspb.Message {
   getComment(): Comment | undefined;
   setComment(value?: Comment): CreateCommentRequest;

@@ -30,20 +30,12 @@ export default class ShowPosts extends Vue {
 
   //  methods
   initialize() {
-    // this.posts = []
     if (postModule.condition === "create") {
       postModule.getPostsByCreateUserID(usersModule.userId)
-      // this.$store.dispatch("post/getPostsByCreateUserID",usersModule.userId)
     } else if (postModule.condition === "like") {
       postModule.getPostsByLikeUserID(usersModule.userId)
-      console.log("get like Posts")
-    } else if (postModule.condition === "search") {
-      // this.searchPosts()
-    } else if (postModule.condition === "tag") {
-      console.log("tag")
     } else {
       postModule.getAllPosts()
-      // await this.$store.dispatch("post/getAllPosts")
     }
   }
 
@@ -52,8 +44,6 @@ export default class ShowPosts extends Vue {
 
   @Watch("tab")
   onChangeTarget() {
-    console.log("tab")
-    // this.getPosts()
     this.initialize()
   }
 

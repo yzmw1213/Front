@@ -63,9 +63,6 @@ export default class CreatePost extends Vue {
       this.update(post)
     }
     // imageはgRPCでサーバーに送り、サーバー側の処理でS3に上げる。
-    console.log(this.editedItem.content)
-    console.log(this.submittedArticle.image)
-    console.log(this.submittedArticle.title)
 
     // ファイルの更新日時を取得し、古い場合はワーニングを出すなど
   }

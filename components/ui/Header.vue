@@ -50,16 +50,26 @@
           @click="signUp"
         >
           <v-icon>mdi-account-plus</v-icon>
-          アカウント新規登録
+          新規アカウント登録
+        </li>
+        <li
+          v-if="isNormalUser() == true"
+          class="button_item"
+          @click="post"
+        >
+          <v-icon>mdi-lead-pencil</v-icon>
+          発酵食品を投稿する
+        </li>
+        <li
+          v-if="isSuperUser() == true"
+          class="button_item"
+          @click="tag"
+        >
+          <v-icon>mdi-lead-pencil</v-icon>
+          タグを管理する
         </li>
       </ul>
       <v-spacer />
-      <!-- PC・タブレットで表示 -->
-      <search-form
-        v-if="$vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl"
-        class="header_form"
-        @search="searchEvent"
-      />
     </v-app-bar>
   </v-card>
 </template>
