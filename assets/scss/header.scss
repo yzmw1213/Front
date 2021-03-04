@@ -1,0 +1,39 @@
+// common variables
+@import '_variables.scss';
+
+.v-application--wrap {
+
+  .content_wrapper {
+
+    // ヘッダー
+    .v-app-bar{
+
+      .v-toolbar__content {
+        width: 100%;
+
+        .v-toolbar__title {
+          margin-right: 2 * $MARGIN_SIZE_LARGE;
+        }
+
+        .v-toolbar__items {
+          margin: 2 * $MARGIN_SIZE_LARGE 2 * $MARGIN_SIZE_LARGE 0 0;
+          display: inline-block;
+        }
+
+        .header_nav {
+          list-style: none;
+          display: flex;
+
+          li.button_item {
+            margin-left: $MARGIN_SIZE_NORMAL;
+            color: $LINK_FONT_COLOR;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}

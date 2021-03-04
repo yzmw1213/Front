@@ -1,0 +1,86 @@
+// common variables
+@import '_variables.scss';
+
+.v-application--wrap {
+
+  .content_wrapper {
+
+    .container {
+      margin-top: $MARGIN_SIZE_SMALL;
+      padding-top: $HEADER_HIGHT;
+      word-wrap: break-word;
+      padding-bottom: 2 * $MARGIN_SIZE_NORMAL;
+
+      .content_inner {
+        // 各ページコンポーネント上部ヘッダー
+        .page_header_area {
+          .page_header_logo_area {
+            margin: 0 auto 50px;
+            display: block;
+            text-align: center;
+          }
+
+          .page_header_title_area {
+            text-align: center;
+            display: block;
+            margin:4 * $MARGIN_SIZE_LARGE 0 50px;
+
+            .header_main {
+              font-size: 2 * $MARGIN_SIZE_LARGE;
+              letter-spacing: .2em;
+            }
+
+            .header_main, .header_sub {
+              display: block;
+              line-height: 1.2;
+            }
+          }
+        }
+        // 縦並びボタン間div
+        div.button_dividor {
+          display: inline-block;
+          text-align: center;
+        }
+
+        div.wide_content_area {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+
+button.v-btn--block {
+  box-shadow: 0 2px #13cbd8;
+}
+
+button.red_text {
+  color: #ff3232 !important;
+  caret-color: #ff3232 !important;
+}
+
+.v-form {
+  padding: 8px 16px;
+
+  div.check_message_area {
+
+    p.check_message {
+      margin-bottom: 0;
+    }
+
+    .v-input--selection-controls {
+      margin-top: 0;
+    }
+  }
+}
+
+div.wide_screen{
+  background-color: $BACK_COLOR;
+  width: 48%;
+}
+
+.button_area {
+  margin: $MARGIN_SIZE_SMALL
+}

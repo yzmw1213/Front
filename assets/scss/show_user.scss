@@ -1,0 +1,40 @@
+@import '_variables.scss';
+
+.content_inner{
+
+  p.title_text {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+  }
+
+  .user_area {
+
+    .user_head_area {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5em;
+      padding-right: 0.5em;
+
+      .user_img {
+        background-color: black;
+        border-radius: 50%;
+        width:  40px;
+        height: 40px;
+        margin-right: 1em;
+      }
+      .action_area {
+        margin: 0 0 0 auto;
+        justify-content: right;
+      }
+    }
+    .user_lower_area {
+      letter-spacing: 0.5px;
+      text-indent: 1em;
+
+      .profile_text {
+        font-size: 12px;
+      }
+    }
+  }
+}

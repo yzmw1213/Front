@@ -1,0 +1,78 @@
+@import '_variables.scss';
+
+.v-application--wrap {
+
+  .content_wrapper {
+
+    .container {
+
+      .content_inner{
+
+        .content_lower_area {
+
+          p.title_text {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+          }
+
+          .user_area {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5em;
+            padding-right: 2.5em;
+
+            .user_img {
+              background-color: black;
+              border-radius: 50%;
+              width:  40px;
+              height: 40px;
+              margin-right: 1em;
+            }
+            .action_area {
+              margin: 0 0 0 auto;
+              justify-content: right;
+            }
+          }
+        }
+
+        .comment_area {
+          font-size: $SUB_FONT_SIZE;
+          padding: 0.5em 1em;
+          margin: 1em 0 0;
+
+          .comment {
+            border-bottom: 0.1px dotted black;
+            margin-bottom: 2px;
+
+            .user_area {
+              display: flex;
+              align-items: center;
+              margin-bottom: 0.5em;
+              padding-right: 1em;
+
+              .action_area {
+                margin: 0 0 0 auto;
+                justify-content: right;
+              }
+
+              .user_img {
+                background-color: black;
+                border-radius: 50%;
+                width:  32px;
+                height: 32px;
+                margin-right: 1em;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.content_area, .comment_area{
+  p {
+    text-indent: 1em;
+  }
+}

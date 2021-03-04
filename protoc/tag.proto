@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package tagservice;
+
+option go_package = ".;tagservice";
+
+message Tag {
+  uint32 tag_id =1;
+  string tag_name =2;
+  uint32 status = 3;
+  uint32 createUser_id =4;
+  uint32 updateUser_id =5;
+}
+
+message ResponseStatus {
+  string code=1;
+}
+
+message CreateTagRequest {
+  Tag tag=1;
+}
+
+message CreateTagResponse {
+  ResponseStatus status=1;
+}
+
+message UpdateTagRequest {
+  Tag tag=1;
+}
+
+message UpdateTagResponse {
+  ResponseStatus status=1;
+}
+
+message DeleteTagRequest {
+  uint32 tag_id =1;
+}
+
+message DeleteTagResponse {
+  ResponseStatus status=1;
+}
+
+message ListTagRequest {
+}
+
+message ListTagResponse {
+  repeated Tag tag=1;
+}
+
+message ListValidTagRequest {
+}
+
+message ListValidTagResponse {
+  repeated Tag tag=1;
+}
+
+service TagService {
+  rpc CreateTag(CreateTagRequest) returns (CreateTagResponse);
+  rpc DeleteTag(DeleteTagRequest) returns (DeleteTagResponse);
+  rpc UpdateTag(UpdateTagRequest) returns (UpdateTagResponse);
+  rpc ListTag(ListTagRequest) returns (ListTagResponse);
+  rpc ListValidTag(ListValidTagRequest) returns (ListValidTagResponse);
+}

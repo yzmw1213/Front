@@ -1,49 +1,51 @@
 version: 2.1
 orbs:
   node: circleci/node@1.1.6
+  aws-ecr: circleci/aws-ecr@6.0.0
+  aws-ecs: circleci/aws-ecs@1.1.0
 jobs:
-  shellcheck:
+  test:
     docker:
-      - image: koalaman/shellcheck-alpine:stable
+      - image: circleci/node:10.16.3
+    # working_directory: ~/app
     steps:
       - checkout
-      - run:
-          name: スクリプトチェック
-          command: |
-            find . -type f -name '*.sh' | wc -l
-            find . -type f -name '*.sh' | xargs shellcheck --external-sources
-  build:
-    machine: true
-    steps:
-      - checkout
-      - run:
-          name: Dockerネットワーク作成
-          command: docker network create client_network
       - restore_cache:
           keys:
-            - dependency-cache-{{ checksum "package-lock.json" }}
-      - run: 
-          name: ビルド
-          command: docker-compose build
-      - save_cache: # 依存関係キャッシュを保存する特別なステップ
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+            - v1-dependencies-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
           paths:
-            - ./node_modules
-      - run: 
-          name: 起動
-          command: docker-compose up -d
-      - run:
-          name: protocol buffersによるコード生成
-          command: make generate
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: lint
-          command: make lint
-
+          command: npm run lint
 workflows:
   version: 2
   workflow:
     jobs:
-      - shellcheck
-      - build:
+      - test
+      # dockerイメージのビルド & ECRへプッシュ
+      - aws-ecr/build-and-push-image:
+          # テストをパスしたら実行
           requires:
-            - shellcheck
+            - test
+          filters:
+            branches:
+              only: master
+          region: AWS_REGION
+          account-url: AWS_ECR_ACCOUNT_URL
+          repo: ${ECR_REPOSITORY_NAME}
+          tag: "${CIRCLE_SHA1}"
+      - aws-ecs/deploy-service-update:
+          # イメージのビルド & プッシュが成功したら実行
+          requires:
+            - aws-ecr/build-and-push-image
+          filters:
+            branches:
+              only: master
+          aws-region: ${AWS_REGION}
+          family: ${ECS_SERVICE}
+          cluster-name: '${ECS_CLUSTER}'
+          container-image-name-updates: 'container=${ECS_SERVICE},image-and-tag=${AWS_ECR_ACCOUNT_URL}/${ECR_REPOSITORY_NAME}:${CIRCLE_SHA1}'

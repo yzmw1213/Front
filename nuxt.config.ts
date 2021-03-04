@@ -1,7 +1,12 @@
 import colors from 'vuetify/es5/util/colors'
+import type { Configuration } from '@nuxt/types'
 
-export default {
+const config: Configuration = {
   mode: 'spa',
+  server: {
+    port: 3000,
+    host: '0.0.0.0',
+  },
   /*
   ** Headers of the page
   */
@@ -25,11 +30,21 @@ export default {
   ** Global CSS
   */
   css: [
+    '~/assets/scss/app.scss',
+    '~/assets/scss/header.scss',
+    '~/assets/scss/message.scss',
+    '~/assets/scss/post_card.scss',
+    '~/assets/scss/show_post.scss',
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/const',
+    '~/plugins/myPlugin',
+    '~/plugins/postAction',
+    '~/plugins/userAction',
+    '~/plugins/vee-validate',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -43,6 +58,7 @@ export default {
   */
   modules: [
     '@nuxtjs/pwa',
+    '@nuxtjs/dotenv',
   ],
   /*
   ** vuetify module configuration
@@ -51,19 +67,41 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
+      default: 'dark',
+      disable: false,
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
+        light: {
+          primary: colors.indigo.lighten1,
           accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
+          secondary: colors.lime.lighten2,
+          tertiary: colors.amber.darken3,
+          super: colors.pink.lighten3,
+          negative: colors.grey.darken3,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
+          success: colors.green.accent3,
+          backgound: colors.brown.lighten5,
+        },
+        dark: {
+          primary: colors.indigo.lighten1,
+          accent: colors.grey.darken3,
+          secondary: colors.lime.lighten2,
+          tertiary: colors.amber.darken3,
+          super: colors.pink.lighten3,
+          negative: colors.grey.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3,
+          backgound: colors.brown.lighten5,
+        },
+      },
+      options: {
       }
-    }
+    },
+    optionsPath: './vuetify.options.js',
   },
   /*
   ** Build configuration
@@ -74,9 +112,7 @@ export default {
     */
     extend(config: any, ctx: any) {
     },
-    typescript: {
-      typeCheck: true,
-      // ignoreNotFoundWarnings: true
-    }
   }
 }
+
+export default config

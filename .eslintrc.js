@@ -17,5 +17,9 @@ module.exports = {
     "comma-dangle": ["off", {
       arrays: "always-multiline",
     }],
+    "no-console": "off",
+    "space-before-function-paren": ["error", "never"],
+    "vue/singleline-html-element-content-newline": "off",
+    "object-shorthand": [0, "never"],
   }
 }
