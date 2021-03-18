@@ -74,11 +74,12 @@
         </validation-provider>
         <!-- 画像アップロード -->
         <img
-          class="post_image"
           v-if="uploadImageUrl"
+          class="post_image"
           :src="uploadImageUrl"
-        />
+        >
         <v-file-input
+          v-if="editedItem.id == 0"
           accept="image/png, image/jpeg, image/bmp"
           prepend-icon="mdi-paperclip"
           :clearable="false"
@@ -92,10 +93,10 @@
               color="primary"
               block
               small
-              :disabled='invalid || editedItem.image == ""'
+              :disabled="invalid || editedItem.image == ''"
               @click="post"
             >
-              投稿する
+              登録する
             </v-btn>
           </v-col>
           <v-col

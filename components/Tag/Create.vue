@@ -88,7 +88,7 @@
             small
             @click="post"
           >
-            投稿する
+            登録する
           </v-btn>
         </v-col>
       </v-row>

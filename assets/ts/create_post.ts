@@ -25,8 +25,6 @@ export default class CreatePost extends Vue {
     image: "",
   }
 
-  // validTags: TTagChoice[] = []
-
   editedItem: tPostItem = {
     postID: 0,
     status: 0,
@@ -48,6 +46,11 @@ export default class CreatePost extends Vue {
 
   created() {
     this.pService = new PostService()
+    this.editedItem = postModule.editPost
+
+    if (this.editedItem.postID > 0) {
+      this.uploadImageUrl = this.editedItem.image
+    }
   }
 
   get validTags() {
@@ -95,7 +98,6 @@ export default class CreatePost extends Vue {
       this.cancelPost()
     }
   }
-
 
   @Emit("go-home")
   cancelPost() {

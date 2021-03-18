@@ -57,7 +57,7 @@
               <v-list-item-icon>
                 <v-icon>mdi-lead-pencil</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>発酵食品を投稿する</v-list-item-title>
+              <v-list-item-title>発酵食品を登録する</v-list-item-title>
             </v-list-item>
             <!-- 管理者アカウントの場合に表示 -->
             <v-list-item
@@ -119,6 +119,7 @@
         @edit-tag="createTag"
         @show-post="showPost"
         @show-user="user"
+        @update-post="post"
       />
       <!-- フッターボタンエリア -->
       <FooterButtonArea

@@ -1,15 +1,9 @@
 <template>
   <div class="content_inner">
-    <v-img
-      height="250"
-      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-    />
     <!-- 付与されているタグをforで表示する -->
     <div class="content_lower_area">
-      <p class="title_text">{{ item.title }}</p>
       <!-- ユーザー詳細に遷移できる -->
       <div class="user_area">
-        <div class="user_img" />
         <span>{{ item.createUserName }}</span>
         <div class="action_area">
           <v-icon
@@ -25,12 +19,25 @@
           >
             {{ item.likeUsersNum }}
           </span>
+          <!-- 更新ボタン。作成者がログインユーザーに等しい場合に表示 -->
+          <v-icon
+            v-if="isLoginUser"
+            class="mr-1"
+            @click="updatePost()"
+          >
+            mdi-pencil
+          </v-icon>
         </div>
       </div>
+      <p class="title_text">{{ item.title }}</p>
       <div class="content_area">
         <p>{{ item.content }}</p>
       </div>
     </div>
+    <v-img
+      class="post_image"
+      :src="item.image"
+    />
     <div class="comment_area">
       <span v-if=" item.comments.length > 0">コメント</span>
       <div
