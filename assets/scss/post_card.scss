@@ -3,4 +3,36 @@
 
 .list_card {
   margin-bottom: $MARGIN_SIZE_SMALL;
+
+  .card_main_area {
+
+    .main_left_area {
+
+      .post_image{ 
+        margin: $MARGIN_SIZE_MINI $MARGIN_SIZE_SMALL 0 0;
+      }
+    }
+
+    .main_right_area {
+
+      .post_user_name {
+        font-size: $SUB_FONT_SIZE;
+        margin: $MARGIN_SIZE_MINI 0;
+      }
+
+      .post_title {
+        font-size: $SUB_FONT_SIZE;
+        margin: $MARGIN_SIZE_MINI 0;
+      }
+
+      .post_content {
+        font-size: $SMALL_FONT_SIZE;
+        margin: $MARGIN_SIZE_MINI 0;
+      }
+    }
+
+    .post_action_icon{
+      font-size: $MAIN_FONT_SIZE;
+    }
+  }
 }

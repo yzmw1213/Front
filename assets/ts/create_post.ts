@@ -33,6 +33,7 @@ export default class CreatePost extends Vue {
     title: "",
     content: "",
     tags: [],
+    image: "",
     createUserID: usersModule.loginUserId,
     createUserName: usersModule.loginUserName,
     updateUserID: 0,
@@ -42,6 +43,8 @@ export default class CreatePost extends Vue {
     likedByLoginUser: false,
     comments: [],
   }
+
+  uploadImageUrl: string | ArrayBuffer | null = ""
 
   created() {
     this.pService = new PostService()
@@ -62,9 +65,6 @@ export default class CreatePost extends Vue {
     if (id > 0) {
       this.update(post)
     }
-    // imageはgRPCでサーバーに送り、サーバー側の処理でS3に上げる。
-
-    // ファイルの更新日時を取得し、古い場合はワーニングを出すなど
   }
 
   create(post: Post) {
@@ -96,25 +96,6 @@ export default class CreatePost extends Vue {
     }
   }
 
-  // getValidTag 有効タグを取得しセレクトボックスに格納する
-  // getValidTag() {
-  //   let i = 0
-  //   const request = new ListValidTagRequest()
-  //   tagServiceClient.listValidTag(request, {}, (err, res: ListValidTagResponse) => {
-  //     while (i < res.getTagList().length) {
-  //       if (err != null) {
-  //         this.$setStatusMessage("UNKNOWN_ERROR")
-  //       }
-  //       const tag = res.getTagList()[i]
-  //       const tagChoice: TTagChoice = {
-  //         text: tag.getTagName(),
-  //         key: tag.getTagId()
-  //       }
-  //       this.validTags.push(tagChoice)
-  //       i++
-  //     }
-  //   })
-  // }
 
   @Emit("go-home")
   cancelPost() {
@@ -122,16 +103,18 @@ export default class CreatePost extends Vue {
     postModule.SET_EDIT_POST(defaultPost)
   }
 
-  onImageUploaded(e: Event) {
+  onImagePicked(e: Event) {
     e.preventDefault()
     if (e.target instanceof HTMLInputElement) {
       // ファイルを取得できない場合は処理を終了する.
       // Object is possibly null を以下で対処できるかどうか.
       if (e.target.files!.length === 0) {
+        this.submittedArticle.image = ""
+        this.editedItem.image = ""
+        this.uploadImageUrl = ""
         return
       }
       const image = e.target.files![0]
-      this.submittedArticle.title = image.name
       this.createImage(image)
     }
   }
@@ -143,6 +126,8 @@ export default class CreatePost extends Vue {
     // readAdDataURLが完了したあと実行される処理
     reader.onload = () => {
       this.submittedArticle.image = reader.result as string
+      this.editedItem.image = this.submittedArticle.image
+      this.uploadImageUrl = reader.result
     }
   }
 }

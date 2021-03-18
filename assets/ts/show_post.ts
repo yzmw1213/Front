@@ -27,6 +27,7 @@ export default class ShowPost extends Vue {
     title: "",
     content: "",
     tags: [],
+    image: "",
     createUserID: 0,
     createUserName: "",
     updateUserID: 0,

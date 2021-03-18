@@ -1,5 +1,7 @@
 <template>
-  <v-layout row wrap>
+  <v-layout
+    wrap
+  >
     <v-flex
       v-for="(post, index) of posts"
       :key="post.post_id"

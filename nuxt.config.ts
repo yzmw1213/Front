@@ -33,6 +33,7 @@ const config: Configuration = {
     '~/assets/scss/app.scss',
     '~/assets/scss/header.scss',
     '~/assets/scss/message.scss',
+    '~/assets/scss/create_post.scss',
     '~/assets/scss/post_card.scss',
     '~/assets/scss/show_post.scss',
   ],

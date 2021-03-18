@@ -73,11 +73,16 @@
           />
         </validation-provider>
         <!-- 画像アップロード -->
+        <img
+          class="post_image"
+          v-if="uploadImageUrl"
+          :src="uploadImageUrl"
+        />
         <v-file-input
           accept="image/png, image/jpeg, image/bmp"
           prepend-icon="mdi-paperclip"
           :clearable="false"
-          @blur="onImageUploaded($event)"
+          @blur="onImagePicked($event)"
         />
         <v-row class="flex-column">
           <v-col
@@ -87,7 +92,7 @@
               color="primary"
               block
               small
-              :disabled="invalid"
+              :disabled='invalid || editedItem.image == ""'
               @click="post"
             >
               投稿する
@@ -115,5 +120,7 @@
     </validation-observer>
   </div>
 </template>
+
+<style lang="scss" scoped src="@/assets/scss/create_post.scss"></style>
 
 <script lang="ts" src="@/assets/ts/create_post.ts"></script>

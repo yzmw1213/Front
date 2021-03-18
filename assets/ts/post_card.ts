@@ -18,8 +18,11 @@ export default class PostCard extends Vue {
   //  methods
   initialize() {
     this.pService = new PostService()
-    // this.posts = []
-    // this.getAllPost()
+    const num = 36
+
+    if (this.post.content.length > num) {
+      this.post.content = (this.post.content).slice(0, num) + "..."
+    }
   }
 
   // 投稿に対するお気に入り情報の更新
