@@ -8,6 +8,7 @@ class PostItem {
     public title: string,
     public content: string,
     public tags: number[],
+    public image: string,
     public createUserID: number,
     public createUserName: string,
     public updateUserID: number,
@@ -22,6 +23,7 @@ class PostItem {
     // this.stutusText = stutusText
     this.title = title
     this.content = content
+    this.image = image
     this.tags = tags
     this.createUserID = createUserID
     this.createUserName = createUserName

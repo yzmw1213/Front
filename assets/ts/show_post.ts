@@ -27,6 +27,7 @@ export default class ShowPost extends Vue {
     title: "",
     content: "",
     tags: [],
+    image: "",
     createUserID: 0,
     createUserName: "",
     updateUserID: 0,
@@ -36,6 +37,8 @@ export default class ShowPost extends Vue {
     likedByLoginUser: false,
     comments: []
   }
+
+  isLoginUser: boolean = false
 
   formComment: tCommentItem = {
     commentID: 0,
@@ -49,6 +52,7 @@ export default class ShowPost extends Vue {
     this.pService = new PostService()
     this.cService = new CommentService()
     this.item = postModule.editPost
+    this.isLoginUser = this.item.createUserID === usersModule.loginUserId
   }
 
   initialize() {
@@ -85,6 +89,10 @@ export default class ShowPost extends Vue {
     if (id > 0) {
       this.update(comment)
     }
+  }
+
+  @Emit("update-post")
+  updatePost() {
   }
 
   create(comment: Comment) {

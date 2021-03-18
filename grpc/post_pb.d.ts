@@ -27,6 +27,9 @@ export class Post extends jspb.Message {
   clearTagsList(): Post;
   addTags(value: number, index?: number): Post;
 
+  getImage(): string;
+  setImage(value: string): Post;
+
   getLikeUsersList(): Array<number>;
   setLikeUsersList(value: Array<number>): Post;
   clearLikeUsersList(): Post;
@@ -55,6 +58,7 @@ export namespace Post {
     updateUserId: number,
     updateUserName: string,
     tagsList: Array<number>,
+    image: string,
     likeUsersList: Array<number>,
     commentsList: Array<Comment.AsObject>,
   }

@@ -57,7 +57,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.postservice.Post.repeatedFields_ = [8,9,10];
+proto.postservice.Post.repeatedFields_ = [8,10,11];
 
 
 
@@ -96,7 +96,8 @@ proto.postservice.Post.toObject = function(includeInstance, msg) {
     updateUserId: jspb.Message.getFieldWithDefault(msg, 6, 0),
     updateUserName: jspb.Message.getFieldWithDefault(msg, 7, ""),
     tagsList: jspb.Message.getRepeatedField(msg, 8),
-    likeUsersList: jspb.Message.getRepeatedField(msg, 9),
+    image: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    likeUsersList: jspb.Message.getRepeatedField(msg, 10),
     commentsList: jspb.Message.toObjectList(msg.getCommentsList(),
     proto.postservice.Comment.toObject, includeInstance)
   };
@@ -168,10 +169,14 @@ proto.postservice.Post.deserializeBinaryFromReader = function(msg, reader) {
       msg.setTagsList(value);
       break;
     case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setImage(value);
+      break;
+    case 10:
       var value = /** @type {!Array.<number>} */ (reader.readPackedUint32());
       msg.setLikeUsersList(value);
       break;
-    case 10:
+    case 11:
       var value = new proto.postservice.Comment;
       reader.readMessage(value,proto.postservice.Comment.deserializeBinaryFromReader);
       msg.addComments(value);
@@ -261,17 +266,24 @@ proto.postservice.Post.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getImage();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
   f = message.getLikeUsersList();
   if (f.length > 0) {
     writer.writePackedUint32(
-      9,
+      10,
       f
     );
   }
   f = message.getCommentsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      10,
+      11,
       f,
       proto.postservice.Comment.serializeBinaryToWriter
     );
@@ -414,17 +426,32 @@ proto.postservice.Post.prototype.clearTagsList = function() {
 
 
 /**
- * repeated uint32 like_users = 9;
+ * optional string image = 9;
+ * @return {string}
+ */
+proto.postservice.Post.prototype.getImage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/** @param {string} value */
+proto.postservice.Post.prototype.setImage = function(value) {
+  jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * repeated uint32 like_users = 10;
  * @return {!Array.<number>}
  */
 proto.postservice.Post.prototype.getLikeUsersList = function() {
-  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 9));
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 10));
 };
 
 
 /** @param {!Array.<number>} value */
 proto.postservice.Post.prototype.setLikeUsersList = function(value) {
-  jspb.Message.setField(this, 9, value || []);
+  jspb.Message.setField(this, 10, value || []);
 };
 
 
@@ -433,7 +460,7 @@ proto.postservice.Post.prototype.setLikeUsersList = function(value) {
  * @param {number=} opt_index
  */
 proto.postservice.Post.prototype.addLikeUsers = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 9, value, opt_index);
+  jspb.Message.addToRepeatedField(this, 10, value, opt_index);
 };
 
 
@@ -443,18 +470,18 @@ proto.postservice.Post.prototype.clearLikeUsersList = function() {
 
 
 /**
- * repeated Comment comments = 10;
+ * repeated Comment comments = 11;
  * @return {!Array.<!proto.postservice.Comment>}
  */
 proto.postservice.Post.prototype.getCommentsList = function() {
   return /** @type{!Array.<!proto.postservice.Comment>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.postservice.Comment, 10));
+    jspb.Message.getRepeatedWrapperField(this, proto.postservice.Comment, 11));
 };
 
 
 /** @param {!Array.<!proto.postservice.Comment>} value */
 proto.postservice.Post.prototype.setCommentsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 10, value);
+  jspb.Message.setRepeatedWrapperField(this, 11, value);
 };
 
 
@@ -464,7 +491,7 @@ proto.postservice.Post.prototype.setCommentsList = function(value) {
  * @return {!proto.postservice.Comment}
  */
 proto.postservice.Post.prototype.addComments = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 10, opt_value, proto.postservice.Comment, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 11, opt_value, proto.postservice.Comment, opt_index);
 };
 
 
