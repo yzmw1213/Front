@@ -79,7 +79,7 @@
           :src="uploadImageUrl"
         >
         <v-file-input
-          v-if="editedItem.id == 0"
+          v-if="editedItem.postID == 0"
           accept="image/png, image/jpeg, image/bmp"
           prepend-icon="mdi-paperclip"
           :clearable="false"

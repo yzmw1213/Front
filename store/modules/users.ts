@@ -18,6 +18,7 @@ class Users extends VuexModule implements UsersState {
   token: string = ""
   loginUserId: number = 0
   loginUserName: string = ""
+  loginUserEmail: string = ""
   authority: number = 0
   // 閲覧中のユーザー
   userId: number = 0
@@ -42,6 +43,12 @@ class Users extends VuexModule implements UsersState {
 
   // mutation
   @Mutation
+  public SET_LOGIN_USER_EMAIL(email: string) {
+    this.loginUserEmail = email
+  }
+
+  // mutation
+  @Mutation
   public SET_AUTH_KIND(authority: number) {
     this.authority = authority
   }
@@ -56,6 +63,8 @@ class Users extends VuexModule implements UsersState {
   public logout() {
     this.SET_AUTH_KIND(0)
     this.SET_LOGIN_USER_ID(0)
+    this.SET_LOGIN_USER_NAME("")
+    this.SET_LOGIN_USER_EMAIL("")
     this.SET_TOKEN("")
   }
 }

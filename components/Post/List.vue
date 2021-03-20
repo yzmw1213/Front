@@ -2,9 +2,10 @@
   <v-layout
     wrap
   >
-    <v-flex
+    <v-col
       v-for="(post, index) of posts"
       :key="post.post_id"
+      cols="12"
     >
       <post-card
         :key="index"
@@ -13,7 +14,7 @@
         @show-post="showPost"
         @show-user="showUser"
       />
-    </v-flex>
+    </v-col>
   </v-layout>
 </template>
 

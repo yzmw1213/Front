@@ -1,7 +1,5 @@
 <template>
   <div class="content_inner">
-    <!-- 検索エリア -->
-    <div class="search_area" />
     <!-- コンテントエリア -->
     <div
       :class="{ wide_content_area: $vuetify.breakpoint.md || $vuetify.breakpoint.lg || $vuetify.breakpoint.xl }"

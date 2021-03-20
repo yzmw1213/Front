@@ -41,7 +41,7 @@
               <v-list-item-title>トップ画面</v-list-item-title>
             </v-list-item>
             <v-list-item
-              v-if="auth"
+              v-if="getAuthKind > 0"
               @click="myPage"
             >
               <v-list-item-icon>

@@ -5,9 +5,14 @@ import { UserService, tUserProfileItem, userServiceClient } from "~/service/User
 import { postModule } from "~/store/modules/post"
 import { usersModule } from "~/store/modules/users"
 
+import UpdateUserDialog from "~/components/ui/UpdateUserDialog.vue"
+import DeleteUserDialog from "~/components/ui/DeleteUserDialog.vue"
+
 @Component({
   components: {
     ListPosts,
+    UpdateUserDialog,
+    DeleteUserDialog,
   }
 })
 
@@ -86,6 +91,10 @@ export default class ShowUser extends Vue {
   onChangeStatus() {
     this.target = this.tabs[this.tab].target
     postModule.SET_CONDITION(this.tabs[this.tab].target)
+  }
+
+  @Emit("show-post")
+  post() {
   }
 
   @Emit("show-user")
