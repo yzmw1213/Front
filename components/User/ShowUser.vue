@@ -34,8 +34,9 @@
           v-if="item.isLoginUser"
           @reload="getUser()"
         />
+        <!-- 退会ボタンは、一般ユーザーのみ有効 -->
         <delete-user-dialog
-          v-if="item.isLoginUser"
+          v-if="item.isLoginUser && loginUserAuthority == 1"
           @logout="moveToLogin()"
         />
       </v-row>

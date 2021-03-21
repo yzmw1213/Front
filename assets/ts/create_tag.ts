@@ -76,7 +76,6 @@ export default class CreateTag extends Vue {
       // status.codeに応じたダイアログ表示
       this.$setStatusMessage(err.message)
     } else {
-      console.log(res)
       const status: ResponseStatus | undefined = res.getStatus()
       const code = status!.getCode()
       // status.codeに応じたダイアログ表示

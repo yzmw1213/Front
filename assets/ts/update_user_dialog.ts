@@ -33,7 +33,6 @@ export default class UpdateUserDialog extends Vue {
     request.setUser(user)
     userServiceClient.updateUser(request, {}, (err, res: UpdateUserResponse) => {
       if (err != null) {
-        console.log(err.message)
         // status.codeに応じたダイアログ表示
         this.$setStatusMessage(err.message)
       } else {

@@ -54,11 +54,9 @@ export default class SignUp extends Vue {
 
   handleCreateUpdateResponse(res: CreateUserResponse, err: Error) {
     if (err != null) {
-      console.log(err.message)
       // status.codeに応じたダイアログ表示
       this.$setStatusMessage(err.message)
     } else {
-      console.log(res)
       const status: ResponseStatus | undefined = res.getStatus()
       const code = status!.getCode()
       // status.codeに応じたダイアログ表示
