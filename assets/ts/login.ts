@@ -83,6 +83,7 @@ export default class Login extends Vue {
     usersModule.SET_AUTH_KIND(auth!.getAuthority())
     // ユーザー名をストアに保存
     usersModule.SET_LOGIN_USER_NAME(user!.getUserName())
+    usersModule.SET_LOGIN_USER_EMAIL(user!.getEmail())
     // ログインに成功したことをメッセージ表示
     this.$setStatusMessage("LOGIN_SUCCESS")
     this.goHomeAfterLogin()

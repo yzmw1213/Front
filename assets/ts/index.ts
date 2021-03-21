@@ -94,7 +94,6 @@ export default class Index extends Vue {
     this.currentPage = "Home"
     this.showSearchDialog = true
     this.showFooterButton = false
-    this.auth = true
   }
 
   home() {

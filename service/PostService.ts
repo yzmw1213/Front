@@ -86,7 +86,7 @@ export class PostService {
       post.getTitle(),
       post.getContent(),
       post.getTagsList(),
-      post.getImage(),
+      process.env.NUXT_ENV_S3_END + post.getImage(),
       post.getCreateUserId(),
       post.getCreateUserName(),
       post.getUpdateUserId(),
