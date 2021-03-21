@@ -16,7 +16,7 @@
         <validation-provider
           v-slot="{ errors, valid }"
           name="ユーザー名"
-          rules="required|max:16|min:6"
+          rules="required|max:16|min:3"
         >
           <v-text-field
             v-model="editedUser.userName"

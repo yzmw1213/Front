@@ -58,7 +58,7 @@
           @click="post"
         >
           <v-icon>mdi-lead-pencil</v-icon>
-          発酵食品を投稿する
+          発酵食品を登録する
         </li>
         <li
           v-if="isSuperUser() == true"

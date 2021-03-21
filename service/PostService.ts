@@ -23,6 +23,7 @@ export type tPostItem = {
   title: string
   content: string
   tags: number[]
+  image: string
   createUserID: number
   createUserName: string
   updateUserID: number
@@ -39,6 +40,7 @@ export const defaultPostItem: tPostItem = {
   title: "",
   content: "",
   tags: [],
+  image: "",
   createUserID: 0,
   createUserName: "",
   updateUserID: 0,
@@ -59,6 +61,7 @@ export class PostService {
     post.setTitle(postItem.title)
     post.setContent(postItem.content)
     post.setTagsList(postItem.tags)
+    post.setImage(postItem.image)
     post.setCreateUserId(postItem.createUserID)
     post.setUpdateUserId(postItem.updateUserID)
     return post
@@ -83,6 +86,7 @@ export class PostService {
       post.getTitle(),
       post.getContent(),
       post.getTagsList(),
+      post.getImage(),
       post.getCreateUserId(),
       post.getCreateUserName(),
       post.getUpdateUserId(),

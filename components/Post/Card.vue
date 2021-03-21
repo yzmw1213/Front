@@ -4,46 +4,58 @@
   >
     <div
       class="card_main_area"
-      @click="showItem(post)"
     >
-      <v-img
-        height="250"
-        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-      />
-      <!-- 上部は画像表示 -->
-      <!-- タブレット、PCなどはcol幅を別途調整 -->
-      <!-- 単票画面へのリンク -->
-      <v-card-title>
-        {{ post.title }}
-      </v-card-title>
-      <v-card-text>{{ post.content }}</v-card-text>
+      <v-row no-gutters>
+        <v-col
+          class="main_left_area"
+          cols="4"
+          @click="showItem(post)"
+        >
+          <v-img
+            :src="post.image"
+            class="post_image"
+          />
+        </v-col>
+        <v-col
+          class="main_right_area"
+          cols="8"
+        >
+          <p
+            class="post_user_name"
+            @click="selectUser(post.createUserID)"
+          >
+            {{ post.createUserName }}
+          </p>
+          <p
+            class="post_title"
+            @click="showItem(post)"
+          >
+            {{ post.title }}
+          </p>
+          <p
+            class="post_content"
+            @click="showItem(post)"
+          >
+            {{ post.content }}
+          </p>
+          <v-card-actions>
+            <v-icon
+              class="mr-1 post_action_icon"
+              :class="{red_text: post.likedByLoginUser}"
+              @click="changeLikeStatus(post)"
+            >
+              mdi-heart
+            </v-icon>
+            <span
+              v-if=" post.likeUsersNum > 0"
+              class="subheading mr-2"
+            >
+              {{ post.likeUsersNum }}
+            </span>
+          </v-card-actions>
+        </v-col>
+      </v-row>
     </div>
-    <!-- ユーザーがlikeしている場合はlikeをredにする -->
-    <v-card-actions>
-      <v-icon
-        class="mr-1"
-        :class="{red_text: post.likedByLoginUser}"
-        @click="changeLikeStatus(post)"
-      >
-        mdi-heart
-      </v-icon>
-      <span
-        v-if=" post.likeUsersNum > 0"
-        class="subheading mr-2"
-      >
-        {{ post.likeUsersNum }}
-      </span>
-    </v-card-actions>
-    <v-card-actions>
-      <v-list-item
-        @click="selectUser(post.createUserID)"
-      >
-        <v-list-item-avatar
-          color="grey"
-        />
-        <span>{{ post.createUserName }}</span>
-      </v-list-item>
-    </v-card-actions>
   </v-card>
 </template>
 
