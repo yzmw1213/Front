@@ -20,7 +20,7 @@
         >
           <v-text-field
             v-model="editedUser.userName"
-            :counter="10"
+            :counter="16"
             label="ユーザー名"
             :error-messages="errors"
             :success="valid"
@@ -83,7 +83,7 @@
               :disabled="invalid"
               @click="post"
             >
-              投稿する
+              登録する
             </v-btn>
           </v-col>
           <v-col
@@ -106,18 +106,6 @@
         </v-row>
       </v-form>
     </validation-observer>
-    <!-- アイコン・背景画像をアップロードできる -->
-    <!-- <v-file-input
-      accept="image/png, image/jpeg, image/bmp"
-      prepend-icon="mdi-paperclip"
-      :clearable="false"
-      @blur="onImageUploaded($event)"
-    /> -->
-    <!-- 保存 -->
-    <!-- 編集をやめる -->
-
-    <!-- お気に入りのタグを追加 -->
-    <!--  v-autocomplete など-->
   </div>
 </template>
 

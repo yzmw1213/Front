@@ -47,6 +47,8 @@ export default class CreatePost extends Vue {
   created() {
     this.pService = new PostService()
     this.editedItem = postModule.editPost
+    this.editedItem.createUserID = usersModule.loginUserId
+    this.editedItem.createUserName = usersModule.loginUserName
 
     if (this.editedItem.postID > 0) {
       this.uploadImageUrl = this.editedItem.image

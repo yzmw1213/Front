@@ -9,12 +9,11 @@
         <span>{{ item.userName }}</span>
         <!-- プロフィール文、プロフィール修正のUI -->
         <div
-          v-if="item.isLoginUser !== true"
           class="action_area"
         >
           <!-- ログインユーザー未フォロー -->
           <v-btn
-            v-if="item.followByLoginUser !== true"
+            v-if="!item.followByLoginUser && !item.isLoginUser"
             color="primary"
             @click="changeFollowStatus()"
           >
@@ -30,6 +29,16 @@
           </v-btn>
         </div>
       </div>
+      <v-row>
+        <update-user-dialog
+          v-if="item.isLoginUser"
+          @reload="getUser()"
+        />
+        <delete-user-dialog
+          v-if="item.isLoginUser"
+          @logout="moveToLogin()"
+        />
+      </v-row>
       <div class="user_lower_area">
         <p v-if="item.profileText">{{ item.profileText }}</p>
       </div>
@@ -50,6 +59,7 @@
     <ListPosts
       :tab="target"
       @show-user="user"
+      @show-post="post"
     />
   </div>
 </template>

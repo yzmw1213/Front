@@ -139,7 +139,6 @@ class Post extends VuexModule implements PostState {
     request.setCondition("")
 
     await postServiceClient.listPost(request, {}, (_, res: ListPostResponse) => {
-      console.log("res", res)
       while (i < res.getPostList().length) {
         const post = res.getPostList()[i]
         p.push(mapPbPostToPost(post))
