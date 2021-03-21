@@ -31,7 +31,6 @@ export default class DeleteUserDialog extends Vue {
     request.setUserId(usersModule.loginUserId)
     userServiceClient.deleteUser(request, {}, (err, res: DeleteUserResponse) => {
       if (err != null) {
-        console.log(err.message)
         // status.codeに応じたダイアログ表示
         this.$setStatusMessage(err.message)
       } else {

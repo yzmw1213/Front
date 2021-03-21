@@ -28,7 +28,6 @@ export default class Login extends Vue {
     request.setPassword(this.password)
     userServiceClient.login(request, {}, (err, res: LoginResponse | undefined) => {
       if (err != null) {
-        console.log("err login", err)
         // ログインに失敗したことをメッセージ表示
         this.$setStatusMessage("LOGIN_FAIL")
       } else {
@@ -62,7 +61,6 @@ export default class Login extends Vue {
     const request = new SuperUserLoginRequest()
     userServiceClient.superUserLogin(request, {}, (err, res: LoginResponse | undefined) => {
       if (err != null) {
-        console.log("err super", err)
         // ログインに失敗したことをメッセージ表示
         this.$setStatusMessage("LOGIN_FAIL")
       } else {
