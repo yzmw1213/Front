@@ -42,8 +42,9 @@ export default class ShowUser extends Vue {
     }
   ]
 
-  // @Prop({ default: "", required: true })
-  // detailUserId: string
+  get loginUserAuthority() {
+    return usersModule.authority
+  }
 
   created() {
     this.uService = new UserService()
@@ -61,7 +62,7 @@ export default class ShowUser extends Vue {
 
     await userServiceClient.readUser(request, {}, (err, res: ReadUserResponse) => {
       if (err != null) {
-        console.log("err", err)
+        this.$setStatusMessage("UNKNOWN_ERROR")
         return
       }
       const user: any = res.getProfile()

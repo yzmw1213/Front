@@ -29,10 +29,12 @@
                 cols="12"
                 sm="6"
               >
-                <v-autocomplete
-                  v-model="tag"
+                <v-select
+                  v-model="tagText"
                   :items="validTags"
                   label="タグ"
+                  outlined
+                  @change="changeTag()"
                 />
               </v-col>
             </v-row>

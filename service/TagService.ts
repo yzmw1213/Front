@@ -39,7 +39,7 @@ export type TRstatus = {
 }
 
 // TTagChoice タグ選択肢の型
-export type TTagChoice = { text: string, key: Number }
+export type TTagChoice = { text: string, key: number }
 
 const defaultTagItem: tTagItem = {
   tagID: 0,

@@ -101,21 +101,26 @@ export default class Index extends Vue {
     this.showFooterButton = false
     this.showSearchDialog = true
     this.currentPage = "Home"
+    postModule.CLEAR_EDIT_POST()
     postModule.SET_CONDITION("")
     usersModule.SET_USER_ID(0)
   }
 
-  post() {
+  // 記事新規投稿
+  createPost() {
+    this.drawer = false
+    this.showSearchDialog = false
+    this.showFooterButton = false
+    postModule.CLEAR_EDIT_POST()
+    this.currentPage = "CreatePost"
+  }
+
+  // 記事更新
+  updatePost() {
     this.drawer = false
     this.showSearchDialog = false
     this.showFooterButton = false
     this.currentPage = "CreatePost"
-  }
-
-  listUser() {
-    this.drawer = false
-    this.showFooterButton = true
-    this.currentPage = "ListUser"
   }
 
   listTag() {

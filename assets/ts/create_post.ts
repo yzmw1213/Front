@@ -103,8 +103,6 @@ export default class CreatePost extends Vue {
 
   @Emit("go-home")
   cancelPost() {
-    const defaultPost = this.pService.makeDefaultPost()
-    postModule.SET_EDIT_POST(defaultPost)
   }
 
   onImagePicked(e: Event) {

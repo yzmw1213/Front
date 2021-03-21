@@ -5,7 +5,7 @@
       @open-nav="openNav"
       @do-login="userLogin"
       @do-logout="logout"
-      @do-post="post"
+      @do-post="createPost"
       @do-tag="listTag"
       @go-home="home"
       @show-user="myPage"
@@ -51,8 +51,8 @@
             </v-list-item>
             <!-- 一般アカウントの場合に表示 -->
             <v-list-item
-              v-if="isNormalUser() == true"
-              @click="post"
+              v-if="isNormalUser() == true && currentPage !== 'CreatePost'"
+              @click="createPost"
             >
               <v-list-item-icon>
                 <v-icon>mdi-lead-pencil</v-icon>
@@ -119,7 +119,7 @@
         @edit-tag="createTag"
         @show-post="showPost"
         @show-user="user"
-        @update-post="post"
+        @update-post="updatePost"
       />
       <!-- フッターボタンエリア -->
       <FooterButtonArea
