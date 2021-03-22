@@ -54,6 +54,7 @@ export default class Index extends Vue {
   }
 
   created() {
+    console.log("s3 endpoint on index", process.env.NUXT_ENV_S3_END)
   }
 
   isNormalUser(): boolean {
