@@ -72,7 +72,6 @@ export class PostService {
   }
 
   getPost(post: Post): tPostItem {
-    console.log("NUXT_ENV_S3_END on getPost", process.env.NUXT_ENV_S3_END)
     let j = 0
     this.init()
     while (j < post.getCommentsList().length) {
@@ -87,7 +86,7 @@ export class PostService {
       post.getTitle(),
       post.getContent(),
       post.getTagsList(),
-      process.env.NUXT_ENV_S3_END + post.getImage(),
+      post.getImage(),
       post.getCreateUserId(),
       post.getCreateUserName(),
       post.getUpdateUserId(),
