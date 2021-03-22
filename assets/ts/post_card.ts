@@ -2,28 +2,12 @@ import { Component, Vue, Prop, Emit } from "nuxt-property-decorator"
 import { usersModule } from "@/store/modules/users"
 import { postModule } from "@/store/modules/post"
 
-import { tPostItem, PostService } from "~/service/PostService"
+import { tPostItem } from "~/service/PostService"
 
 @Component({})
 export default class PostCard extends Vue {
-  pService: PostService
-
   @Prop({ default: "", required: true })
   post: tPostItem
-
-  created() {
-    this.initialize()
-  }
-
-  //  methods
-  initialize() {
-    this.pService = new PostService()
-    const num = 36
-
-    if (this.post.content.length > num) {
-      this.post.content = (this.post.content).slice(0, num) + "..."
-    }
-  }
 
   // 投稿に対するお気に入り情報の更新
   changeLikeStatus(post: tPostItem) {
