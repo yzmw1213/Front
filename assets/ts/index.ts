@@ -54,7 +54,6 @@ export default class Index extends Vue {
   }
 
   created() {
-    console.log("s3 endpoint on index", process.env.NUXT_ENV_S3_END)
   }
 
   isNormalUser(): boolean {
@@ -63,11 +62,6 @@ export default class Index extends Vue {
 
   isSuperUser(): boolean {
     return usersModule.authority === UserAuthority.AUTHORITY_SUPER_USER
-  }
-
-  // @Emit()
-  setHeader() {
-    // this.$nuxt.$emit('updateHeader', this.header.title)
   }
 
   openNav() {

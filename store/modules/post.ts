@@ -160,7 +160,6 @@ class Post extends VuexModule implements PostState {
 }
 
 const mapPbPostToPost = (post: _Post): tPostItem => {
-  console.log("NUXT_ENV_S3_END on mapPbPostToPost", process.env.NUXT_ENV_S3_END)
   let j = 0
   const comments: tCommentItem[] = []
   while (j < post.getCommentsList().length) {
@@ -174,7 +173,7 @@ const mapPbPostToPost = (post: _Post): tPostItem => {
     title: post.getTitle(),
     content: post.getContent(),
     tags: post.getTagsList(),
-    image: process.env.NUXT_ENV_S3_END + post.getImage(),
+    image: post.getImage(),
     createUserID: post.getCreateUserId(),
     createUserName: post.getCreateUserName(),
     updateUserID: post.getUpdateUserId(),
