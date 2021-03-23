@@ -6,7 +6,11 @@
     <div class="user_area">
       <div class="user_head_area">
         <div class="user_img" />
-        <span>{{ item.userName }}</span>
+        <div class="user_profile_area">
+          <p>{{ item.userName }}</p>
+          <p>{{ item.email }}</p>
+        </div>
+
         <!-- プロフィール文、プロフィール修正のUI -->
         <div
           class="action_area"

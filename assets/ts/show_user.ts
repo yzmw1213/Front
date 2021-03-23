@@ -25,6 +25,7 @@ export default class ShowUser extends Vue {
     userID: 0,
     userName: "",
     profileText: "",
+    email: "",
     authority: 0,
     isLoginUser: false,
     followByLoginUser: false
