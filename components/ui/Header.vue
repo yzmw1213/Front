@@ -14,7 +14,7 @@
       <v-toolbar-title
         @click="home()"
       >
-        Title
+        Fermentgo
       </v-toolbar-title>
       <!-- PC・タブレットで表示 -->
       <ul

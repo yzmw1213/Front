@@ -31,6 +31,7 @@ export type tUserProfileItem = {
   userID: number
   userName: string
   profileText: string
+  email: string
   authority: number,
   isLoginUser: boolean,
   followByLoginUser: boolean,
@@ -72,6 +73,7 @@ export class UserService {
       profile.getUserId(),
       profile.getUserName(),
       profile.getProfileText(),
+      profile.getUserId() === usersModule.loginUserId ? usersModule.loginUserEmail : "",
       profile.getAuthority(),
       profile.getUserId() === usersModule.loginUserId,
       profile.getFollowUsersList().includes(usersModule.loginUserId),
