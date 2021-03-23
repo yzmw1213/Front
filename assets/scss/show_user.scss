@@ -23,6 +23,12 @@
         height: 40px;
         margin-right: 1em;
       }
+      .user_profile_area {
+
+        p {
+          margin-bottom: $MARGIN_SIZE_MINI;
+        }
+      }
       .action_area {
         margin: 0 0 0 auto;
         justify-content: right;
