@@ -2,6 +2,7 @@ import { Component, Vue, Emit } from "nuxt-property-decorator"
 import { Error } from "grpc-web"
 import { postModule } from "@/store/modules/post"
 import { usersModule } from "@/store/modules/users"
+import { tagsModule } from "~/store/modules/tags"
 
 import {
   CreateCommentRequest,
@@ -21,6 +22,7 @@ export default class ShowPost extends Vue {
   cService: CommentService
   commentEditing: boolean = false
   dialog: boolean = false
+  vt: string[] = []
   item: tPostItem = {
     postID: 0,
     status: 0,
@@ -48,11 +50,19 @@ export default class ShowPost extends Vue {
     createUserName: usersModule.loginUserName,
   }
 
+  get validTags() {
+    return tagsModule.validTags
+  }
+
   created() {
     this.pService = new PostService()
     this.cService = new CommentService()
     this.item = postModule.editPost
     this.isLoginUser = this.item.createUserID === usersModule.loginUserId
+
+    for (const tag of this.validTags) {
+      this.vt[tag.key] = tag.text
+    }
   }
 
   initialize() {

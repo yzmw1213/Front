@@ -31,12 +31,19 @@ class Tags extends VuexModule implements TagsState {
     updateUserID: 0
   }
 
+  searchTagID: number = 0
+
   validTags: TTagChoice[] = []
 
   // mutation
   @Mutation
   public SET_EDIT_TAG(eTag: tTagItem) {
     this.editTag = eTag
+  }
+
+  @Mutation
+  public SET_SEARCH_TAG(id: number) {
+    this.searchTagID = id
   }
 
   @Mutation
