@@ -43,6 +43,8 @@ export default class ShowPosts extends Vue {
       postModule.getPostsByCreateUserID(usersModule.userId)
     } else if (postModule.condition === "like") {
       postModule.getPostsByLikeUserID(usersModule.userId)
+    } else if (tagsModule.searchTagID > 0) {
+      postModule.getPostsByTagID(tagsModule.searchTagID)
     } else {
       postModule.getAllPosts()
     }
