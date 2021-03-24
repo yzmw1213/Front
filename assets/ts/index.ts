@@ -143,6 +143,7 @@ export default class Index extends Vue {
     this.showFooterButton = true
     // ユーザーページ遷移時は、ユーザーが作成した投稿を表示
     postModule.SET_CONDITION("create")
+    tagsModule.SET_SEARCH_TAG(0)
   }
 
   // マイページ表示
