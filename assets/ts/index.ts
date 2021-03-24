@@ -53,9 +53,6 @@ export default class Index extends Vue {
     return tagsModule.validTags
   }
 
-  created() {
-  }
-
   isNormalUser(): boolean {
     return usersModule.authority === UserAuthority.AUTHORITY_NORMAL_USER
   }
