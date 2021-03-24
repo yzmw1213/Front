@@ -36,6 +36,7 @@ const config: Configuration = {
     '~/assets/scss/create_post.scss',
     '~/assets/scss/post_card.scss',
     '~/assets/scss/show_post.scss',
+    '~/assets/scss/list_post.scss',
   ],
   /*
   ** Plugins to load before mounting the App

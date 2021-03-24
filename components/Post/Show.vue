@@ -30,6 +30,17 @@
         </div>
       </div>
       <p class="title_text">{{ item.title }}</p>
+      <div>
+        <v-chip
+          v-for="id of item.tags"
+          :key="id"
+          class="ma-1"
+          color="primary"
+          small
+        >
+          {{ vt[id] }}
+        </v-chip>
+      </div>
       <div class="content_area">
         <p>{{ item.content }}</p>
       </div>

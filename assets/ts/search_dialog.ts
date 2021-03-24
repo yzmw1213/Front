@@ -31,6 +31,8 @@ export default class SearchDialog extends Vue {
 
   doSearch() {
     this.dialog = false
+    tagsModule.SET_SEARCH_TAG(this.tagKey)
+
     if (this.tagKey === 0) {
       postModule.getAllPosts()
       return

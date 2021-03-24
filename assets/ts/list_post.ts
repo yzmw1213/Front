@@ -1,6 +1,7 @@
 import { Component, Vue, Emit, Watch, Prop } from "nuxt-property-decorator"
 import { postModule } from "~/store/modules/post"
 import { usersModule } from "~/store/modules/users"
+import { tagsModule } from "~/store/modules/tags"
 
 import PostCard from "~/components/Post/Card.vue"
 
@@ -13,19 +14,27 @@ import { PostService } from "~/service/PostService"
 })
 
 export default class ShowPosts extends Vue {
+  vt: string[] = []
   pService: PostService
 
-  created() {
-    this.pService = new PostService()
-    this.initialize()
-  }
-
-  mounted() {
-    // this.$nuxt.$on("doSearch", this.searchPosts)
+  get validTags() {
+    return tagsModule.validTags
   }
 
   get posts() {
     return postModule.posts
+  }
+
+  get searchTag() {
+    return tagsModule.searchTagID
+  }
+
+  mounted() {
+    for (const tag of tagsModule.validTags) {
+      this.vt[tag.key] = tag.text
+    }
+    this.pService = new PostService()
+    this.initialize()
   }
 
   //  methods
@@ -45,6 +54,11 @@ export default class ShowPosts extends Vue {
   @Watch("tab")
   onChangeTarget() {
     this.initialize()
+  }
+
+  @Watch(String(tagsModule.searchTagID))
+  onChangeStatus() {
+    console.log("search tag change", tagsModule.searchTagID)
   }
 
   @Emit("show-post")

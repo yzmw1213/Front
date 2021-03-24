@@ -54,19 +54,6 @@ export class UserService {
     return user
   }
 
-  // getUserProfile バイナリ型のユーザーメッセージをvueで扱える形に変換
-  // getUser(user: User): tUserItem {
-  //   return new UserItem(
-  //     user.getUserId(),
-  //     user.getUserName(),
-  //     user.getPassword(),
-  //     user.getProfileText(),
-  //     user.getEmail(),
-  //     user.getGender(),
-  //     user.getAuthority(),
-  //   )
-  // }
-
   // getUserProfile バイナリ型のプロフィールメッセージをvueで扱える形に変換
   getUserProfile(profile: UserProfile): tUserProfileItem {
     return new UserProfileItem(

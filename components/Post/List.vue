@@ -2,6 +2,13 @@
   <v-layout
     wrap
   >
+    <p
+      v-if="searchTag > 0"
+      class="search_tag"
+    >
+      「{{ vt[searchTag] }}」の検索結果
+    </p>
+
     <v-col
       v-for="(post, index) of posts"
       :key="post.post_id"
@@ -17,5 +24,7 @@
     </v-col>
   </v-layout>
 </template>
+
+<style lang="scss" scoped src="@/assets/scss/list_post.scss"></style>
 
 <script lang="ts" src="@/assets/ts/list_post.ts"></script>
