@@ -133,6 +133,18 @@ export default class ShowPost extends Vue {
     })
   }
 
+  @Emit("show-user")
+  showUser() {
+    usersModule.SET_USER_ID(this.item.createUserID)
+  }
+
+  @Emit("go-home")
+  searchTag(id: number) {
+    tagsModule.SET_SEARCH_TAG(id)
+    // 選択されたタグで検索を行う
+    postModule.getPostsByTagID(id)
+  }
+
   update(comment: Comment) {
     const request = new UpdateCommentRequest()
     request.setComment(comment)

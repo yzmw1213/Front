@@ -17,11 +17,20 @@
       .post_user_name {
         font-size: $SUB_FONT_SIZE;
         margin: $MARGIN_SIZE_MINI 0;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
 
       .post_title {
         font-size: $SUB_FONT_SIZE;
         margin: $MARGIN_SIZE_MINI 0;
+        color: $LINK_FONT_COLOR;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
 
       .post_content {

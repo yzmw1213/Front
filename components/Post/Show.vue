@@ -4,7 +4,12 @@
     <div class="content_lower_area">
       <!-- ユーザー詳細に遷移できる -->
       <div class="user_area">
-        <span>{{ item.createUserName }}</span>
+        <span
+          class="user_name"
+          @click="showUser()"
+        >
+          {{ item.createUserName }}
+        </span>
         <div class="action_area">
           <v-icon
             class="mr-1"
@@ -37,6 +42,7 @@
           class="ma-1"
           color="primary"
           small
+          @click="searchTag(id)"
         >
           {{ vt[id] }}
         </v-chip>
