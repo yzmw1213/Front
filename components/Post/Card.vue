@@ -34,7 +34,6 @@
           </p>
           <p
             class="post_content"
-            @click="showItem(post)"
           >
             {{ post.content }}
           </p>
