@@ -63,6 +63,7 @@
     </div>
     <ListPosts
       :tab="target"
+      @do-login="moveToLogin"
       @show-user="user"
       @show-post="post"
     />
