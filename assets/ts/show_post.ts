@@ -130,7 +130,7 @@ export default class ShowPost extends Vue {
     request.setId(this.item.comments[i].commentID)
     postServiceClient.deleteComment(request, {}, (err, res: DeleteCommentResponse) => {
       this.handleCreateUpdateResponse(res, err)
-      this.initialize()
+      this.cancelPost()
     })
   }
 
@@ -168,6 +168,7 @@ export default class ShowPost extends Vue {
   }
 
   cancelComment() {
+    this.formComment.commentID = 0
     this.formComment.commentContent = ""
     this.commentEditing = !this.commentEditing
   }
