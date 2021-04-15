@@ -48,6 +48,7 @@ export default class ShowPost extends Vue {
     commentContent: "",
     createUserID: usersModule.loginUserId,
     createUserName: usersModule.loginUserName,
+    createdByLoginUser: false,
   }
 
   get validTags() {
@@ -162,8 +163,7 @@ export default class ShowPost extends Vue {
       const code = status!.getCode()
       // status.codeに応じたダイアログ表示
       this.$setStatusMessage(code)
-      // コメント後に表示情報を更新する。
-      this.initialize()
+      this.cancelComment()
     }
   }
 
