@@ -9,6 +9,7 @@ export type tCommentItem = {
   commentContent: string
   createUserID: number
   createUserName: string
+  createdByLoginUser: boolean
 }
 
 const defaultCommentItem: tCommentItem = {
@@ -17,6 +18,7 @@ const defaultCommentItem: tCommentItem = {
   commentContent: "",
   createUserID: 0,
   createUserName: "",
+  createdByLoginUser: false,
 }
 
 export class CommentService {

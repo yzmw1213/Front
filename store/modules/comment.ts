@@ -1,4 +1,5 @@
 import { Mutation, VuexModule, getModule, Module } from "vuex-module-decorators"
+import { usersModule } from "./users"
 import store from "~/store/store"
 import { Comment as _Comment } from "~/grpc/post_pb"
 
@@ -23,6 +24,7 @@ class Comment extends VuexModule implements CommentState {
     createUserID: 0,
     createUserName: "",
     commentContent: "",
+    createdByLoginUser: false,
   }
 
   // mutation
@@ -38,7 +40,8 @@ export const mapPbCommentToComment = (comment: _Comment): tCommentItem => {
     postID: comment.getPostId(),
     commentContent: comment.getContent(),
     createUserID: comment.getCreateUserId(),
-    createUserName: comment.getCreateUserName()
+    createUserName: comment.getCreateUserName(),
+    createdByLoginUser: comment.getCreateUserId() === usersModule.loginUserId
   }
 }
 
